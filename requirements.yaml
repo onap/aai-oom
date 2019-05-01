@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+---
 dependencies:
   - name: common
     version: ~4.x-0
