@@ -23,7 +23,7 @@ global:
 #################################################################
 
 # application image
-image: onap/gizmo:1.4-STAGING-latest
+image: onap/gizmo:1.4.0
 flavor: small
 # application configuration
 config:

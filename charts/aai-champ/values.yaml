@@ -25,7 +25,7 @@ global:
 #################################################################
 
 # application image
-image: onap/champ:1.4-STAGING-latest
+image: onap/champ:1.4.0
 
 flavor: small
 
