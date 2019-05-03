@@ -50,6 +50,8 @@ xsi:schemaLocation="
         <entry key="storage.cassandra.replication-factor" value="{{ .Values.global.cassandra.replicas }}"/>
         <entry key="storage.cassandra.replication-strategy-class" value="org.apache.cassandra.locator.SimpleStrategy"/>
         <entry key="storage.hostname" value="{{ .Values.global.cassandra.serviceName }}"/>
+        <entry key="storage.username" value="{{ .Values.global.cassandra.username }}"/>
+        <entry key="storage.password" value="{{ .Values.global.cassandra.password }}"/>
     </util:map>
 
     <!-- Janus Implementation -->

@@ -63,9 +63,13 @@ global: # global defaults
     #Override it to aai-cassandra if localCluster is enabled.
     serviceName: cassandra
 
-    #This should be same as shared cassandra instance or if localCluster is enabled 
-    #then it should be same as aai-cassandra replicaCount 
+    #This should be same as shared cassandra instance or if localCluster is enabled
+    #then it should be same as aai-cassandra replicaCount
     replicas: 3
+
+    #Cassanara login details
+    username: cassandra
+    password: cassandra
 
   aai:
     serviceName: aai
