@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "790ecff3_5576cfed",
+        "filename": "charts/aai-sparky-be/resources/config/portal/BOOT-INF/classes/portal.properties",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 679
+      },
+      "writtenOn": "2019-05-07T21:52:30Z",
+      "side": 1,
+      "message": "Hello, has this Rest URL been tested already? Its supposed to be \nhttps://portal-app:30225/ONAPPORTAL/auxapi \nor \nhttp://portal-app:8989/ONAPPORTAL/auxapi\n\nbut https is recommended",
+      "revId": "ac5af229bfc03b04f902c4c51054f96a3d0e912f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
