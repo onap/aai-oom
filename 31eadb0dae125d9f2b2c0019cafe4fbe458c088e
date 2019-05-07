@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d67569b_91b0c069",
+        "filename": "charts/aai-sparky-be/resources/config/portal/BOOT-INF/classes/portal.properties",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 651
+      },
+      "writtenOn": "2019-05-07T18:31:23Z",
+      "side": 1,
+      "message": "This one is between sparky backend and the portal and should remain with the internal hostname and port values.\n(ie it is NOT a call that is being done from the user\u0027s browser).",
+      "revId": "31eadb0dae125d9f2b2c0019cafe4fbe458c088e",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
