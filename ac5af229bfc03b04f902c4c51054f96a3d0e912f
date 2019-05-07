@@ -16,6 +16,24 @@
       "revId": "ac5af229bfc03b04f902c4c51054f96a3d0e912f",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99c83f44_7d2497f5",
+        "filename": "charts/aai-sparky-be/resources/config/portal/BOOT-INF/classes/portal.properties",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 679
+      },
+      "writtenOn": "2019-05-07T21:55:37Z",
+      "side": 1,
+      "message": "If http://portal-app.{{.Release.Namespace}}:8989/ONAPPORTAL/auxapi is working like you have above, then ignore the comment. In future releases, try using HTTPS",
+      "parentUuid": "790ecff3_5576cfed",
+      "revId": "ac5af229bfc03b04f902c4c51054f96a3d0e912f",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
