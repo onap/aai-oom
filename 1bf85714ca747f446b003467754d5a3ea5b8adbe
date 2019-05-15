@@ -1,0 +1,8 @@
+Code-Review+1: onap-ci-windriver <gary.wu+onap-ci-windriver@gmail.com>
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+2: Venkata Harish Kajur <vk250x@att.com>
+Submitted-by: Venkata Harish Kajur <vk250x@att.com>
+Submitted-at: Wed, 15 May 2019 13:20:49 +0000
+Reviewed-on: https://gerrit.onap.org/r/87671
+Project: aai/oom
+Branch: refs/heads/master
