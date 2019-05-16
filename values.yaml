@@ -36,18 +36,18 @@ global: # global defaults
   fproxy:
     name: forward-proxy
     activeSpringProfiles: noHostVerification,cadi
-    image: onap/fproxy:2.1-STAGING-latest
+    image: onap/fproxy:2.1.3
     port: 10680
 
   rproxy:
     name: reverse-proxy
     activeSpringProfiles: noHostVerification,cadi
-    image: onap/rproxy:2.1-STAGING-latest
+    image: onap/rproxy:2.1.3
     port: 10692
 
   tproxyConfig:
     name: init-tproxy-config
-    image: onap/tproxy-config:2.1-STAGING-latest
+    image: onap/tproxy-config:2.1.3
 
   # AAF server details. Only needed if the AAF DNS does not resolve from the pod
   aaf:
