@@ -79,3 +79,7 @@ dependencies:
     version: ~5.x-0
     repository: 'file://components/aai-traversal'
     condition: aai-traversal.enabled
+  - name: aai-graphgraph
+    version: ~5.x-0
+    repository: 'file://components/aai-graphgraph'
+    condition: aai-graphgraph.enabled
