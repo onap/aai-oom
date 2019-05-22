@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "42bdd44c_59974ea5",
+        "filename": "charts/aai-sparky-be/resources/config/portal/BOOT-INF/classes/portal.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1803
+      },
+      "writtenOn": "2019-05-22T18:46:28Z",
+      "side": 1,
+      "message": "Does this equate to ecomp_rest_url \u003dhttps://portal-app:8443/ONAPPORTAL/auxapi? I don\u0027t know ; why not just make it ecomp_rest_url \u003dhttps://portal-app:8443/ONAPPORTAL/auxapi?",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "e692284545625ad96d536418fa37564fd381358b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    }
+  ]
+}
