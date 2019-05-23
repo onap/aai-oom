@@ -22,6 +22,30 @@
       "revId": "e692284545625ad96d536418fa37564fd381358b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ef82799a_4e160d95",
+        "filename": "charts/aai-sparky-be/resources/config/portal/BOOT-INF/classes/portal.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 679
+      },
+      "writtenOn": "2019-05-23T14:45:17Z",
+      "side": 1,
+      "message": "Correct Lorraine: Please remove \".{{ include \"common.namespace\" . }}\".",
+      "parentUuid": "42bdd44c_59974ea5",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "e692284545625ad96d536418fa37564fd381358b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
