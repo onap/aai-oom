@@ -46,6 +46,30 @@
       "revId": "e692284545625ad96d536418fa37564fd381358b",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7e036d1a_c89467b7",
+        "filename": "charts/aai-sparky-be/resources/config/portal/BOOT-INF/classes/portal.properties",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 33
+      },
+      "writtenOn": "2019-05-24T17:16:26Z",
+      "side": 1,
+      "message": "OK, I still think it\u0027s poor design for a service secured with tls, but I will follow your instructions",
+      "parentUuid": "ef82799a_4e160d95",
+      "range": {
+        "startLine": 25,
+        "startChar": 36,
+        "endLine": 25,
+        "endChar": 70
+      },
+      "revId": "e692284545625ad96d536418fa37564fd381358b",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
