@@ -44,7 +44,7 @@ config:
   portalCookieName: UserId
   portalAppRoles: ui_view
   aafUsername: aai@aai.onap.org
-  aafNamespace: org.onap.aai.aaiui
+  aafNamespace: org.onap.aai
   aafPassword: enc:xxYw1FqXU5UpianbPeH5Rezg0YfjzuwQrSiLcCmJGfz
   cadiKeyFile: /opt/app/sparky/config/portal/keyFile
   cadiTrustStore: /opt/app/sparky/config/auth/truststoreONAPall.jks
