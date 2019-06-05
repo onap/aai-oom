@@ -34,6 +34,62 @@ config:
   keyStorePassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
   keyManagerPassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
 
+env:
+  - name: CONFIG_HOME
+    value: /opt/app/babel/config
+  - name: KEY_STORE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: '{{ template "common.fullname" . }}-pass'
+        key: KEY_STORE_PASSWORD
+  - name: KEY_MANAGER_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: '{{ template "common.fullname" . }}-pass'
+        key: KEY_MANAGER_PASSWORD
+
+volumeMounts:
+  - mountPath: /opt/app/babel/config/artifact-generator.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: artifact-generator.properties
+  - mountPath: /opt/app/babel/config/tosca-mappings.json
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: tosca-mappings.json
+  - mountPath: /opt/app/babel/config/babel-auth.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: babel-auth.properties
+  - mountPath: /opt/app/babel/config/auth
+    name: '{{ include "common.fullname" . }}-secrets'
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath: /opt/app/babel/config/logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: logback.xml
+
+volumes:
+  - volumeMountRefName: '{{ include "common.fullname" . }}-config'
+    name: '{{ include "common.fullname" . }}-configmap'
+    type: configMap
+    items:
+      - key: artifact-generator.properties
+        path: artifact-generator.properties
+      - key: tosca-mappings.json
+        path: tosca-mappings.json
+      - key: babel-auth.properties
+        path: babel-auth.properties
+      - key: logback.xml
+        path: logback.xml
+  - volumeMountRefName: '{{ include "common.fullname" . }}-secrets'
+    name: '{{ include "common.fullname" . }}-babel-secrets'
+    type: secret
+  - volumeMountRefName: filebeat-conf
+    name: aai-filebeat
+    type: configMap
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: aai-filebeat
+    type: emptyDir
+
 # default number of instances
 replicaCount: 1
 
