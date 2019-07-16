@@ -298,6 +298,7 @@ global: # global defaults
         enabled: false
 
 # application image
+repository: nexus3.onap.org:10001
 dockerhubRepository: registry.hub.docker.com
 image: aaionap/haproxy:1.4.0
 pullPolicy: Always
@@ -361,17 +362,17 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 1Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 2
+      cpu: 2000m
       memory: 2Gi
   unlimited: {}
 

@@ -17,6 +17,7 @@
 # Declare variables to be passed into your templates.
 global: # global defaults
   nodePortPrefix: 302
+  repository: nexus3.onap.org:10001
 
 
 # application image
@@ -27,6 +28,64 @@ restartPolicy: Always
 flavor: small
 # application configuration
 config: {}
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-prop'
+    filePath: "resources/config/model-loader.properties"
+  - name: '{{ include "common.fullname" . }}-log'
+    filePath: "resources/config/log/logback.xml"
+
+envs:
+  - name: CONFIG_HOME
+    value: /opt/app/model-loader/config/
+
+secrets:
+  - name: '{{ include "common.fullname" . }}'
+    filePath: "resources/config/auth/*"
+
+volumeMounts:
+  - mountPath: /opt/app/model-loader/config/model-loader.properties
+    subPath: model-loader.properties
+    name: '{{ include "common.fullname" . }}-prop-config'
+  - mountPath: /opt/app/model-loader/config/auth/
+    name: '{{ include "common.fullname" . }}-auth-config'
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath: /opt/app/model-loader/logback.xml
+    name: '{{ include "common.fullname" . }}-log-conf'
+    subPath: logback.xml
+
+volumes:
+  - volumeMountRefName: '{{ include "common.fullname" . }}-prop-config'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-prop'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-auth-config'
+    type: secret
+    name: '{{ include "common.fullname" . }}'
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: aai-filebeat
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-log-conf'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-log'
+
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: aai-filebeat
 
 # default number of instances
 replicaCount: 1
@@ -65,16 +124,16 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 0.5
+      cpu: 500m
       memory: 1Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 1536Mi
   unlimited: {}
