@@ -24,6 +24,7 @@ global: # global defaults
   nodePortPrefix: 302
   readinessRepository: oomk8s
   readinessImage: readiness-check:2.0.2
+  repository: nexus3.onap.org:10001
 
 
 # application image
@@ -80,6 +81,76 @@ config:
         # Deletes the dataSnapshot graphson files older than 30 days
         ageDelete: 30
 
+initContainers:
+  enabled: true
+  containerWaitList:
+    - aai-schema-service
+    - aai-resources
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-configmap'
+    annotations: |
+      {{- if .Values.global.jobs.migration.enabled }}
+        "helm.sh/hook": pre-upgrade,pre-install
+        "helm.sh/hook-weight": "0"
+        "helm.sh/hook-delete-policy": before-hook-creation
+      {{- end }}
+    filePaths: 
+      - "resources/config/logback.xml"
+      - "resources/config/localhost-access-logback.xml"
+      - "resources/config/janusgraph-realtime.properties"
+      - "resources/config/janusgraph-cached.properties"
+      - "resources/config/aaiconfig.properties"
+      - "resources/config/application.properties"
+      - "resources/config/realm.properties"
+
+volumeMounts:
+  - mountPath: /opt/app/aai-graphadmin/resources/etc/appprops/janusgraph-realtime.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: janusgraph-realtime.properties
+  - mountPath: /opt/app/aai-graphadmin/resources/etc/appprops/janusgraph-cached.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: janusgraph-cached.properties
+  - mountPath: /opt/app/aai-graphadmin/resources/etc/appprops/aaiconfig.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: aaiconfig.properties
+  - mountPath: /opt/aai/logroot/AAI-RES
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath: /opt/app/aai-graphadmin/resources/logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: logback.xml
+  - mountPath: /opt/app/aai-graphadmin/resources/localhost-access-logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: localhost-access-logback.xml
+  - mountPath: /opt/app/aai-graphadmin/resources/etc/auth/realm.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: realm.properties
+  - mountPath: /opt/app/aai-graphadmin/resources/application.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: application.properties
+  - mountPath: /opt/app/aai-graphadmin/resources/etc/auth/aai_keystore
+    name: '{{ include "common.fullname" . }}-auth-truststore-sec'
+    subPath: aai_keystore
+
+volumes:
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: filebeat-data
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-config'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-configmap'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-auth-truststore-sec'
+    type: secret
+    name: aai-common-truststore
+
+sideCarContainers:
+  filebeat:
+    enabled: true
+
 nodeSelector: {}
 
 affinity: {}
@@ -132,16 +203,16 @@ persistence:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 0.5
+      cpu: 500m
       memory: 1536Mi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 2Gi
   unlimited: {}
