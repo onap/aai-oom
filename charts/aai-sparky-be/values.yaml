@@ -34,6 +34,108 @@ restartPolicy: Always
 flavor: small
 dockerhubRepository: registry.hub.docker.com
 ubuntuInitImage: oomk8s/ubuntu-init:2.0.0
+
+initContainers:
+  containerList:
+    - aai-elasticsearch
+    - aai-search-data
+    - aai
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}'
+    filePaths:
+      - "resources/config/application.properties"
+      - "resources/config/application-resources.properties"
+      - "resources/config/application-ssl.properties"
+      - "resources/config/application-oxm-default.properties"
+      - "resources/config/application-oxm-override.properties"
+      - "resources/config/application-oxm-schema-prod.properties"
+      - "resources/config/roles.config"
+      - "resources/config/users.config"
+  - name: '{{ include "common.fullname" . }}-portal'
+    filePath: "resources/config/*"
+  - name: '{{ include "common.fullname" . }}-portal'
+    filePath: "resources/config/portal/*"
+  - name: '{{ include "common.fullname" . }}-portal-props'
+    filePath: "resources/config/portal/BOOT-INF/classes/*"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}'
+    filePath: "resources/config/auth/*"
+
+volumeMounts:
+  - mountPath: /opt/app/sparky/config/auth/client-cert-onap.p12
+    name: '{{ include "common.fullname" . }}-auth-config'
+    subPath: client-cert-onap.p12
+  - mountPath: /opt/app/sparky/config/auth/csp-cookie-filter.properties
+    name: '{{ include "common.fullname" . }}-auth-config'
+    subPath: csp-cookie-filter.properties
+  - mountPath: /opt/app/sparky/config/auth/org.onap.aai.p12
+    name: '{{ include "common.fullname" . }}-auth-config'
+    subPath: org.onap.aai.p12
+  - mountPath: /opt/app/sparky/config/auth/truststoreONAPall.jks
+    name: 'aai-common-aai-auth-mount'
+    subPath: truststoreONAPall.jks
+  - mountPath: /opt/app/sparky/config/portal/
+    name: '{{ include "common.fullname" . }}-portal-config'
+  - mountPath: /opt/app/sparky/config/portal/BOOT-INF/classes/
+    name: '{{ include "common.fullname" . }}-portal-config-props'
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath:  /opt/app/sparky/config/application.properties
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: application.properties
+  - mountPath:  /opt/app/sparky/config/application-resources.properties
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: application-resources.properties
+  - mountPath:  /opt/app/sparky/config/application-ssl.properties
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: application-ssl.properties
+  - mountPath:  /opt/app/sparky/config/application-oxm-default.properties
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: application-oxm-default.properties
+  - mountPath:  /opt/app/sparky/config/application-oxm-override.properties
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: application-oxm-override.properties
+  - mountPath:  /opt/app/sparky/config/application-oxm-schema-prod.properties
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: application-oxm-schema-prod.properties
+  - mountPath:  /opt/app/sparky/config/roles.config
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: roles.config
+  - mountPath:  /opt/app/sparky/config/users.config
+    name: '{{ include "common.fullname" . }}-properties'
+    subPath: users.config
+
+volumes:
+  - volumeMountRefName: {{ include "common.fullname" . }}-properties
+    type: configMap
+    name: '{{ include "common.fullname" . }}-prop'
+  - volumeMountRefName: {{ include "common.fullname" . }}-config
+    type: configMap
+    name: '{{ include "common.fullname" . }}'
+  - volumeMountRefName: {{ include "common.fullname" . }}-portal-config
+    type: configMap
+    name: '{{ include "common.fullname" . }}-portal'
+  - volumeMountRefName: {{ include "common.fullname" . }}-portal-config-props
+    type: configMap
+    name: '{{ include "common.fullname" . }}-portal-props'
+  - volumeMountRefName: {{ include "common.fullname" . }}-auth-config
+    type: secret
+    name: '{{ include "common.fullname" . }}'
+  - volumeMountRefName: aai-common-aai-auth-mount
+    type: secret
+    name: aai-common-aai-auth
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: aai-sparky-filebeat
+    type: emptyDir
+  - volumeMountRefName: modeldir
+    type: emptyDir
+
 # application configuration
 config:
   elasticsearchHttpPort: 9200
@@ -62,6 +164,18 @@ config:
 # suffix with parent chart (aai)
 nsSuffix: aai
 
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-service-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: '{{ include "common.fullname" . }}-service-filebeat'
 
 # default number of instances
 replicaCount: 1

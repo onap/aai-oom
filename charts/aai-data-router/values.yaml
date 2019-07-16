@@ -34,6 +34,114 @@ config:
   keyManagerPassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
   schemaTranslatorList: config
 
+configMaps:
+  - name: '{{ include "common.fullname" . }}-prop'
+    filePath: "resources/config/*"
+  - name: '{{ include "common.fullname" . }}-dynamic'
+    filePaths:
+      - "resources/dynamic/routes/entity-event.route"
+      - "resources/dynamic/conf/data-router-oxm.xml"
+      - "resources/dynamic/conf/entity-event-policy.xml"
+  - name: '{{ include "common.fullname" . }}-log-configmap'
+    filePath: "resources/config/log/*"
+  - name: '{{ include "common.fullname" . }}-filebeat-configmap'
+    filePath: "resources/config/log/filebeat/*"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}'
+    filePath: "resources/config/auth/*"
+
+envs:
+  - name: SERVICE_BEANS
+    value: /opt/app/data-router/dynamic/conf
+  - name: CONFIG_HOME
+    value: /opt/app/data-router/config/
+  - name: KEY_STORE_PASSWORD
+    value: '{{ .Values.config.keyStorePassword }}'
+  - name: DYNAMIC_ROUTES
+    value: /opt/app/data-router/dynamic/routes
+  - name: KEY_MANAGER_PASSWORD
+    value: '{{ .Values.config.keyManagerPassword }}'
+  - name: PATH
+    value: /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  - name: JAVA_HOME
+    value: usr/lib/jvm/java-8-openjdk-amd64
+
+volumeMounts:
+  - mountPath:  /opt/app/data-router/config/auth
+    name: '{{ include "common.fullname" . }}-auth'
+  - mountPath:  /opt/app/data-router/config/data-router.properties
+    subPath: data-router.properties
+    name: '{{ include "common.fullname" . }}-properties'
+  - mountPath:  /opt/app/data-router/config/schemaIngest.properties
+    subPath: schemaIngest.properties
+    name: '{{ include "common.fullname" . }}-properties'
+  - mountPath: /opt/app/data-router/dynamic/routes/entity-event.route
+    subPath: entity-event.route
+    name: '{{ include "common.fullname" . }}-dynamic-route'
+  - mountPath: /opt/app/data-router/dynamic/conf/entity-event-policy.xml
+    subPath: entity-event-policy.xml
+    name: '{{ include "common.fullname" . }}-dynamic-policy'
+  - mountPath: /opt/app/data-router/dynamic/conf/data-router-oxm.xml
+    subPath: data-router-oxm.xml
+    name: '{{ include "common.fullname" . }}-dynamic-oxm'
+  - mountPath: /opt/app/data-router/bundleconfig/etc/logback.xml
+    name: '{{ include "common.fullname" . }}-logback-config'
+    subPath: logback.xml
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath: /logs
+    name: '{{ include "common.fullname" . }}-logs'
+
+volumes:
+  - volumeMountRefName: filebeat-conf
+    name: aai-filebeat
+    type: configMap
+  - volumeMountRefName: aai-filebeat
+    type: emptyDir
+  - name: '{{ include "common.fullname" . }}'
+    volumeMountRefName: '{{ include "common.fullname" . }}-auth'
+    type: secret
+  - name: '{{ include "common.fullname" . }}-prop'
+    volumeMountRefName: '{{ include "common.fullname" . }}-properties'
+    type: configMap
+    items:
+      - key: data-router.properties
+        path: data-router.properties
+      - key: schemaIngest.properties
+        path: schemaIngest.properties
+  - name: '{{ include "common.fullname" . }}-dynamic'
+    volumeMountRefName: '{{ include "common.fullname" . }}-dynamic-route'
+    type: configMap
+  - name: '{{ include "common.fullname" . }}-dynamic'
+    volumeMountRefName: '{{ include "common.fullname" . }}-dynamic-policy'
+    type: configMap
+  - name: '{{ include "common.fullname" . }}-dynamic'
+    volumeMountRefName: '{{ include "common.fullname" . }}-dynamic-oxm'
+    type: configMap
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - name: '{{ include "common.fullname" . }}-log-configmap'
+    volumeMountRefName: '{{ include "common.fullname" . }}-logback-config'
+    type: configMap
+    items:
+      - key: logback.xml
+        path: logback.xml
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-logs'
+    - mountPath: /logs
+      name: '{{ include "common.fullname" . }}-logs'
+    - mountPath: /usr/share/filebeat/data
+      name: aai-filebeat
 
 # default number of instances
 replicaCount: 1
