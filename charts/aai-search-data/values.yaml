@@ -27,12 +27,95 @@ image: onap/search-data-service:1.4.3
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}'
+    filePath: "resources/config/*"
+  - name: '{{ include "common.fullname" . }}-service-log'
+    filePath: "resources/config/log/logback.xml"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}-keystone'
+    filePath: "resources/config/auth/tomcat_keystore"
+  - name: '{{ include "common.fullname" . }}-policy'
+    filePath: "resources/config/auth/search_policy.json"
+
+envs:
+  - name: CONFIG_HOME
+    value: /opt/app/search-data-service/config/
+  - name: KEY_STORE_PASSWORD
+    value: '{{ .Values.config.keyStorePassword }}'
+  - name: KEY_MANAGER_PASSWORD
+    value: '{{ .Values.config.keyManagerPassword }}'
+
+volumeMounts:
+  - mountPath: /opt/app/search-data-service/config/filter-config.json
+    subPath: filter-config.json
+    name: '{{ include "common.fullname" . }}-service-config'
+  - mountPath: /opt/app/search-data-service/config/elastic-search.properties
+    subPath: elastic-search.properties
+    name: '{{ include "common.fullname" . }}-service-config'
+  - mountPath: /opt/app/search-data-service/config/analysis-config.json
+    subPath: analysis-config.json
+    name: '{{ include "common.fullname" . }}-service-config'
+  - mountPath: /opt/app/search-data-service/config/es-payload-translation.json
+    subPath: es-payload-translation.json
+    name: '{{ include "common.fullname" . }}-service-config'
+  - mountPath: /opt/app/search-data-service/config/dynamic-custom-template.json
+    subPath: dynamic-custom-template.json
+    name: '{{ include "common.fullname" . }}-service-config'
+  - mountPath: /opt/app/search-data-service/config/auth/tomcat_keystore
+    subPath: tomcat_keystore
+    name: '{{ include "common.fullname" . }}-service-auth-config'
+  - mountPath: /opt/app/search-data-service/config/auth/search_policy.json
+    subPath: search_policy.json
+    name: '{{ include "common.fullname" . }}-search-policy-config'
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-service-logs'
+  - mountPath: /opt/app/search-data-service/bundleconfig/etc/logback.xml
+    name: '{{ include "common.fullname" . }}-service-log-conf'
+    subPath: logback.xml
+
+volumes:
+  - volumeMountRefName: '{{ include "common.fullname" . }}-service-config'
+    type: configMap
+    name: '{{ include "common.fullname" . }}'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-service-auth-config'
+    type: secret
+    name: '{{ include "common.fullname" . }}-keystone'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-search-policy-config'
+    type: secret
+    name: '{{ include "common.fullname" . }}-policy'
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+  - volumeMountRefName: '{{ include "common.fullname" . }}-service-logs'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-service-filebeat'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-service-log-conf'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-service-log'
+
 # application configuration
 config:
   elasticsearchHttpPort: 9200
   keyStorePassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
   keyManagerPassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
   trustStorePassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-service-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: '{{ include "common.fullname" . }}-service-filebeat'
 
 # default number of instances
 replicaCount: 1
