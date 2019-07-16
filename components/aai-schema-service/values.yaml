@@ -19,12 +19,84 @@ global: # global defaults
   nodePortPrefix: 302
   readinessRepository: oomk8s
   readinessImage: readiness-check:2.0.2
+  repository: nexus3.onap.org:10001
 
 # application image
 repository: nexus3.onap.org:10001
 image: onap/aai-schema-service:1.5.1
 pullPolicy: Always
 restartPolicy: Always
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-aaiconfig-configmap'
+    filePath: "config/aaiconfig.properties"
+  - name: '{{ include "common.fullname" . }}-springapp-configmap'
+    filePath: "config/application.properties"
+  - name: '{{ include "common.fullname" . }}-log'
+    filePath: "config/logback.xml"
+  - name: '{{ include "common.fullname" . }}-localhost-access-log-configmap'
+    filePath: "config/localhost-access-logback.xml"
+  - name: '{{ include "common.fullname" . }}-realm-configmap'
+    filePath: "config/realm.properties"
+
+volumeMounts:
+  - name: springapp-conf
+    mountPath: /opt/app/aai-schema-service/resources/application.properties
+    subPath: application.properties
+  - name: localhost-access-log-conf
+    mountPath: /opt/app/aai-schema-service/resources/localhost-access-logback.xml
+    subPath: localhost-access-logback.xml
+  - name: log-conf
+    mountPath: /opt/app/aai-schema-service/resources/logback.xml
+    subPath: logback.xml
+  - name: '{{ include "common.fullname" . }}-logs'
+    mountPath: /opt/aai/logroot/AAI-SS
+  - name: aaiconfig-conf
+    mountPath: /opt/app/aai-schema-service/resources/etc/appprops/aaiconfig.properties
+    subPath: aaiconfig.properties
+  - name: auth-truststore-sec
+    mountPath: /opt/app/aai-schema-service/resources/etc/auth/aai_keystore
+    subPath: aai_keystore
+
+volumes:
+  - name: '{{ include "common.fullname" . }}-realm-configmap'
+    volumeMountRefName: realm-configmap
+    type: configMap
+  - name: '{{ include "common.fullname" . }}-springapp-configmap'
+    volumeMountRefName: springapp-conf
+    type: configMap
+  - name: '{{ include "common.fullname" . }}-aaiconfig-configmap'
+    volumeMountRefName: aaiconfig-conf
+    type: configMap
+  - name: '{{ include "common.fullname" . }}-localhost-access-log-configmap'
+    volumeMountRefName: localhost-access-log-conf
+    type: configMap
+  - name: '{{ include "common.fullname" . }}-log'
+    volumeMountRefName: log-conf
+    type: configMap
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-filebeat'
+    type: emptyDir
+  - name: aai-common-truststore
+    volumeMountRefName: auth-truststore-sec
+    type: secret
+  - name: aai-filebeat
+    volumeMountRefName: filebeat-conf
+    type: configMap
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: '{{ include "common.fullname" . }}-filebeat'
+
 flavor: small
 # default number of instances
 replicaCount: 1
@@ -75,16 +147,23 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
+      memory: 2Gi
+    requests:
+      cpu: 1000m
+      memory: 1Gi
+  medium:
+    limits:
+      cpu: 4000m
       memory: 4Gi
     requests:
-      cpu: 1
-      memory: 3Gi
+      cpu: 2000m
+      memory: 2Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
   unlimited: {}

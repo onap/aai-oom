@@ -19,6 +19,7 @@ global: # global defaults
   nodePortPrefix: 302
   readinessRepository: oomk8s
   readinessImage: readiness-check:2.0.2
+  repository: nexus3.onap.org:10001
 
 # application image
 repository: nexus3.onap.org:10001
@@ -26,6 +27,888 @@ image: onap/aai-resources:1.5.0
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
+
+annotations:
+  msb.onap.org/service-info: '[
+    {
+      "serviceName": "_aai-cloudInfrastructure",
+      "version": "v11",
+      "url": "/aai/v11/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v11/cloud-infrastructure"
+    },
+    {
+      "serviceName": "_aai-cloudInfrastructure",
+      "version": "v12",
+      "url": "/aai/v12/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v12/cloud-infrastructure"
+    },
+    {
+      "serviceName": "_aai-cloudInfrastructure",
+      "version": "v13",
+      "url": "/aai/v13/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v13/cloud-infrastructure"
+    },
+    {
+      "serviceName": "_aai-cloudInfrastructure",
+      "version": "v14",
+      "url": "/aai/v14/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v14/cloud-infrastructure"
+    },
+    {
+      "serviceName": "_aai-cloudInfrastructure",
+      "version": "v15",
+      "url": "/aai/v15/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v15/cloud-infrastructure"
+    },
+    {
+      "serviceName": "_aai-cloudInfrastructure",
+      "version": "v16",
+      "url": "/aai/v16/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v16/cloud-infrastructure"
+    },
+    {
+      "serviceName": "_aai-business",
+      "version": "v11",
+      "url": "/aai/v11/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v11/business"
+    },
+    {
+      "serviceName": "_aai-business",
+      "version": "v12",
+      "url": "/aai/v12/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v12/business"
+    },
+    {
+      "serviceName": "_aai-business",
+      "version": "v13",
+      "url": "/aai/v13/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v13/business"
+    },
+    {
+      "serviceName": "_aai-business",
+      "version": "v14",
+      "url": "/aai/v14/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v14/business"
+    },
+    {
+      "serviceName": "_aai-business",
+      "version": "v15",
+      "url": "/aai/v15/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v15/business"
+    },
+    {
+      "serviceName": "_aai-business",
+      "version": "v16",
+      "url": "/aai/v16/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v16/business"
+    },
+    {
+      "serviceName": "_aai-actions",
+      "version": "v11",
+      "url": "/aai/v11/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v11/actions"
+    },
+    {
+      "serviceName": "_aai-actions",
+      "version": "v12",
+      "url": "/aai/v12/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v12/actions"
+    },
+    {
+      "serviceName": "_aai-actions",
+      "version": "v13",
+      "url": "/aai/v13/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v13/actions"
+    },
+    {
+      "serviceName": "_aai-actions",
+      "version": "v14",
+      "url": "/aai/v14/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v14/actions"
+    },
+    {
+      "serviceName": "_aai-actions",
+      "version": "v15",
+      "url": "/aai/v15/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v15/actions"
+    },
+    {
+      "serviceName": "_aai-actions",
+      "version": "v16",
+      "url": "/aai/v16/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v16/actions"
+    },
+    {
+      "serviceName": "_aai-service-design-and-creation",
+      "version": "v11",
+      "url": "/aai/v11/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v11/service-design-and-creation"
+    },
+    {
+      "serviceName": "_aai-service-design-and-creation",
+      "version": "v12",
+      "url": "/aai/v12/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v12/service-design-and-creation"
+    },
+    {
+      "serviceName": "_aai-service-design-and-creation",
+      "version": "v13",
+      "url": "/aai/v13/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v13/service-design-and-creation"
+    },
+    {
+      "serviceName": "_aai-service-design-and-creation",
+      "version": "v14",
+      "url": "/aai/v14/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v14/service-design-and-creation"
+    },
+     {
+      "serviceName": "_aai-service-design-and-creation",
+      "version": "v15",
+      "url": "/aai/v15/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v15/service-design-and-creation"
+    },
+    {
+      "serviceName": "_aai-service-design-and-creation",
+      "version": "v16",
+      "url": "/aai/v16/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v16/service-design-and-creation"
+    },
+    {
+      "serviceName": "_aai-network",
+      "version": "v11",
+      "url": "/aai/v11/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v11/network"
+    },
+    {
+      "serviceName": "_aai-network",
+      "version": "v12",
+      "url": "/aai/v12/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v12/network"
+    },
+    {
+      "serviceName": "_aai-network",
+      "version": "v13",
+      "url": "/aai/v13/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v13/network"
+    },
+    {
+      "serviceName": "_aai-network",
+      "version": "v14",
+      "url": "/aai/v14/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v14/network"
+    },
+    {
+      "serviceName": "_aai-network",
+      "version": "v15",
+      "url": "/aai/v15/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v15/network"
+    },
+    {
+      "serviceName": "_aai-network",
+      "version": "v16",
+      "url": "/aai/v16/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v16/network"
+    },
+    {
+      "serviceName": "_aai-externalSystem",
+      "version": "v11",
+      "url": "/aai/v11/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v11/external-system"
+    },
+    {
+      "serviceName": "_aai-externalSystem",
+      "version": "v12",
+      "url": "/aai/v12/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v12/external-system"
+    },
+    {
+      "serviceName": "_aai-externalSystem",
+      "version": "v13",
+      "url": "/aai/v13/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v13/external-system"
+    },
+    {
+      "serviceName": "_aai-externalSystem",
+      "version": "v14",
+      "url": "/aai/v14/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v14/external-system"
+    },
+    {
+      "serviceName": "_aai-externalSystem",
+      "version": "v15",
+      "url": "/aai/v15/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v15/external-system"
+    },
+    {
+      "serviceName": "_aai-externalSystem",
+      "version": "v16",
+      "url": "/aai/v16/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1",
+      "path": "/aai/v16/external-system"
+    },
+    {
+      "serviceName": "aai-cloudInfrastructure",
+      "version": "v11",
+      "url": "/aai/v11/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-cloudInfrastructure",
+      "version": "v12",
+      "url": "/aai/v12/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-cloudInfrastructure",
+      "version": "v13",
+      "url": "/aai/v13/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-cloudInfrastructure",
+      "version": "v14",
+      "url": "/aai/v14/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-cloudInfrastructure",
+      "version": "v15",
+      "url": "/aai/v15/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-cloudInfrastructure",
+      "version": "v16",
+      "url": "/aai/v16/cloud-infrastructure",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-business",
+      "version": "v11",
+      "url": "/aai/v11/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-business",
+      "version": "v12",
+      "url": "/aai/v12/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-business",
+      "version": "v13",
+      "url": "/aai/v13/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-business",
+      "version": "v14",
+      "url": "/aai/v14/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-business",
+      "version": "v15",
+      "url": "/aai/v15/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-business",
+      "version": "v16",
+      "url": "/aai/v16/business",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-actions",
+      "version": "v11",
+      "url": "/aai/v11/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-actions",
+      "version": "v12",
+      "url": "/aai/v12/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-actions",
+      "version": "v13",
+      "url": "/aai/v13/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-actions",
+      "version": "v14",
+      "url": "/aai/v14/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-actions",
+      "version": "v15",
+      "url": "/aai/v15/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-actions",
+      "version": "v16",
+      "url": "/aai/v16/actions",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-service-design-and-creation",
+      "version": "v11",
+      "url": "/aai/v11/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-service-design-and-creation",
+      "version": "v12",
+      "url": "/aai/v12/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-service-design-and-creation",
+      "version": "v13",
+      "url": "/aai/v13/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-service-design-and-creation",
+      "version": "v14",
+      "url": "/aai/v14/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-service-design-and-creation",
+      "version": "v15",
+      "url": "/aai/v15/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-service-design-and-creation",
+      "version": "v16",
+      "url": "/aai/v16/service-design-and-creation",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-network",
+      "version": "v11",
+      "url": "/aai/v11/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-network",
+      "version": "v12",
+      "url": "/aai/v12/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-network",
+      "version": "v13",
+      "url": "/aai/v13/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-network",
+      "version": "v14",
+      "url": "/aai/v14/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-network",
+      "version": "v15",
+      "url": "/aai/v15/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-network",
+      "version": "v16",
+      "url": "/aai/v16/network",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-externalSystem",
+      "version": "v11",
+      "url": "/aai/v11/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-externalSystem",
+      "version": "v12",
+      "url": "/aai/v12/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-externalSystem",
+      "version": "v13",
+      "url": "/aai/v13/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-externalSystem",
+      "version": "v14",
+      "url": "/aai/v14/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-externalSystem",
+      "version": "v15",
+      "url": "/aai/v15/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    },
+    {
+      "serviceName": "aai-externalSystem",
+      "version": "v16",
+      "url": "/aai/v16/external-system",
+      "protocol": "REST",
+      "port": "8447",
+      "enable_ssl": true,
+      "lb_policy":"ip_hash",
+      "visualRange": "1"
+    }
+  ]'
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-configmap'
+    filePaths:
+      - "resources/config/logback.xml"
+      - "resources/config/localhost-access-logback.xml"
+      - "resources/config/janusgraph-realtime.properties"
+      - "resources/config/janusgraph-cached.properties"
+      - "resources/config/aaiconfig.properties"
+      - "resources/config/application.properties"
+      - "resources/config/realm.properties"
+  - name: '{{ include "common.fullname" . }}-aaf-props'
+    filePaths:
+      - "resources/config/aaf/org.osaaf.location.props"
+      - "resources/config/aaf/permissions.properties"
+      - "resources/config/aaf/org.onap.aai.props"
+      - "resources/config/aaf/cadi.properties"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}-aaf-keys'
+    filePaths:
+      - "resources/config/aaf/org.onap.aai.keyfile"
+      - "resources/config/aaf/org.onap.aai.p12"
+      - "resources/config/aaf/bath_config.csv"
+
+initContainers:
+  enabled: true
+  jobList:
+    - '{{ if .Values.global.jobs.migration.enabled }}{{ .Release.Name }}-aai-graphadmin-migration{{ else }}{{ .Release.Name }}-aai-graphadmin-create-db-schema{{ end }}'
+  containerList:
+    - '{{ if .Values.global.cassandra.localCluster }}aai-cassandra{{ else }}cassandra{{ end }}'
+    - 'aai-schema-service'
+
+volumeMounts:
+  - mountPath: /opt/app/aai-resources/resources/etc/appprops/janusgraph-realtime.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: janusgraph-realtime.properties
+  - mountPath: /opt/app/aai-resources/resources/etc/appprops/janusgraph-cached.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: janusgraph-cached.properties
+  - mountPath: /opt/app/aai-resources/resources/etc/appprops/aaiconfig.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: aaiconfig.properties
+  - mountPath: /opt/aai/logroot/AAI-RES
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath: /opt/app/aai-resources/resources/logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: logback.xml
+  - mountPath: /opt/app/aai-resources/resources/localhost-access-logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: localhost-access-logback.xml
+  - mountPath: /opt/app/aai-resources/resources/etc/auth/realm.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: realm.properties
+  - mountPath: /opt/app/aai-resources/resources/aaf/org.onap.aai.keyfile
+    name: '{{ include "common.fullname" . }}-aaf-certs'
+    subPath: org.onap.aai.keyfile
+  - mountPath: /opt/app/aai-resources/resources/aaf/bath_config.csv
+    name: '{{ include "common.fullname" . }}-aaf-certs'
+    subPath: bath_config.csv
+  - mountPath: /opt/app/aai-resources/resources/aaf/org.onap.aai.props
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: org.onap.aai.props
+  - mountPath: /opt/app/aai-resources/resources/aaf/org.osaaf.location.props
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: org.osaaf.location.props
+  - mountPath: /opt/app/aai-resources/resources/aaf/permissions.properties
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: permissions.properties
+  - mountPath: /opt/app/aai-resources/resources/cadi.properties
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: cadi.properties
+  - mountPath: /opt/app/aai-resources/resources/aaf/org.onap.aai.p12
+    name: '{{ include "common.fullname" . }}-aaf-certs'
+    subPath: org.onap.aai.p12
+  - mountPath: /opt/app/aai-resources/resources/aaf/truststoreONAPall.jks
+    name: aai-common-aai-auth
+    subPath: truststoreONAPall.jks
+  - mountPath: /opt/app/aai-resources/resources/application.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: application.properties
+  - mountPath: /opt/app/aai-resources/resources/etc/auth/aai_keystore
+    name: '{{ include "common.fullname" . }}-auth-truststore-sec'
+    subPath: aai_keystore
+
+volumes:
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-filebeat'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-config'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-configmap'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-aaf-properties'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-aaf-props'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-aaf-certs'
+    type: secret
+    name: '{{ include "common.fullname" . }}-aaf-keys'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-auth-truststore-sec'
+    type: secret
+    name: aai-common-truststore
+  - volumeMountRefName: aai-common-aai-auth
+    type: secret
+    name: aai-common-aai-auth
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: '{{ include "common.fullname" . }}-filebeat'
+
 # default number of instances
 replicaCount: 1
 
@@ -104,16 +987,16 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 3Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
   unlimited: {}
