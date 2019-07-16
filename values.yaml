@@ -298,6 +298,7 @@ global: # global defaults
         enabled: false
 
 # application image
+repository: nexus3.onap.org:10001
 dockerhubRepository: registry.hub.docker.com
 image: aaionap/haproxy:1.4.0
 pullPolicy: Always
@@ -311,6 +312,50 @@ debugEnabled: false
 config:
   logstashServiceName: log-ls
   logstashPort: 5044
+
+initContainers:
+  enabled: true
+  containerWaitList:
+    - aai-schema-service
+    - aai-resources
+    - aai-traversal
+    - aai-graphadmin
+
+configMaps:
+  - name: aai-filebeat
+    filePath: "resources/config/log/filebeat/*"
+  - name: aai-deployment-configmap
+    filePath: "resources/config/haproxy/haproxy.cfg"
+secrets:
+  - name: aai-common-aai-auth
+    filePath: "resources/config/auth/*"
+  - name: aai-common-truststore
+    filePath: "resources/config/aai/*"
+  - name: aai-haproxy-secret
+    filePath: "resources/config/haproxy/aai.pem"
+  - name: aai-auth-truststore-secret
+    filePath: "resources/config/aai/*"
+
+volumeMounts:
+  - name: aai-service-log
+    mountPath: /dev/log
+  - name: haproxy-cfg
+    mountPath: /usr/local/etc/haproxy/haproxy.cfg
+    subPath: haproxy.cfg
+  - name: aai-pem
+    mountPath: /etc/ssl/private/aai.pem
+    subPath: aai.pem
+
+volumes:
+  - volumeMountRefName: aai-service-log
+    type: hostPath
+    path: '/dev/log'
+  - volumeMountRefName: haproxy-cfg
+    type: configMap
+    name: aai-deployment-configmap
+  - volumeMountRefName: aai-pem
+    type: secret
+    name: aai-haproxy-secret
 
 # default number of instances
 replicaCount: 1
@@ -361,17 +406,17 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 1Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 2
+      cpu: 2000m
       memory: 2Gi
   unlimited: {}
 

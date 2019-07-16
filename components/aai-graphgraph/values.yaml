@@ -26,6 +26,32 @@ image: aai-graphgraph:1.5
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
+
+initContainers:
+  enabled: true
+  containerWaitList:
+    - 'aai-schema-service'
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-springapp-configmap'
+    filePath: "config/application.properties"
+
+volumeMounts:
+  - mountPath: /graphgraph/application.properties
+    name: springapp-conf
+    subPath: application.properties
+  - mountPath: /graphgraph/etc/auth/aai_keystore
+    name: 'auth-truststore-sec'
+    subPath: aai_keystore
+
+volumes:
+  - volumeMountRefName: springapp-conf
+    type: configMap
+    name: '{{ include "common.fullname" . }}-springapp-configmap'
+  - volumeMountRefName: auth-truststore-sec
+    type: secret
+    name: aai-common-truststore
+
 # default number of instances
 replicaCount: 1
 
@@ -46,6 +72,7 @@ readiness:
   periodSeconds: 10
 
 service:
+  type: NodePort
   portName: aai-graphgraph-8453
   internalPort: 8453
   nodePort: 85
