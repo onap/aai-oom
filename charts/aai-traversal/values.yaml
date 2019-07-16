@@ -19,6 +19,7 @@ global: # global defaults
   nodePortPrefix: 302
   readinessRepository: oomk8s
   readinessImage: readiness-check:2.0.2
+  repository: nexus3.onap.org:10001
 
 
 # application image
@@ -27,6 +28,514 @@ image: onap/aai-traversal:1.4.1
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
+
+annotations:
+  msb.onap.org/service-info: '[
+    {
+        "serviceName": "_aai-generic-query",
+        "version": "v11",
+        "url": "/aai/v11/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v11/search/generic-query"
+    },
+    {
+        "serviceName": "_aai-generic-query",
+        "version": "v12",
+        "url": "/aai/v12/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v12/search/generic-query"
+    },
+    {
+        "serviceName": "_aai-generic-query",
+        "version": "v13",
+        "url": "/aai/v13/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v13/search/generic-query"
+    },
+    {
+        "serviceName": "_aai-generic-query",
+        "version": "v14",
+        "url": "/aai/v14/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v14/search/generic-query"
+    },
+    {
+        "serviceName": "_aai-generic-query",
+        "version": "v15",
+        "url": "/aai/v15/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v15/search/generic-query"
+    },
+    {
+        "serviceName": "_aai-generic-query",
+        "version": "v16",
+        "url": "/aai/v16/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v16/search/generic-query"
+    },
+    {
+        "serviceName": "_aai-nodes-query",
+        "version": "v11",
+        "url": "/aai/v11/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v11/search/nodes-query"
+    },
+    {
+        "serviceName": "_aai-nodes-query",
+        "version": "v12",
+        "url": "/aai/v12/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v12/search/nodes-query"
+    },
+    {
+        "serviceName": "_aai-nodes-query",
+        "version": "v13",
+        "url": "/aai/v13/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v13/search/nodes-query"
+    },
+    {
+        "serviceName": "_aai-nodes-query",
+        "version": "v14",
+        "url": "/aai/v14/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v14/search/nodes-query"
+    },
+    {
+        "serviceName": "_aai-nodes-query",
+        "version": "v15",
+        "url": "/aai/v15/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v15/search/nodes-query"
+    },
+    {
+        "serviceName": "_aai-nodes-query",
+        "version": "v16",
+        "url": "/aai/v16/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v16/search/nodes-query"
+    },
+    {
+        "serviceName": "_aai-query",
+        "version": "v11",
+        "url": "/aai/v11/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v11/query"
+    },
+    {
+        "serviceName": "_aai-query",
+        "version": "v12",
+        "url": "/aai/v12/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v12/query"
+    },
+    {
+        "serviceName": "_aai-query",
+        "version": "v13",
+        "url": "/aai/v13/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v13/query"
+    },
+    {
+        "serviceName": "_aai-query",
+        "version": "v14",
+        "url": "/aai/v14/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v14/query"
+    },
+    {
+        "serviceName": "_aai-query",
+        "version": "v15",
+        "url": "/aai/v15/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v15/query"
+    },
+    {
+        "serviceName": "_aai-query",
+        "version": "v16",
+        "url": "/aai/v16/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/v16/query"
+    },
+    {
+        "serviceName": "_aai-named-query",
+        "url": "/aai/search",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1",
+        "path": "/aai/search"
+    },
+    {
+        "serviceName": "aai-generic-query",
+        "version": "v11",
+        "url": "/aai/v11/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-generic-query",
+        "version": "v12",
+        "url": "/aai/v12/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-generic-query",
+        "version": "v13",
+        "url": "/aai/v13/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-generic-query",
+        "version": "v14",
+        "url": "/aai/v14/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-generic-query",
+        "version": "v15",
+        "url": "/aai/v15/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-generic-query",
+        "version": "v16",
+        "url": "/aai/v16/search/generic-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-nodes-query",
+        "version": "v11",
+        "url": "/aai/v11/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-nodes-query",
+        "version": "v12",
+        "url": "/aai/v12/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-nodes-query",
+        "version": "v13",
+        "url": "/aai/v13/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-nodes-query",
+        "version": "v14",
+        "url": "/aai/v14/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-nodes-query",
+        "version": "v15",
+        "url": "/aai/v15/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-nodes-query",
+        "version": "v16",
+        "url": "/aai/v16/search/nodes-query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-query",
+        "version": "v11",
+        "url": "/aai/v11/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-query",
+        "version": "v12",
+        "url": "/aai/v12/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-query",
+        "version": "v13",
+        "url": "/aai/v13/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-query",
+        "version": "v14",
+        "url": "/aai/v14/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-query",
+        "version": "v15",
+        "url": "/aai/v15/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-query",
+        "version": "v16",
+        "url": "/aai/v16/query",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    },
+    {
+        "serviceName": "aai-named-query",
+        "url": "/aai/search",
+        "protocol": "REST",
+        "port": "8446",
+        "enable_ssl": true,
+        "lb_policy":"ip_hash",
+        "visualRange": "1"
+    }
+    ]'
+
+
+initContainers:
+  containerList:
+    - aai-schema-service
+    - aai-resources
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-configmap'
+    filePaths:
+      - "resources/config/logback.xml"
+      - "resources/config/localhost-access-logback.xml"
+      - "resources/config/janusgraph-realtime.properties"
+      - "resources/config/janusgraph-cached.properties"
+      - "resources/config/aaiconfig.properties"
+      - "resources/config/application.properties"
+      - "resources/config/realm.properties"
+  - name: '{{ include "common.fullname" . }}-aaf-props'
+    filePaths:
+      - "resources/config/aaf/org.osaaf.location.props"
+      - "resources/config/aaf/permissions.properties"
+      - "resources/config/aaf/org.onap.aai.props"
+      - "resources/config/aaf/cadi.properties"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}-aaf-keys'
+    filePaths:
+      - "resources/config/aaf/org.onap.aai.keyfile"
+      - "resources/config/aaf/org.onap.aai.p12"
+      - "resources/config/aaf/bath_config.csv"
+
+volumeMounts:
+  - mountPath: /opt/app/aai-traversal/resources/etc/appprops/janusgraph-realtime.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: janusgraph-realtime.properties
+  - mountPath: /opt/app/aai-traversal/resources/etc/appprops/janusgraph-cached.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: janusgraph-cached.properties
+  - mountPath: /opt/app/aai-traversal/resources/etc/appprops/aaiconfig.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: aaiconfig.properties
+  - mountPath: /opt/aai/logroot/AAI-GQ
+    name: '{{ include "common.fullname" . }}-logs'
+  - mountPath: /opt/app/aai-traversal/resources/logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: logback.xml
+  - mountPath: /opt/app/aai-traversal/resources/localhost-access-logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: localhost-access-logback.xml
+  - mountPath: /opt/app/aai-traversal/resources/etc/auth/realm.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: realm.properties
+  - mountPath: /opt/app/aai-traversal/resources/aaf/org.onap.aai.keyfile
+    name: '{{ include "common.fullname" . }}-aaf-certs'
+    subPath: org.onap.aai.keyfile
+  - mountPath: /opt/app/aai-traversal/resources/aaf/bath_config.csv
+    name: '{{ include "common.fullname" . }}-aaf-certs'
+    subPath: bath_config.csv
+  - mountPath: /opt/app/aai-traversal/resources/aaf/org.onap.aai.props
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: org.onap.aai.props
+  - mountPath: /opt/app/aai-traversal/resources/aaf/org.osaaf.location.props
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: org.osaaf.location.props
+  - mountPath: /opt/app/aai-traversal/resources/aaf/permissions.properties
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: permissions.properties
+  - mountPath: /opt/app/aai-traversal/resources/cadi.properties
+    name: '{{ include "common.fullname" . }}-aaf-properties'
+    subPath: cadi.properties
+  - mountPath: /opt/app/aai-traversal/resources/aaf/org.onap.aai.p12
+    name: '{{ include "common.fullname" . }}-aaf-certs'
+    subPath: org.onap.aai.p12
+  - mountPath: /opt/app/aai-traversal/resources/aaf/truststoreONAPall.jks
+    name: aai-common-aai-auth
+    subPath: truststoreONAPall.jks
+  - mountPath: /opt/app/aai-traversal/resources/application.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: application.properties
+  - mountPath: /opt/app/aai-traversal/resources/etc/auth/aai_keystore
+    name: '{{ include "common.fullname" . }}-auth-truststore-sec'
+    subPath: aai_keystore
+
+volumes:
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-filebeat'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-config'
+    type: emptyDir
+    name: '{{ include "common.fullname" . }}-configmap'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-aaf-properties'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-aaf-props'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-aaf-certs'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-aaf-keys'
+  - volumeMountRefName: aai-common-aai-auth
+    type: secret
+    name: aai-common-aai-auth
+  - volumeMountRefName: '{{ include "common.fullname" . }}-auth-truststore-sec'
+    type: secret
+    name: aai-common-truststore
+
 # application configuration
 config:
 
@@ -80,16 +589,16 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 3Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
   unlimited: {}
