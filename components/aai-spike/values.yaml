@@ -18,14 +18,110 @@
 global:
   readinessImage: readiness-check:2.0.2
   loggingImage: beats/filebeat:5.5.0
+  repository: nexus3.onap.org:10001
 
 #################################################################
 # Application configuration defaults.
 #################################################################
 
 # application image
+repository: nexus3.onap.org:10001
 image: onap/spike:1.4.0
+pullPolicy: Always
 flavor: small
+
+initContainers:
+  enabled: true
+  containerList:
+    - message-router-kafka
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}-configmap'
+    filePath: "resources/config/*"
+  - name: '{{ include "common.fullname" . }}-edge-props-configmap'
+    filePath: "resources/config/model/edge_props/*"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}-spike-secrets'
+    filePath: "resources/config/auth/*"
+  - name: '{{ include "common.fullname" . }}-pass'
+    envs:
+      - name: KEY_STORE_PASSWORD
+        value: '{{ .Values.config.keyStorePassword | b64enc | quote }}'
+      - name: KEY_MANAGER_PASSWORD
+        value: '{{ .Values.config.keyManagerPassword | b64enc | quote }}'
+
+envs:
+  - name: CONFIG_HOME
+    value: /opt/app/spike/config
+  - name: KEY_STORE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: '{{ template "common.fullname" . }}-pass'
+        key: KEY_STORE_PASSWORD
+  - name: KEY_MANAGER_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: '{{ template "common.fullname" . }}-pass'
+        key: KEY_MANAGER_PASSWORD
+  - name: SERVICE_BEANS
+    value: /opt/app/spike/dynamic/conf
+
+volumeMounts:
+  - mountPath: /opt/app/spike/config/auth
+    name: '{{ include "common.fullname" . }}-secrets'
+  - mountPath: /opt/app/spike/dynamic/conf/spike-beans.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: spike-beans.xml
+  - mountPath: /opt/app/spike/config/spike.properties
+    subPath: spike.properties
+    name: '{{ include "common.fullname" . }}-config'
+  - mountPath: /opt/app/spike/config/schema-ingest.properties
+    subPath: schema-ingest.properties
+    name: '{{ include "common.fullname" . }}-config'
+  - mountPath: /opt/app/spike/config/edgeprops-ingest.properties
+    subPath: edgeprops-ingest.properties
+    name: '{{ include "common.fullname" . }}-config'
+  - mountPath: /opt/app/spike/config/model/edge_props
+    name: '{{ include "common.fullname" . }}-edge-props-config'
+  - mountPath: /opt/app/spike/bundleconfig/etc/logback.xml
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: logback.xml
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-logs'
+
+volumes:
+  - volumeMountRefName: '{{ include "common.fullname" . }}-secrets'
+    type: secret
+    name: '{{ include "common.fullname" . }}-spike-secrets'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-config'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-configmap'
+  - volumeMountRefName: '{{ include "common.fullname" . }}-edge-props-config'
+    type: configMap
+    name: '{{ include "common.fullname" . }}-edge-props-configmap'
+  - volumeMountRefName: filebeat-conf
+    type: configMap
+    name: aai-filebeat
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+  - volumeMountRefName: '{{ include "common.fullname" . }}-filebeat'
+
+    type: emptyDir
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: '{{ include "common.fullname" . }}-filebeat'
+
 # application configuration
 config:
   keyStorePassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
@@ -63,17 +159,17 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 0.5
+      cpu: 500m
       memory: 1Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 1536Mi
   unlimited: {}
 
