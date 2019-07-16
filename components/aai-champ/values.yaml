@@ -19,13 +19,16 @@
 global:
   readinessImage: readiness-check:2.0.2
   loggingImage: beats/filebeat:5.5.0
+  repository: nexus3.onap.org:10001
 
 #################################################################
 # Application configuration defaults.
 #################################################################
 
 # application image
+repository: nexus3.onap.org:10001
 image: onap/champ:1.4.0
+pullPolicy: Always
 
 flavor: small
 
@@ -34,6 +37,114 @@ config:
   keyStorePassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
   keyManagerPassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
   trustStorePassword: OBF:1y0q1uvc1uum1uvg1pil1pjl1uuq1uvk1uuu1y10
+
+configMaps:
+  - name: '{{ include "common.fullname" . }}'
+    filePath: "resources/config/appconfig/*"
+  - name: '{{ include "common.fullname" . }}-dynamic'
+    filePath: "resources/config/dynamic/conf/*"
+  - name: '{{ include "common.fullname" . }}-log-configmap'
+    filePath: "resources/config/log/*"
+
+secrets:
+  - name: '{{ include "common.fullname" . }}-champ'
+    filePath: "resources/config/appconfig/auth/*"
+  - name: '{{ include "common.fullname" . }}-pass'
+    envs:
+      - name: KEY_STORE_PASSWORD
+        value: '{{ .Values.config.keyStorePassword | b64enc | quote }}'
+      - name: KEY_MANAGER_PASSWORD
+        value: '{{ .Values.config.keyManagerPassword | b64enc | quote }}'
+
+secretFileName: "secrets.yaml"
+
+envs:
+  - name: CONFIG_HOME
+    value: "/opt/app/champ-service/appconfig"
+  - name: GRAPHIMPL
+    value: "janus-deps"
+  - name: KEY_STORE_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: '{{ template "common.fullname" . }}-pass'
+        key: KEY_STORE_PASSWORD
+  - name: KEY_MANAGER_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: '{{ template "common.fullname" . }}-pass'
+        key: KEY_MANAGER_PASSWORD
+  - name: SERVICE_BEANS
+    value: "/opt/app/champ-service/dynamic/conf"
+
+initContainers:
+  enabled: true
+  containerList:
+    - '{{ if .Values.global.cassandra.localCluster }}aai-cassandra{{ else }}cassandra{{ end }}'
+
+volumeMounts:
+  - mountPath: /opt/app/champ-service/appconfig/champ-api.properties
+    name: '{{ include "common.fullname" . }}-config'
+    subPath: champ-api.properties
+  - mountPath: /opt/app/champ-service/appconfig/auth
+    name: '{{ include "common.fullname" . }}-secrets'
+  - mountPath: /opt/app/champ-service/dynamic/conf/champ-beans.xml
+    name: '{{ include "common.fullname" . }}-dynamic-config'
+    subPath: champ-beans.xml
+  - mountPath: /opt/app/champ-service/bundleconfig/etc/logback.xml
+    name: '{{ include "common.fullname" . }}-logback-config'
+    subPath: logback.xml
+  - mountPath: /var/log/onap
+    name: '{{ include "common.fullname" . }}-logs'
+
+volumes:
+
+  - name: '{{ include "common.fullname" . }}'
+    volumeMountRefName: '{{ include "common.fullname" . }}-config'
+    type: configMap
+    items:
+      - key: champ-api.properties
+        path: champ-api.properties
+
+  - name: '{{ include "common.fullname" . }}-champ'
+    volumeMountRefName: '{{ include "common.fullname" . }}-secrets'
+    type: secret
+
+  - name: '{{ include "common.fullname" . }}-dynamic'
+    volumeMountRefName: '{{ include "common.fullname" . }}-dynamic-config'
+    type: configMap
+    items:
+      - key: champ-beans.xml
+        path: champ-beans.xml
+
+  - volumeMountRefName: '{{ include "common.fullname" . }}-logs'
+    type: emptyDir
+
+  - name: '{{ include "common.fullname" . }}-log-configmap'
+    volumeMountRefName: '{{ include "common.fullname" . }}-logback-config'
+    type: configMap
+    items:
+      - key: logback.xml
+        path: logback.xml
+
+  - name: aai-filebeat
+    volumeMountRefName: filebeat-conf
+    type: configMap
+
+  - volumeMountRefName: filebeat-data
+    type: emptyDir
+
+sideCarContainers:
+  - name: filebeat-onap
+    image: '{{ .Values.global.loggingRepository }}/{{ .Values.global.loggingImage }}'
+    imagePullPolicy: '{{ .Values.global.pullPolicy | default .Values.pullPolicy }}'
+    volumeMounts:
+      - mountPath: /usr/share/filebeat/filebeat.yml
+        subPath: filebeat.yml
+        name: filebeat-conf
+      - mountPath: /var/log/onap
+        name: '{{ include "common.fullname" . }}-logs'
+      - mountPath: /usr/share/filebeat/data
+        name: filebeat-data
 
 # default number of instances
 replicaCount: 1
@@ -67,17 +178,17 @@ ingress:
 resources:
   small:
     limits:
-      cpu: 2
+      cpu: 2000m
       memory: 4Gi
     requests:
-      cpu: 0.5
+      cpu: 500m
       memory: 1Gi
   large:
     limits:
-      cpu: 4
+      cpu: 4000m
       memory: 8Gi
     requests:
-      cpu: 1
+      cpu: 1000m
       memory: 2Gi
   unlimited: {}
 

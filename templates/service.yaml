@@ -12,29 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "common.servicename" . }}
-  namespace: {{ include "common.namespace" . }}
-  labels:
-    app: {{ include "common.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-spec:
-  ports:
-  {{if eq .Values.service.type "NodePort" -}}
-  - name: {{ .Values.service.portName }}
-    port: {{ .Values.service.externalPort }}
-    targetPort: {{ .Values.service.internalPort }}
-    nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
-  {{- else -}}
-  - port: {{ .Values.service.externalPort }}
-    targetPort: {{ .Values.service.internalPort }}
-    name: {{ .Values.service.portName }}
-  {{- end}}
-  type: {{ .Values.service.type }}
-  selector:
-    app: {{ include "common.name" . }}
-  clusterIP: {{ .Values.service.aaiServiceClusterIp }}
+{{ include "common.service" . }}
