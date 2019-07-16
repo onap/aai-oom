@@ -17,31 +17,7 @@
 # limitations under the License.
 # ============LICENSE_END=========================================================
 
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "common.fullname" . }}-configmap
-  namespace: {{ include "common.namespace" . }}
-  labels:
-    app: {{ include "common.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-  {{- if .Values.global.jobs.migration.enabled }}
-  annotations:
-    "helm.sh/hook": pre-upgrade,pre-install
-    "helm.sh/hook-weight": "0"
-    "helm.sh/hook-delete-policy": before-hook-creation
-  {{- end }}
-data:
-{{ tpl (.Files.Glob "resources/config/logback.xml").AsConfig . | indent 2 }}
-{{ tpl (.Files.Glob "resources/config/localhost-access-logback.xml").AsConfig . | indent 2 }}
-{{ tpl (.Files.Glob "resources/config/janusgraph-realtime.properties").AsConfig . | indent 2 }}
-{{ tpl (.Files.Glob "resources/config/janusgraph-cached.properties").AsConfig . | indent 2 }}
-{{ tpl (.Files.Glob "resources/config/aaiconfig.properties").AsConfig . | indent 2 }}
-{{ tpl (.Files.Glob "resources/config/application.properties").AsConfig . | indent 2 }}
-{{ tpl (.Files.Glob "resources/config/realm.properties").AsConfig . | indent 2 }}
-
+{{- include "common.configmap" . }}
 {{- if .Values.global.jobs.migration.enabled }}
 ---
 apiVersion: v1

@@ -12,42 +12,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "common.servicename" . }}
-  namespace: {{ include "common.namespace" . }}
-  labels:
-    app: {{ include "common.name" . }}
-    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
-    heritage: {{ .Release.Service }}
-spec:
-  type: {{ .Values.service.type }}
-  ports:
- {{ if .Values.global.installSidecarSecurity }}
-      {{if eq .Values.service.type "NodePort" -}}
-      - port: {{ .Values.service.internalPort }}
-        nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
-        targetPort: {{ .Values.global.rproxy.port }}
-        name: {{ .Values.service.portName }}
-      {{- else -}}
-      - port: {{ .Values.service.externalPort }}
-        targetPort: {{ .Values.global.rproxy.port }}
-        name: {{ .Values.service.portName }}
-      {{- end}}
-  {{ else }}
-
-  {{if eq .Values.service.type "NodePort" -}}
-  - port: {{ .Values.service.internalPort }}
-    nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
-    name: {{ .Values.service.portName }}
-  {{- else -}}
-  - port: {{ .Values.service.internalPort }}
-    name: {{ .Values.service.portName }}
-  {{- end}}
-{{ end }}
-  selector:
-    app: {{ include "common.name" . }}
-    release: {{ .Release.Name }}
-  clusterIP: None
+{{ include "common.service" . }}
