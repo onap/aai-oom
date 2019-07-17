@@ -42,6 +42,28 @@ config:
   # Disables the updateQueryData script to run as part of traversal
   disableUpdateQuery: true
 
+  # Override of the DSL Timeout Limit
+  dslOverride: 'ZV4V7E3N77SKIB6MR9MHQ6M4P6Q99Z7M76RBODA'
+
+  dsl:
+    # Dsl timeout configuration
+    timeout:
+      # Whether or not the dsl is enabled
+      enabled: true
+      # Default time limit of the DSL query
+      limit: 150000
+      # App Specific Timeout Limit for each of the X-FromAppId
+      appspecific:
+        - JUNITTESTAPP1,1
+        - JUNITTESTAPP2,-1
+        - AAI-TOOLS,-1
+        - DCAE-CCS,1200000
+        - DCAES,1200000
+        - VPESAT,-1
+        - AAI-CACHER,-1
+        - VidAaiController,300000
+        - AAI-UI,180000
+
 persistence:
   mountPath: /dockerdata-nfs
   mountSubPath: aai/aai-traversal
