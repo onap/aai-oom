@@ -374,3 +374,10 @@ resources:
       cpu: 2
       memory: 2Gi
   unlimited: {}
+
+aai-champ:
+  enabled: false
+aai-gizmo:
+  enabled: false
+aai-spike:
+  enabled: false
