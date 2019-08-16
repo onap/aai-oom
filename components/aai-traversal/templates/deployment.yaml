@@ -498,6 +498,8 @@ spec:
           subPath: aaiconfig.properties
         - mountPath: /opt/aai/logroot/AAI-GQ
           name: {{ include "common.fullname" . }}-logs
+        - mountPath: /opt/aai/logroot/AAI-GQ/misc
+          name: {{ include "common.fullname" . }}-logs-misc
         - mountPath: /opt/app/aai-traversal/resources/logback.xml
           name: {{ include "common.fullname" . }}-config
           subPath: logback.xml
@@ -590,6 +592,8 @@ spec:
         configMap:
           name: aai-filebeat
       - name: {{ include "common.fullname" . }}-logs
+        emptyDir: {}
+      - name: {{ include "common.fullname" . }}-logs-misc
         emptyDir: {}
       - name: {{ include "common.fullname" . }}-filebeat
         emptyDir: {}

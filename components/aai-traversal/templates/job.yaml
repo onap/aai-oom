@@ -67,7 +67,7 @@ spec:
         - "-c"
         - |
           set -x
-          mkdir -p /opt/aai/logroot/AAI-GQ/misc
+          if [ ! -d /opt/aai/logroot/AAI-GQ/misc ]; then mkdir -p /opt/aai/logroot/AAI-GQ/misc; fi
           until nc -w10 -z -v aai.{{.Release.Namespace}} 8443; do echo "Retrying to reach aai on port 8443"; done;
           bash -x /opt/app/aai-traversal/docker-entrypoint.sh install/updateQueryData.sh
         env:
@@ -90,6 +90,8 @@ spec:
           subPath: aaiconfig.properties
         - mountPath: /opt/aai/logroot/AAI-GQ/
           name: {{ include "common.fullname" . }}-logs
+        - mountPath: /opt/aai/logroot/AAI-GQ/misc
+          name: {{ include "common.fullname" . }}-logs-misc
         - mountPath: /opt/app/aai-traversal/resources/logback.xml
           name: {{ include "common.fullname" . }}-config
           subPath: logback.xml
@@ -117,6 +119,8 @@ spec:
       - name: {{ include "common.fullname" . }}-logs
         hostPath:
           path: {{ .Values.persistence.mountPath }}/{{ .Release.Name }}/{{ .Values.persistence.mountSubPath }}-update-query
+      - name: {{ include "common.fullname" . }}-logs-misc
+        emptyDir: {}
       - name: {{ include "common.fullname" . }}-filebeat
         emptyDir: {}
       - name: {{ include "common.fullname" . }}-config
