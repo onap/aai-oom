@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c1cea91_b9472179",
+        "filename": "charts/aai-graphgraph/Chart.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T16:22:48Z",
+      "side": 1,
+      "message": "Change this version from 4.0.0 to 5.0.0",
+      "revId": "39ad650ed291dbbc0c36fea4d038e757c8773af1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b69e9cf_2e806e6f",
+        "filename": "charts/aai-graphgraph/config/application.properties",
+        "patchSetId": 3
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T16:22:48Z",
+      "side": 1,
+      "message": "Change the port to the appropriate port",
+      "revId": "39ad650ed291dbbc0c36fea4d038e757c8773af1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf3a0043_4df055ab",
+        "filename": "charts/aai-graphgraph/values.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T16:22:48Z",
+      "side": 1,
+      "message": "Make sure this port and the server.port property in application.properties match",
+      "revId": "39ad650ed291dbbc0c36fea4d038e757c8773af1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
