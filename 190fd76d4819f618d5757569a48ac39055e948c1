@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "934e2ec4_ad634c9f",
+        "filename": "components/aai-graphgraph/config/application.properties",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T19:00:04Z",
+      "side": 1,
+      "message": "Please change the following values to be parameterized such as the below:\n\n# Schema Version Related Attributes\n\nschema.uri.base.path\u003d{{ .Values.global.config.schema.uri.base.path }}\n# Lists all of the versions in the schema\nschema.version.list\u003d{{ .Values.global.config.schema.version.list }}\n# Specifies from which version should the depth parameter to default to zero\nschema.version.depth.start\u003d{{ .Values.global.config.schema.version.depth }}\n# Specifies from which version should the related link be displayed in response payload\nschema.version.related.link.start\u003d{{ .Values.global.config.schema.version.related.link }}\n\n# Specifies from which version should the client see only the uri excluding host info\n# Before this version server base will also be included\nschema.version.app.root.start\u003d{{ .Values.global.config.schema.version.app.root }}\n# Specifies from which version should the namespace be changed\nschema.version.namespace.change.start\u003d{{ .Values.global.config.schema.version.namespace.change }}\n# Specifies from which version should the client start seeing the edge label in payload\nschema.version.edge.label.start\u003d{{ .Values.global.config.schema.version.edge.label }}\n# Specifies the version that the application should default to\nschema.version.api.default\u003d{{ .Values.global.config.schema.version.api.default }}",
+      "revId": "190fd76d4819f618d5757569a48ac39055e948c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0862c8_f42a0548",
+        "filename": "components/aai-graphgraph/config/application.properties",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T19:00:04Z",
+      "side": 1,
+      "message": "Please change this port to 8453",
+      "revId": "190fd76d4819f618d5757569a48ac39055e948c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "03ca96cb_8c2a48bd",
+        "filename": "components/aai-graphgraph/templates/deployment.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T19:00:04Z",
+      "side": 1,
+      "message": "There is a race condition such that if schema service isn\u0027t started and ready that graph graph will fail to start or start with incomplete data?\nIts best to add an init container to wait for this pod to be up until schema service is ready.\n\nYou can refer to how graphadmin is done.\n\nhttps://gerrit.onap.org/r/gitweb?p\u003daai/oom.git;a\u003dblob;f\u003dcomponents/aai-graphadmin/templates/deployment.yaml;h\u003df768603a8960aec3f450ef09ffa7a0853dac4e99;hb\u003dHEAD\n\nYou can change it so you only wait for schema service as graph graph doesn\u0027t need to wait for Cassandra",
+      "revId": "190fd76d4819f618d5757569a48ac39055e948c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4519a0b_c7a6d68c",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 4
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 75
+      },
+      "writtenOn": "2019-08-26T19:00:04Z",
+      "side": 1,
+      "message": "Please change this port to 8453",
+      "revId": "190fd76d4819f618d5757569a48ac39055e948c1",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
