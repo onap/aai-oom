@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "65ec0d59_5f00d636",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2019-08-27T15:47:03Z",
+      "side": 1,
+      "message": "2 CPU is really necessary?",
+      "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09d632a_c5e46392",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2019-08-27T15:47:03Z",
+      "side": 1,
+      "message": "1 CPU is too much for requests IMHO, 10mi seems sufficient:\nkubectl top pods -n onap | grep graphgraph\nonap-aai-aai-graphgraph-84854c6fd8-qb66j                       1m           994Mi",
+      "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a18781ea_53343b88",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2019-08-27T15:47:03Z",
+      "side": 1,
+      "message": "limits for large should be bigger than for small no?",
+      "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
