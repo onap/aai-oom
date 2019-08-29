@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c25c834_10487e02",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 2381
+      },
+      "writtenOn": "2019-08-29T17:27:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65ec0d59_5f00d636",
+      "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a09d632a_c5e46392",
         "filename": "components/aai-graphgraph/values.yaml",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "fc2cb884_8935b6bd",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 2381
+      },
+      "writtenOn": "2019-08-29T17:27:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a09d632a_c5e46392",
+      "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a18781ea_53343b88",
         "filename": "components/aai-graphgraph/values.yaml",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2019-08-27T15:47:03Z",
       "side": 1,
       "message": "limits for large should be bigger than for small no?",
+      "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f23e2330_f88520a2",
+        "filename": "components/aai-graphgraph/values.yaml",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 2381
+      },
+      "writtenOn": "2019-08-29T17:27:36Z",
+      "side": 1,
+      "message": "For now the application does not need to scale with the size of the deployment",
+      "parentUuid": "a18781ea_53343b88",
       "revId": "4ccff6ece474bc47f3fc14d2a4a98e0b17028f35",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
