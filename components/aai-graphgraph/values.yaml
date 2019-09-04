@@ -16,7 +16,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global: # global defaults
-  nodePortPrefix: 302
+  nodePortPrefix: 303
   readinessRepository: oomk8s
   readinessImage: readiness-check:2.0.2
 
