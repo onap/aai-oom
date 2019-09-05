@@ -23,10 +23,8 @@ metadata:
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
 spec:
-  type: NodePort 
   ports:
   - port: {{ .Values.service.internalPort }}
-    nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
     name: {{ .Values.service.portName }}
     targetPort: {{ .Values.service.internalPort }}
     protocol: TCP
