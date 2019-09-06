@@ -24,7 +24,7 @@ global:
 #################################################################
 
 # application image
-image: onap/spike:1.4.0
+image: onap/spike:1.5.1
 flavor: small
 # application configuration
 config:
