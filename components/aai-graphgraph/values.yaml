@@ -16,7 +16,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 global: # global defaults
-  nodePortPrefix: 303
+  nodePortPrefix: 302
   readinessRepository: oomk8s
   readinessImage: readiness-check:2.0.2
 
@@ -48,7 +48,7 @@ readiness:
 service:
   portName: aai-graphgraph-8453
   internalPort: 8453
-  nodePort: 85
+  nodePort: 38
 
 ingress:
   enabled: false
