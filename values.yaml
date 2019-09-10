@@ -298,8 +298,7 @@ global: # global defaults
         enabled: false
 
 # application image
-dockerhubRepository: registry.hub.docker.com
-image: aaionap/haproxy:1.4.0
+image: onap/haproxy:1.6.0
 pullPolicy: Always
 
 flavor: small
