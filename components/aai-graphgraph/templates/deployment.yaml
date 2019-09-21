@@ -44,6 +44,8 @@ spec:
         args:
         - --container-name
         - aai-schema-service
+        - --container-name
+        - aaf-cm
         env:
         - name: NAMESPACE
           valueFrom:
@@ -53,16 +55,54 @@ spec:
         image: "{{ .Values.global.readinessRepository }}/{{ .Values.global.readinessImage }}"
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
         name: {{ include "common.name" . }}-readiness
+# AAF config
+      - name: {{ include "common.name" . }}-config
+        image: {{ .Values.global.repository }}/{{.Values.aaf_init.image}}
+        imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+        volumeMounts:
+        - mountPath: "/opt/app/osaaf"
+          name: aai-graphgraph-volume
+        command: ["bash","-c","exec /opt/app/aaf_config/bin/agent.sh"]
+        env:
+          - name: APP_FQI
+            value: "{{ .Values.aaf_init.fqi }}"
+          - name: aaf_locate_url
+            value: "https://aaf-locate.{{ .Release.Namespace}}:8095"
+          - name: aaf_locator_container
+            value: "oom"
+          - name: aaf_locator_container_ns
+            value: "{{ .Release.Namespace }}"
+          - name: aaf_locator_fqdn
+            value: "{{ .Values.aaf_init.fqdn }}"
+          - name: aaf_locator_app_ns
+            value: "{{ .Values.aaf_init.app_ns }}"
+          - name: DEPLOY_FQI
+            value: "deployer@people.osaaf.org"
+## Note: We want to put this in Secrets or at LEAST ConfigMaps
+          - name: DEPLOY_PASSWORD
+            value: "demo123456!"
+# Note: want to put this on Nodes, evenutally
+          - name: cadi_longitude
+            value: "{{ .Values.aaf_init.cadi_longitude }}"
+          - name: cadi_latitude
+            value: "{{ .Values.aaf_init.cadi_latitude }}"
+# Hello specific.  Clients don't don't need this, unless Registering with AAF Locator
+          - name: aaf_locator_public_fqdn
+            value: "{{.Values.global.aaf.public_fqdn}}"
       containers:
       - name: {{ include "common.name" . }}
         image: "{{ include "common.repository" . }}/{{ .Values.image }}"
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
+        #        command: ["/bin/sh"]
+        #        args: ["-c", "while true; do echo hello; sleep 500;done"]
         env:
         - name: LOCAL_USER_ID
           value: {{ .Values.global.config.userId | quote }}
         - name: LOCAL_GROUP_ID
           value: {{ .Values.global.config.groupId | quote }}
         volumeMounts:
+        - mountPath: "/opt/app/osaaf"
+          name: aai-graphgraph-volume
         - mountPath: /etc/localtime
           name: localtime
           readOnly: true
@@ -97,6 +137,9 @@ spec:
 {{ toYaml .Values.affinity | indent 8 }}
       {{- end }}
       volumes:
+      - name: aai-graphgraph-volume
+        persistentVolumeClaim:
+          claimName: {{ .Release.Name }}-aai-graphgraph-pvc
       - name: aai-common-aai-auth-mount
         secret:
           secretName: aai-common-aai-auth
