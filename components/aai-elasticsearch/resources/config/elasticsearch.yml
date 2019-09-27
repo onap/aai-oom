@@ -364,31 +364,6 @@ discovery.zen.ping.unicast.hosts: ["0.0.0.0"]
 #monitor.jvm.gc.old.info: 5s
 #monitor.jvm.gc.old.debug: 2s
 
-#############################################################################################
-###                                     SEARCH GUARD SSL                                      #
-###                                       Configuration                                       #
-###############################################################################################
-######## Start Search Guard Demo Configuration ########
-
-searchguard.enterprise_modules_enabled: false
-
-searchguard.ssl.transport.keystore_filepath: sg/auth/{{ .Values.config.nodeKeyStore }}
-searchguard.ssl.transport.keystore_password: {{ .Values.config.nodeKeyStorePassword }}
-searchguard.ssl.transport.truststore_filepath: sg/auth/{{ .Values.config.trustStore }}
-searchguard.ssl.transport.truststore_password: {{ .Values.config.trustStorePassword }}
-searchguard.ssl.transport.enforce_hostname_verification: false
-
-searchguard.ssl.http.enabled: true
-searchguard.ssl.http.keystore_filepath: sg/auth/{{ .Values.config.nodeKeyStore }}
-searchguard.ssl.http.keystore_password: {{ .Values.config.nodeKeyStorePassword }}
-searchguard.ssl.http.truststore_filepath: sg/auth/{{ .Values.config.trustStore }}
-searchguard.ssl.http.truststore_password: {{ .Values.config.trustStorePassword }}
-
-searchguard.nodes_dn:
-  - CN=esaai
-
-searchguard.authcz.admin_dn:
-  - CN=sgadmin
 
 # x-pack security conflicts with searchguard
 xpack.security.enabled: false
