@@ -22,8 +22,8 @@ global: # global defaults
   dockerhubRepository: docker.io
   busyboxImage: busybox
 
-  readinessRepository: oomk8s
-  readinessImage: readiness-check:2.0.2
+  readinessRepository: docker.io
+  readinessImage: akanshad/readiness-check:latest
 
   loggingRepository: docker.elastic.co
   loggingImage: beats/filebeat:5.5.0
