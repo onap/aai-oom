@@ -19,7 +19,7 @@ global: # global defaults
   nodePortPrefix: 302
 
 # application image
-image: onap/elasticsearch-sg:1.5.1
+image: elasticsearch/elasticsearch:6.1.2
 pullPolicy: Always
 restartPolicy: Always
 
