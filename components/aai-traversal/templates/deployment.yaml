@@ -104,6 +104,39 @@ spec:
               "path": "/aai/v16/search/generic-query"
           },
           {
+              "serviceName": "_aai-generic-query",
+              "version": "v17",
+              "url": "/aai/v17/search/generic-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v17/search/generic-query"
+          },
+          {
+              "serviceName": "_aai-generic-query",
+              "version": "v18",
+              "url": "/aai/v18/search/generic-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v18/search/generic-query"
+          },
+          {
+              "serviceName": "_aai-generic-query",
+              "version": "v19",
+              "url": "/aai/v19/search/generic-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v19/search/generic-query"
+          },
+          {
               "serviceName": "_aai-nodes-query",
               "version": "v11",
               "url": "/aai/v11/search/nodes-query",
@@ -170,6 +203,39 @@ spec:
               "path": "/aai/v16/search/nodes-query"
           },
           {
+              "serviceName": "_aai-nodes-query",
+              "version": "v17",
+              "url": "/aai/v17/search/nodes-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v17/search/nodes-query"
+          },
+          {
+              "serviceName": "_aai-nodes-query",
+              "version": "v18",
+              "url": "/aai/v18/search/nodes-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v18/search/nodes-query"
+          },
+          {
+              "serviceName": "_aai-nodes-query",
+              "version": "v19",
+              "url": "/aai/v19/search/nodes-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v19/search/nodes-query"
+          },
+          {
               "serviceName": "_aai-query",
               "version": "v11",
               "url": "/aai/v11/query",
@@ -234,6 +300,39 @@ spec:
               "lb_policy":"ip_hash",
               "visualRange": "1",
               "path": "/aai/v16/query"
+          },
+          {
+              "serviceName": "_aai-query",
+              "version": "v17",
+              "url": "/aai/v17/query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v17/query"
+          },
+          {
+              "serviceName": "_aai-query",
+              "version": "v18",
+              "url": "/aai/v18/query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v18/query"
+          },
+          {
+              "serviceName": "_aai-query",
+              "version": "v19",
+              "url": "/aai/v19/query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1",
+              "path": "/aai/v19/query"
           },
           {
               "serviceName": "_aai-named-query",
@@ -306,6 +405,36 @@ spec:
               "visualRange": "1"
           },
           {
+              "serviceName": "aai-generic-query",
+              "version": "v17",
+              "url": "/aai/v17/search/generic-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-generic-query",
+              "version": "v18",
+              "url": "/aai/v18/search/generic-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-generic-query",
+              "version": "v19",
+              "url": "/aai/v19/search/generic-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
               "serviceName": "aai-nodes-query",
               "version": "v11",
               "url": "/aai/v11/search/nodes-query",
@@ -366,6 +495,36 @@ spec:
               "visualRange": "1"
           },
           {
+              "serviceName": "aai-nodes-query",
+              "version": "v17",
+              "url": "/aai/v17/search/nodes-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-nodes-query",
+              "version": "v18",
+              "url": "/aai/v18/search/nodes-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-nodes-query",
+              "version": "v19",
+              "url": "/aai/v19/search/nodes-query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
               "serviceName": "aai-query",
               "version": "v11",
               "url": "/aai/v11/query",
@@ -419,6 +578,36 @@ spec:
               "serviceName": "aai-query",
               "version": "v16",
               "url": "/aai/v16/query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-query",
+              "version": "v17",
+              "url": "/aai/v17/query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-query",
+              "version": "v18",
+              "url": "/aai/v18/query",
+              "protocol": "REST",
+              "port": "8446",
+              "enable_ssl": true,
+              "lb_policy":"ip_hash",
+              "visualRange": "1"
+          },
+          {
+              "serviceName": "aai-query",
+              "version": "v19",
+              "url": "/aai/v19/query",
               "protocol": "REST",
               "port": "8446",
               "enable_ssl": true,
