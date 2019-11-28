@@ -17,6 +17,8 @@
 # Declare variables to be passed into your templates.
 global: # global defaults
   nodePortPrefix: 302
+  persistence:
+    mountPath: /dockerdata-nfs
 
 # application image
 image: elasticsearch/elasticsearch:6.1.2
@@ -82,7 +84,7 @@ persistence:
   ##   GKE, AWS & OpenStack)
   ##
   ## storageClass: "-"
-  accessMode: ReadWriteMany
+  accessMode: ReadWriteOnce
   size: 2Gi
   mountPath: /dockerdata-nfs
   mountSubPath: aai/elasticsearch/data
