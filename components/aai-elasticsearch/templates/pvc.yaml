@@ -14,21 +14,16 @@
 # limitations under the License.
 */}}
 
-{{- if .Values.global.jobs.migration.enabled -}}
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: {{ include "common.fullname" . }}-migration
+  name: {{ include "common.fullname" . }}-data
   namespace: {{ include "common.namespace" . }}
   labels:
     app: {{ include "common.name" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
-  annotations:
-    "helm.sh/hook": pre-upgrade,pre-install
-    "helm.sh/hook-weight": "-1"
-    "helm.sh/hook-delete-policy": before-hook-creation
 {{- if .Values.persistence.annotations }}
 {{ toYaml .Values.persistence.annotations | indent 4 }}
 {{- end }}
@@ -39,4 +34,3 @@ spec:
     requests:
       storage: {{ .Values.persistence.size }}
   storageClassName: {{ include "common.storageClass" . }}
-{{- end -}}

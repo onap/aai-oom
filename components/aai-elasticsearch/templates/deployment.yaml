@@ -60,7 +60,7 @@ spec:
         - name: elasticsearch-data
           mountPath: /logroot/
       containers:
-      - name: {{ include "common.name" . }}        
+      - name: {{ include "common.name" . }}
         image: "{{ .Values.global.loggingRepository }}/{{ .Values.image }}"
         imagePullPolicy: {{ .Values.pullPolicy | default .Values.global.pullPolicy }}
         ports:
@@ -105,7 +105,6 @@ spec:
       affinity:
 {{ toYaml .Values.affinity | indent 8 }}
       {{- end }}
-
       volumes:
       - name: localtime
         hostPath:
@@ -114,8 +113,8 @@ spec:
         configMap:
           name: {{ include "common.fullname" . }}-es-config
       - name: elasticsearch-data
-        hostPath:
-          path: {{ .Values.persistence.mountPath }}/{{ .Release.Name }}/{{ .Values.persistence.mountSubPath }}
+        persistentVolumeClaim:
+          claimName: {{ include "common.fullname" . }}-data
       restartPolicy: {{ .Values.restartPolicy }}
       imagePullSecrets:
       - name: "{{ include "common.namespace" . }}-docker-registry-key"
