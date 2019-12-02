@@ -62,6 +62,12 @@ service:
 
 ingress:
   enabled: false
+  service:
+    - baseaddr: "aaibabel"
+      name: "aai-babel"
+      port: 9516
+  config:
+    ssl: "none"
 
 resources:
   small:

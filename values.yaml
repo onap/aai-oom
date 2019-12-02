@@ -357,6 +357,12 @@ service:
 
 ingress:
   enabled: false
+  service:
+    - baseaddr: "aai"
+      name: "aai"
+      port: 8443
+  config:
+    ssl: "redirect"
 
 resources:
   small:

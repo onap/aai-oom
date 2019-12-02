@@ -90,6 +90,12 @@ service:
 
 ingress:
   enabled: false
+  service:
+    - baseaddr: "aaisparkybe"
+      name: "aai-sparky-be"
+      port: 8000
+  config:
+    ssl: "none"
 
 # Configure resource requests and limits
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/

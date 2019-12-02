@@ -60,7 +60,12 @@ service:
 
 ingress:
   enabled: false
-
+  service:
+    - baseaddr: "aaimodelloader"
+      name: "aai-modelloader"
+      port: 8443
+  config:
+    ssl: "redirect"
 
 resources:
   small:
