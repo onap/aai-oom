@@ -75,8 +75,6 @@ global: # global defaults
     serviceName: aai
   babel:
     serviceName: aai-babel
-  champ:
-    serviceName: aai-champ
   aaiElasticsearch:
     serviceName: aai-elasticsearch
   resources:
@@ -85,8 +83,6 @@ global: # global defaults
     serviceName: aai-sparky-be
   dataRouter:
     serviceName: aai-data-router
-  gizmo:
-    serviceName: aai-gizmo
   modelloader:
     serviceName: aai-modelloader
   searchData:
@@ -95,8 +91,6 @@ global: # global defaults
     serviceName: aai-traversal
   graphadmin:
     serviceName: aai-graphadmin
-  spike:
-    serviceName: aai-spike
 
   initContainers:
     enabled: true
@@ -374,10 +368,3 @@ resources:
       cpu: 2
       memory: 2Gi
   unlimited: {}
-
-aai-champ:
-  enabled: false
-aai-gizmo:
-  enabled: false
-aai-spike:
-  enabled: false
