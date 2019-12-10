@@ -75,8 +75,6 @@ global: # global defaults
     serviceName: aai
   babel:
     serviceName: aai-babel
-  champ:
-    serviceName: aai-champ
   aaiElasticsearch:
     serviceName: aai-elasticsearch
   resources:
@@ -375,9 +373,3 @@ resources:
       memory: 2Gi
   unlimited: {}
 
-aai-champ:
-  enabled: false
-aai-gizmo:
-  enabled: false
-aai-spike:
-  enabled: false

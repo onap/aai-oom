@@ -31,10 +31,6 @@ dependencies:
     version: ~5.x-0
     repository: 'file://components/aai-babel'
     condition: aai-babel.enabled
-  - name: aai-champ
-    version: ~5.x-0
-    repository: 'file://components/aai-champ'
-    condition: aai-champ.enabled
   - name: aai-data-router
     version: ~5.x-0
     repository: 'file://components/aai-data-router'
@@ -43,10 +39,6 @@ dependencies:
     version: ~5.x-0
     repository: 'file://components/aai-elasticsearch'
     condition: aai-elasticsearch.enabled
-  - name: aai-gizmo
-    version: ~5.x-0
-    repository: 'file://components/aai-gizmo'
-    condition: aai-gizmo.enabled
   - name: aai-graphadmin
     version: ~5.x-0
     repository: 'file://components/aai-graphadmin'
@@ -79,7 +71,3 @@ dependencies:
     version: ~5.x-0
     repository: 'file://components/aai-traversal'
     condition: aai-traversal.enabled
-  - name: aai-graphgraph
-    version: ~5.x-0
-    repository: 'file://components/aai-graphgraph'
-    condition: aai-graphgraph.enabled
