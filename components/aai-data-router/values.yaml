@@ -21,7 +21,7 @@ global: # global defaults
 
 # application image
 repository: nexus3.onap.org:10001
-image: onap/data-router:1.5.1
+image: onap/data-router:1.6-STAGING-latest
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
@@ -44,8 +44,8 @@ affinity: {}
 
 # probe configuration parameters
 liveness:
-  initialDelaySeconds: 10
-  periodSeconds: 10
+  initialDelaySeconds: 240
+  periodSeconds: 30
   # necessary to disable liveness probe when setting breakpoints
   # in debugger so K8s doesn't restart unresponsive container
   enabled: true
