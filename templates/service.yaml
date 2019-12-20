@@ -25,14 +25,26 @@ metadata:
 spec:
   ports:
   {{if eq .Values.service.type "NodePort" -}}
+  {{- if eq "True" (include "common.needTLS" .) }}
   - name: {{ .Values.service.portName }}
     port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
+  {{- else }}
+  - name: {{ .Values.service.portName2 }}
+    port: {{ .Values.service.externalPort2 }}
+    targetPort: {{ .Values.service.internalPort2 }}
+  {{- end }}
     nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
   {{- else -}}
+  {{- if eq "True" (include "common.needTLS" .) }}
   - port: {{ .Values.service.externalPort }}
     targetPort: {{ .Values.service.internalPort }}
     name: {{ .Values.service.portName }}
+  {{- else }}
+  - port: {{ .Values.service.externalPort2 }}
+    targetPort: {{ .Values.service.internalPort2 }}
+    name: {{ .Values.service.portName2 }}
+  {{- end }}
   {{- end}}
   type: {{ .Values.service.type }}
   selector:

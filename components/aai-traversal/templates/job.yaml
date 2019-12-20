@@ -38,7 +38,16 @@ spec:
         app: {{ include "common.name" . }}-job
         release: {{ .Release.Name }}
       name: {{ include "common.name" . }}
-    spec:
+      {{- if or (eq "True" (include "common.linkerd" .)) (eq "True" (include "common.istio" .)) }}
+      annotations:
+      {{- if eq "True" (include "common.linkerd" .) }}
+        linkerd.io/inject: disabled
+      {{- end }}
+      {{- if eq "True" (include "common.istio" .) }}
+        sidecar.istio.io/inject: disabled
+      {{- end }}
+      {{- end }}
+      spec:
       initContainers:
       - command:
         - /root/ready.py

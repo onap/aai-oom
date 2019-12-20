@@ -41,4 +41,3 @@ spec:
   selector:
     app: {{ include "common.name" . }}
     release: {{ .Release.Name }}
-  clusterIP: None

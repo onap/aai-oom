@@ -59,9 +59,9 @@ readiness:
 service:
   type: ClusterIP
   name: aai-elasticsearch
-  portName: aai-elasticsearch
+  portName: http
   internalPort: 9200
-  portName2: aai-elasticsearch-tcp
+  portName2: tls
   internalPort2: 8443
 
 ingress:

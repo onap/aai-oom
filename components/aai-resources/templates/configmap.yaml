@@ -43,7 +43,9 @@ metadata:
     heritage: {{ .Release.Service }}
 data:
 {{ tpl (.Files.Glob "resources/config/aaf/org.osaaf.location.props").AsConfig . | indent 2 }}
+{{- if .Values.global.aafEnabled }}
 {{ tpl (.Files.Glob "resources/config/aaf/permissions.properties").AsConfig . | indent 2 }}
+{{-  end }}
 {{ tpl (.Files.Glob "resources/config/aaf/org.onap.aai.props").AsConfig . | indent 2 }}
 {{ tpl (.Files.Glob "resources/config/aaf/cadi.properties").AsConfig . | indent 2 }}
 

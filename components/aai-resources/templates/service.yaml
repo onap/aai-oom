@@ -28,17 +28,11 @@ spec:
   {{if eq .Values.service.type "NodePort" -}}
   - port: {{ .Values.service.internalPort }}
     nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
-    name: {{ .Values.service.portName }}
-  - port: {{ .Values.service.internalPort2 }}
-    nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort2 }}
-    name: {{ .Values.service.portName2 }}
+    name: {{ .Values.service.portName }}{{- if eq "True" (include "common.needTLS" .) -}}s{{- end -}}
   {{- else -}}
   - port: {{ .Values.service.internalPort }}
-    name: {{ .Values.service.portName }}
-  - port: {{ .Values.service.internalPort2 }}
-    name: {{ .Values.service.portName2 }}
+    name: {{ .Values.service.portName }}{{- if eq "True" (include "common.needTLS" .) -}}s{{- end -}}
   {{- end}}
   selector:
     app: {{ include "common.name" . }}
     release: {{ .Release.Name }}
-  clusterIP: None

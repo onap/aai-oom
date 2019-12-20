@@ -99,10 +99,8 @@ readiness:
 service:
   type: ClusterIP
   # REST API port for the graphadmin microservice
-  portName: aai-graphadmin-8449
+  portName: http
   internalPort: 8449
-  portName2: aai-graphadmin-5005
-  internalPort2: 5005
 
 ingress:
   enabled: false
