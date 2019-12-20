@@ -13,31 +13,16 @@
 # limitations under the License.
 
 apiVersion: v1
-kind: Service
+kind: ConfigMap
 metadata:
-  name: {{ include "common.servicename" . }}
+  name: {{ include "common.fullname" . }}-dynamic
   namespace: {{ include "common.namespace" . }}
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
     release: {{ .Release.Name }}
     heritage: {{ .Release.Service }}
-spec:
-  type: {{ .Values.service.type }}
-  ports:
-  {{if eq .Values.service.type "NodePort" -}}
-  - port: {{ .Values.service.internalPort }}
-    nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
-    name: {{ .Values.service.portName }}
-  - port: {{ .Values.service.internalPort2 }}
-    nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort2 }}
-    name: {{ .Values.service.portName2 }}
-  {{- else -}}
-  - port: {{ .Values.service.internalPort }}
-    name: {{ .Values.service.portName }}
-  - port: {{ .Values.service.internalPort2 }}
-    name: {{ .Values.service.portName2 }}
-  {{- end}}
-  selector:
-    app: {{ include "common.name" . }}
-    release: {{ .Release.Name }}
+data:
+{{ tpl (.Files.Glob "resources/dynamic/routes/entity-event.route").AsConfig . | indent 2 }}
+{{ tpl (.Files.Glob "resources/dynamic/conf/data-router-oxm.xml").AsConfig . | indent 2 }}
+{{ tpl (.Files.Glob "resources/dynamic/conf/entity-event-policy.xml").AsConfig . | indent 2 }}

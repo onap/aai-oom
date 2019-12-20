@@ -1260,6 +1260,7 @@ spec:
           name: {{ include "common.fullname" . }}-aai-policy
           subPath: aai_policy.json
         {{ end }}
+        {{- if .Values.global.aafEnabled }}
         - mountPath: /opt/app/aai-resources/resources/aaf/org.onap.aai.keyfile
           name: {{ include "common.fullname" . }}-aaf-certs
           subPath: org.onap.aai.keyfile
@@ -1284,6 +1285,7 @@ spec:
         - mountPath: /opt/app/aai-resources/resources/aaf/truststoreONAPall.jks
           name: aai-common-aai-auth-mount
           subPath: truststoreONAPall.jks
+        {{- end }}
         - mountPath: /opt/app/aai-resources/resources/application.properties
           name: {{ include "common.fullname" . }}-config
           subPath: application.properties
@@ -1295,7 +1297,6 @@ spec:
           {{ end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
-        - containerPort: {{ .Values.service.internalPort2 }}
         # disable liveness probe when breakpoints set in debugger
         # so K8s doesn't restart unresponsive container
         {{ if .Values.liveness.enabled }}

@@ -84,6 +84,9 @@ spec:
           - mountPath: /opt/app/babel/config/artifact-generator.properties
             name: {{ include "common.fullname" . }}-config
             subPath: artifact-generator.properties
+          - mountPath: /opt/app/babel/config/application.properties
+            name: {{ include "common.fullname" . }}-config
+            subPath: application.properties
           - mountPath: /opt/app/babel/config/tosca-mappings.json
             name: {{ include "common.fullname" . }}-config
             subPath: tosca-mappings.json
@@ -208,6 +211,8 @@ spec:
               path: tosca-mappings.json
             - key: babel-auth.properties
               path: babel-auth.properties
+            - key: application.properties
+              path: application.properties
             - key: logback.xml
               path: logback.xml
         - name: {{ include "common.fullname" . }}-secrets
