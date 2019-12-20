@@ -70,9 +70,11 @@ spec:
           subPath: haproxy.cfg
         {{ end }}
           name: haproxy-cfg
+        {{- if (include "common.needTLS" .) }}
         - mountPath: /etc/ssl/private/aai.pem
           name: aai-pem
           subPath: aai.pem
+        {{- end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         # disable liveness probe when breakpoints set in debugger
@@ -80,15 +82,24 @@ spec:
         {{- if eq .Values.liveness.enabled true }}
         livenessProbe:
           tcpSocket:
+            {{- if (include "common.needTLS" .) }}
             port: {{ .Values.service.internalPort }}
+            {{- else }}
+            port: {{ .Values.service.internalPort2 }}
+            {{- end }}
           initialDelaySeconds: {{ .Values.liveness.initialDelaySeconds }}
           periodSeconds: {{ .Values.liveness.periodSeconds }}
         {{ end -}}
         readinessProbe:
           httpGet:
             path: /aai/util/echo
+            {{- if (include "common.needTLS" .) }}
             port: {{ .Values.service.internalPort }}
             scheme: HTTPS
+            {{- else }}
+            port: {{ .Values.service.internalPort2 }}
+            scheme: HTTP
+            {{- end }}
             httpHeaders:
             - name: X-FromAppId
               value: OOM_ReadinessCheck
@@ -123,8 +134,10 @@ spec:
         - name: haproxy-cfg
           configMap:
             name: aai-deployment-configmap
+        {{- if (include "common.needTLS" .) }}
         - name: aai-pem
           secret:
             secretName: aai-haproxy-secret
+        {{- end }}
       imagePullSecrets:
       - name: "{{ include "common.namespace" . }}-docker-registry-key"

@@ -30,11 +30,11 @@ spec:
       {{if eq .Values.service.type "NodePort" -}}
       - port: {{ .Values.global.rproxy.port }}
         nodePort: {{ .Values.global.nodePortPrefix | default .Values.nodePortPrefix }}{{ .Values.service.nodePort }}
-        name: {{ .Values.service.portName }}
+        name: {{ .Values.service.portName }}{{- if (include "common.needTLS" .) -}}s{{- end -}}
       {{- else -}}
       - port: {{ .Values.service.externalPort }}
         targetPort: {{ .Values.global.rproxy.port }}
-        name: {{ .Values.service.portName }}
+        name: {{ .Values.service.portName }}{{- if (include "common.needTLS" .) -}}s{{- end -}}
       {{- end}}
   {{ else }}
       {{if eq .Values.service.type "NodePort" -}}
@@ -44,7 +44,7 @@ spec:
       {{- else -}}
       - port: {{ .Values.service.externalPort }}
         targetPort: {{ .Values.service.internalPort }}
-        name: {{ .Values.service.portName }}
+        name: {{ .Values.service.portName }}{{- if (include "common.needTLS" .) -}}s{{- end -}}
       {{- end}}
   {{ end }}
   selector:

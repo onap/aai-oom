@@ -22,7 +22,11 @@
 
   <bean id="eepConfig" class="org.onap.aai.datarouter.policy.EntityEventPolicyConfig" >
     <property name="sourceDomain" value="dev" />
+  {{- if (include "common.needTLS" .) }}
     <property name="searchBaseUrl" value="https://{{.Values.global.searchData.serviceName}}.{{.Release.Namespace}}:9509" />
+  {{- else }}
+    <property name="searchBaseUrl" value="http://{{.Values.global.searchData.serviceName}}.{{.Release.Namespace}}:9509" />
+  {{- end }}
     <property name="searchEndpoint" value="services/search-data-service/v1/search/indexes/" />
     <property name="searchEndpointDocuments" value = "documents" />
     <property name="searchEntitySearchIndex" value="entity-search-index" />
@@ -35,9 +39,13 @@
     <property name="schemaVersions" ref="schemaVersions" />
     <property name="schemaLocationsBean" ref="schemaLocationsBean" />
   </bean>
-  
+
   <bean id="consumerBeanEntityEvent" class="org.onap.aai.event.client.DMaaPEventConsumer" >
-    <constructor-arg name="host" value="message-router.{{.Release.Namespace}}:{{.Values.event.port.dmaap}}" />
+    {{- if (include "common.needTLS" .) }}
+    <constructor-arg name="host" value="message-router.{{.Release.Namespace}}:{{.Values.event.port.dmaapHttps}}" />
+    {{- else }}
+    <constructor-arg name="host" value="message-router.{{.Release.Namespace}}:{{.Values.event.port.dmaapHttp}}" />
+    {{- end }}
     <constructor-arg name="topic" value="{{.Values.event.consumer.topic}}" />
     <constructor-arg name="username" value="" />
     <constructor-arg name="password" value="" />
@@ -46,7 +54,11 @@
     <constructor-arg name="timeoutMs" value="1000" />
     <constructor-arg name="messageLimit" value="100" />
     <constructor-arg name="transportType" value="HTTPAUTH" />
-    <constructor-arg name="protocol" value="{{.Values.event.protocol}}" />
+    {{- if (include "common.needTLS" .) }}
+    <constructor-arg name="protocol" value="https" />
+    {{- else }}
+    <constructor-arg name="protocol" value="http" />
+    {{- end }}
     <constructor-arg name="filter"><null /></constructor-arg>
   </bean>
 

@@ -14,7 +14,7 @@
 # limitations under the License.
 */}}
 
-{{- if eq "True" (include "common.needPV" .) -}}
+{{- if (include "common.needPV" .) -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:

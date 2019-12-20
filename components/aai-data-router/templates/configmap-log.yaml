@@ -12,14 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-resources.hostname=aai
-{{- if (include "common.needTLS" .) }}
-resources.port=8443
-resources.authType=SSL_BASIC
-{{- else }}
-resources.port=8080
-resources.authType=HTTP_NOAUTH
-{{- end }}
-resources.basicAuthUserName=aai@aai.onap.org
-resources.basicAuthPassword=1fia1ju61l871lfe18xp18xr18xt1lc41l531jrk1fek
-resources.trust-store=tomcat_keystore
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "common.fullname" . }}-log-configmap
+  namespace: {{ include "common.namespace" . }}
+  labels:
+    app: {{ include "common.name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+{{ tpl (.Files.Glob "resources/config/log/*").AsConfig . | indent 2 }}

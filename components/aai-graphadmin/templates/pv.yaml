@@ -15,7 +15,7 @@
 */}}
 
 {{- if .Values.global.jobs.migration.enabled -}}
-{{- if eq "True" (include "common.needPV" .) -}}
+{{- if (include "common.needPV" .) -}}
 kind: PersistentVolume
 apiVersion: v1
 metadata:
