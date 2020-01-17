@@ -97,7 +97,7 @@ spec:
               value: Basic YWFpQGFhaS5vbmFwLm9yZzpkZW1vMTIzNDU2IQ==
       {{ end }}
             - name: X-TransactionId
-              value: {{ uuidv4 }}
+              value: OOM_ReadinessCheck_TID
             - name: Accept
               value: application/json
           initialDelaySeconds: {{ .Values.readiness.initialDelaySeconds }}
