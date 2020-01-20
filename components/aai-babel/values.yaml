@@ -61,7 +61,7 @@ service:
   nodePort: 79
 
 ingress:
-  enabled: false
+  enabled: true
 
 resources:
   small:

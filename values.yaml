@@ -354,7 +354,7 @@ service:
   aaiServiceClusterIp:
 
 ingress:
-  enabled: false
+  enabled: true
 
 resources:
   small:

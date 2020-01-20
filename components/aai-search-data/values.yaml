@@ -59,7 +59,7 @@ service:
   internalPort: 9509
 
 ingress:
-  enabled: false
+  enabled: true
 
 resources:
   small:

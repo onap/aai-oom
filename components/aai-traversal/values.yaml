@@ -95,7 +95,7 @@ service:
   internalPort2: 5005
 
 ingress:
-  enabled: false
+  enabled: true
 
 # Configure resource requests and limits
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/

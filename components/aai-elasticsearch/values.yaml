@@ -65,7 +65,7 @@ service:
   internalPort2: 8443
 
 ingress:
-  enabled: false
+  enabled: true
 
 persistence:
   enabled: true

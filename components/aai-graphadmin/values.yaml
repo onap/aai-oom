@@ -105,7 +105,7 @@ service:
   internalPort2: 5005
 
 ingress:
-  enabled: false
+  enabled: true
 
 persistence:
   enabled: true

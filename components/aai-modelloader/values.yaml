@@ -59,7 +59,7 @@ service:
   nodePort2: 29
 
 ingress:
-  enabled: false
+  enabled: true
 
 
 resources:
