@@ -20,7 +20,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 data:
 {{ tpl (.Files.Glob "resources/config/logback.xml").AsConfig . | indent 2 }}
@@ -39,7 +39,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 data:
 {{ tpl (.Files.Glob "resources/config/aaf/org.osaaf.location.props").AsConfig . | indent 2 }}
@@ -56,7 +56,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 type: Opaque
 data:
@@ -74,7 +74,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 data:
 {{ tpl (.Files.Glob "resources/config/auth/aai_policy.json").AsConfig . | indent 2 }}
@@ -95,7 +95,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 data:
 {{ tpl (.Files.Glob "resources/fproxy/config/logback-spring.xml").AsConfig . | indent 2 }}
@@ -125,7 +125,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 data:
 {{ tpl (.Files.Glob "resources/rproxy/config/logback-spring.xml").AsConfig . | indent 2 }}

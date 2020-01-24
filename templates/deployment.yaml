@@ -21,7 +21,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -29,8 +29,8 @@ spec:
     metadata:
       labels:
         app: {{ include "common.name" . }}
-        release: {{ .Release.Name }}
-      name: {{ .Release.Name }}
+        release: {{ include "common.release" . }}
+      name: {{ include "common.release" . }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
     spec:

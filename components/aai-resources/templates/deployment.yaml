@@ -21,7 +21,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
 spec:
   replicas: {{ .Values.replicaCount }}
@@ -32,7 +32,7 @@ spec:
     metadata:
       labels:
         app: {{ include "common.name" . }}
-        release: {{ .Release.Name }}
+        release: {{ include "common.release" . }}
       name: {{ include "common.name" . }}
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/configmap.yaml") . | sha256sum }}
@@ -1187,12 +1187,12 @@ spec:
         - /root/job_complete.py
         args:
         - --job-name
-        - {{ .Release.Name }}-aai-graphadmin-migration
+        - {{ include "common.release" . }}-aai-graphadmin-migration
       {{  else if .Values.global.jobs.createSchema.enabled  }}
         - /root/job_complete.py
         args:
         - --job-name
-        - {{ .Release.Name }}-aai-graphadmin-create-db-schema
+        - {{ include "common.release" . }}-aai-graphadmin-create-db-schema
       {{  else }}
         - /root/ready.py
         args:

@@ -39,7 +39,7 @@ metadata:
   labels:
     app: {{ include "common.name" . }}-job
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
   annotations:
     "helm.sh/hook": post-upgrade,post-rollback,post-install
@@ -51,7 +51,7 @@ spec:
     metadata:
       labels:
         app: {{ include "common.name" . }}-job
-        release: {{ .Release.Name }}
+        release: {{ include "common.release" . }}
       name: {{ include "common.name" . }}
     spec:
       initContainers:
@@ -206,7 +206,7 @@ metadata:
   namespace: {{ include "common.namespace" . }}
   labels:
     app: {{ include "common.name" . }}-db-backup-job
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
@@ -219,7 +219,7 @@ spec:
     metadata:
       labels:
         app: {{ include "common.name" . }}-db-backup-job
-        release: {{ .Release.Name }}
+        release: {{ include "common.release" . }}
       name: {{ include "common.name" . }}
     spec:
       {{ if eq .Values.global.jobs.migration.remoteCassandra.enabled false }}

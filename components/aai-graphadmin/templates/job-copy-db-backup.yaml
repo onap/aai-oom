@@ -38,7 +38,7 @@ metadata:
   namespace: {{ include "common.namespace" . }}
   labels:
     app: {{ include "common.name" . }}-job
-    release: {{ .Release.Name }}
+    release: {{ include "common.release" . }}
     heritage: {{ .Release.Service }}
     chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
   annotations:
@@ -51,7 +51,7 @@ spec:
     metadata:
       labels:
         app: {{ include "common.name" . }}-job
-        release: {{ .Release.Name }}
+        release: {{ include "common.release" . }}
       name: {{ include "common.name" . }}
     spec:
       {{ if eq .Values.global.jobs.migration.remoteCassandra.enabled false }}
