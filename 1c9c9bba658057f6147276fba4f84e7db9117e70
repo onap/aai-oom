@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Mike Elliott <mike.elliott@amdocs.com>
+Code-Review+1: Krzysztof Opasiak <k.opasiak@samsung.com>
+Code-Review+2: James Forsyth <jf2512@att.com>
+Submitted-by: James Forsyth <jf2512@att.com>
+Submitted-at: Mon, 03 Feb 2020 20:04:22 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/100786
+Project: aai/oom
+Branch: refs/heads/master
