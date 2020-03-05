@@ -38,6 +38,10 @@ replicaCount: 1
 # Configuration for the graphadmin deployment
 config:
 
+  # Specify the profiles for the graphadmin microservice
+  profiles:
+    active: "dmaap,one-way-ssl"
+
   # Specifies the timeout limit for the REST API requests
   timeout:
     enabled: true
