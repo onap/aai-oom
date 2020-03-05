@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "342222c2_bd2d4132",
+        "filename": "components/aai-resources/resources/config/logback.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 2319
+      },
+      "writtenOn": "2020-03-05T08:53:05Z",
+      "side": 1,
+      "message": "trailing",
+      "revId": "15d40970f8408ddcbe5365b5a8db6d514efe787c",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
