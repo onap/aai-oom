@@ -1,0 +1,11 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Code-Review+1: Samuli Silvius <s.silvius@partner.samsung.com>
+Code-Review+1: Krzysztof Opasiak <k.opasiak@samsung.com>
+Code-Review+1: Konrad Banka <k.banka@samsung.com>
+Code-Review+2: Manisha Aggarwal <amanisha@att.com>
+Submitted-by: Manisha Aggarwal <amanisha@att.com>
+Submitted-at: Thu, 26 Mar 2020 12:39:23 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/104416
+Project: aai/oom
+Branch: refs/heads/master
