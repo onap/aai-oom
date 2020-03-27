@@ -130,6 +130,13 @@
 			"deleteFlag": true,
 			"modelVersionId": "8e6ee9dc-9017-444a-83b3-219edb018128",
 			"modelInvariantId": "3bf1e610-45f7-4ad6-b833-ca4c5ee6a3fd"
+		},
+		{
+			"type": "PNF",
+			"name": "pnf",
+			"deleteFlag": true,
+			"modelVersionId": "862b25a1-262a-4961-bdaa-cdc55d69785ao",
+			"modelInvariantId": "e9f1fa7d-c839-418a-9601-03dc0d2ad687"
 		}
 	],
 	"widgetMappings": [
@@ -175,6 +182,12 @@
 			"prefix": "org.openecomp.resource.vfc.nodes.heat.cinder",
 			"type": "widget",
 			"widget": "VOLUME",
+			"deleteFlag": true
+		},
+		{
+			"prefix": "org.openecomp.resource.pnf",
+			"type": "widget",
+			"widget": "PNF",
 			"deleteFlag": true
 		}
 	]
