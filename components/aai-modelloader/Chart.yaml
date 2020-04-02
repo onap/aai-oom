@@ -15,4 +15,4 @@
 apiVersion: v1
 description: ONAP AAI modelloader
 name: aai-modelloader
-version: 5.0.0
+version: 6.0.0
