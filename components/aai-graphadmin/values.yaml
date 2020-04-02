@@ -28,7 +28,7 @@ global: # global defaults
 
 # application image
 repository: nexus3.onap.org:10001
-image: onap/aai-graphadmin:1.6.1
+image: onap/aai-graphadmin:1.6.3
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
