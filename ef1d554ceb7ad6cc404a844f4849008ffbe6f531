@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "214e4f09_4bee2872",
+        "filename": "components/aai-data-router/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 5550
+      },
+      "writtenOn": "2020-04-03T11:04:29Z",
+      "side": 1,
+      "message": "Hi James,\nI have following issue with deploying data-router in this version on my environment:\n\n\u003e k.banka@AMDC3701:~/lab/cnf_usacease/logtools [0]$ kubectl logs onap-aai-data-router-665b489bf4-jfzb8 aai-data-router\n\u003e Creating mailbox file: No such file or directory\n\u003e chown: /opt/app/data-router/config/auth/..data: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/tomcat_keystore: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/data-router_policy.json: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/client-cert-onap.p12: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/..2020_04_03_10_21_15.645661917/client-cert-onap.p12: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/..2020_04_03_10_21_15.645661917/tomcat_keystore: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/..2020_04_03_10_21_15.645661917/data-router_policy.json: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/..2020_04_03_10_21_15.645661917: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth/..2020_04_03_10_21_15.645661917: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth: Read-only file system\n\u003e chown: /opt/app/data-router/config/auth: Read-only file system\n\u003e chown: /opt/app/data-router/config/schemaIngest.properties: Read-only file system\n\u003e chown: /opt/app/data-router/config/data-router.properties: Read-only file system\n\u003e chown: /opt/app/data-router/dynamic/conf/entity-event-policy.xml: Read-only file system\n\u003e chown: /opt/app/data-router/dynamic/conf/data-router-oxm.xml: Read-only file system\n\u003e chown: /opt/app/data-router/dynamic/routes/entity-event.route: Read-only file system\n\u003e chown: /opt/app/data-router/bundleconfig/etc/logback.xml: Read-only file system\n\u003e ln: /opt/app/data-router/logs/logs: File exists\n\u003e 10:54:38.772 [main] DEBUG org.eclipse.jetty.util.log - Logging to Logger[org.eclipse.jetty.util.log] via org.eclipse.jetty.util.log.Slf4jLog\n\u003e 10:54:38.787 [main] INFO org.eclipse.jetty.util.log - Logging initialized @626ms to org.eclipse.jetty.util.log.Slf4jLog\n\n  .   ____          _            __ _ _\n /\\\\ / ___\u0027_ __ _ _(_)_ __  __ _ \\ \\ \\ \\\n( ( )\\___ | \u0027_ | \u0027_| | \u0027_ \\/ _` | \\ \\ \\ \\\n \\\\/  ___)| |_)| | | | | || (_| |  ) ) ) )\n  \u0027  |____| .__|_| |_|_| |_\\__, | / / / /\n \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d|_|\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d|___/\u003d/_/_/_/\n :: Spring Boot ::       (v2.1.12.RELEASE)\n\n\nDo you know what could cause it?\n\n\u003e k.banka@AMDC3701:~/lab/cnf_usacease/logtools [0]$ kubectl get pod onap-aai-data-router-665b489bf4-jfzb8\n\u003e NAME                                    READY   STATUS             RESTARTS   AGE\n\u003e onap-aai-data-router-665b489bf4-jfzb8   1/2     CrashLoopBackOff   9          37m\n\u003e k.banka@AMDC3701:~/lab/cnf_usacease/logtools [0]$ kubectl describe pod onap-aai-data-router-665b489bf4-jfzb8 | grep Image:\n\u003e     Image:         docker.io/busybox\n\u003e     Image:          nexus3.onap.org:10001/onap/data-router:1.6.2\n\u003e     Image:          docker.elastic.co/beats/filebeat:5.5.0",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 29
+      },
+      "revId": "ef1d554ceb7ad6cc404a844f4849008ffbe6f531",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
