@@ -22,7 +22,7 @@ global: # global defaults
 
 # application image
 repository: nexus3.onap.org:10001
-image: onap/aai-schema-service:1.6.6
+image: onap/aai-schema-service:1.6.7
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
