@@ -356,7 +356,7 @@ service:
 ingress:
   enabled: false
   service:
-    - baseaddr: "aai"
+    - baseaddr: "aai.api.sparky"
       name: "aai"
       port: 8443
   config:
