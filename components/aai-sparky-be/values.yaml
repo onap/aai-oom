@@ -95,7 +95,7 @@ ingress:
       name: "aai-sparky-be"
       port: 8000
   config:
-    ssl: "none"
+    ssl: "redirect"
 
 # Configure resource requests and limits
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/

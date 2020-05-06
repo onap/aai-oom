@@ -67,7 +67,7 @@ ingress:
       name: "aai-babel"
       port: 9516
   config:
-    ssl: "none"
+    ssl: "redirect"
 
 resources:
   small:
