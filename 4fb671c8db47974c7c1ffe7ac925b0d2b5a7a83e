@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Krzysztof Opasiak <k.opasiak@samsung.com>
+Code-Review+1: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Code-Review+2: James Forsyth <jf2512@att.com>
+Submitted-by: James Forsyth <jf2512@att.com>
+Submitted-at: Tue, 12 May 2020 12:50:27 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/106789
+Project: aai/oom
+Branch: refs/heads/master
