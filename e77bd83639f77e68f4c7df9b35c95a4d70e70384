@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b68fc09_6259513d",
+        "filename": "components/aai-babel/resources/config/tosca-mappings.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2020-06-19T22:40:28Z",
+      "side": 1,
+      "message": "I\u0027m really curious if a day when we start using onap instead of openecomp will come before I retire:D",
+      "range": {
+        "startLine": 188,
+        "startChar": 18,
+        "endLine": 188,
+        "endChar": 27
+      },
+      "revId": "e77bd83639f77e68f4c7df9b35c95a4d70e70384",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
