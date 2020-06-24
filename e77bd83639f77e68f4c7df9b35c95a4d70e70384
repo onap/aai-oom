@@ -22,6 +22,30 @@
       "revId": "e77bd83639f77e68f4c7df9b35c95a4d70e70384",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a133e9b_f32aa1e0",
+        "filename": "components/aai-babel/resources/config/tosca-mappings.json",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 2979
+      },
+      "writtenOn": "2020-06-24T13:04:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b68fc09_6259513d",
+      "range": {
+        "startLine": 188,
+        "startChar": 18,
+        "endLine": 188,
+        "endChar": 27
+      },
+      "revId": "e77bd83639f77e68f4c7df9b35c95a4d70e70384",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
