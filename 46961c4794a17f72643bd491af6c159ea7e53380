@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9586576_ee1b1626",
+        "filename": "components/aai-data-router/values.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 5597
+      },
+      "writtenOn": "2020-08-21T07:15:04Z",
+      "side": 1,
+      "message": "IN this file, the last, newest, and target schema version is v19, while in the helm chart values, You refer to last api version -- 20\n\nSee values.yaml:\n      version:\n        # Current version of the REST API\n        api:\n          default: v20\n        # Specifies which version the depth parameter is configurable\n        depth: v11\n        # List of all the supported versions of the API\n        list: v11,v12,v13,v14,v15,v16,v17,v18,v19,v20\n\nShouldn`t this be aligned?",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "46961c4794a17f72643bd491af6c159ea7e53380",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
