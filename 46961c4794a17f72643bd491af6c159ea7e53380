@@ -22,6 +22,30 @@
       "revId": "46961c4794a17f72643bd491af6c159ea7e53380",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "743c7132_078f0fdc",
+        "filename": "components/aai-data-router/values.yaml",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 2979
+      },
+      "writtenOn": "2020-08-21T12:52:19Z",
+      "side": 1,
+      "message": "This was done on purpose, since data-router had issues starting with the latest version of the schema. We are actively polling the community about retiring this microservice (see https://lists.onap.org/g/onap-discuss/topic/76314789) along with search-data-service, and doing an overhaul of the sparky UI which has been broken for awhile I believe (at least in frankfurt it did not work). This microservice is a much lower priority to deploy with the latest version since it just supports our UI, which has been broken for awhile. On the other hand we need to get changes for model-loader, resources, traversal, babel, etc out to support the current Guilin use case teams.",
+      "parentUuid": "b9586576_ee1b1626",
+      "range": {
+        "startLine": 36,
+        "startChar": 2,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "46961c4794a17f72643bd491af6c159ea7e53380",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
     }
   ]
 }
