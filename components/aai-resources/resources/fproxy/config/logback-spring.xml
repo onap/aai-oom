@@ -34,7 +34,7 @@
     </appender>
      
     <!-- LOG everything at INFO level -->
-    <root level="info">
+    <root level="{{.Values.logback.rootLogLevel.fproxy}}">
         <appender-ref ref="RollingFile" />
         <appender-ref ref="Console" />
     </root>
