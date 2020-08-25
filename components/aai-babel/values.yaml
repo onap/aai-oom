@@ -69,6 +69,31 @@ ingress:
   config:
     ssl: "redirect"
 
+logback:
+  rootLogLevel: {{ .Values.global.logback.rootLogLevel.babel }}
+  logger:
+    apache: {{ .Values.global.logback.logger.apache }}
+    apacheCamel: {{ .Values.global.logback.logger.apacheCamel }}
+    apacheCamelComponentRestlet: {{ .Values.global.logback.logger.apacheCamelComponentRestlet }}
+    apacheCamelProcessorInterceptor: {{ .Values.global.logback.logger.apacheCamelProcessorInterceptor }}
+    apacheCommons: {{ .Values.global.logback.logger.apacheCommons }}
+    apacheCxf: {{ .Values.global.logback.logger.apacheCxf }}
+    apacheCxfJaxrsInterceptor: {{ .Values.global.logback.logger.apacheCxfJaxrsInterceptor }}
+    apacheCxfService: {{ .Values.global.logback.logger.apacheCxfService }}
+    att: {{ .Values.global.logback.logger.att }}
+    attEelf: {{ .Values.global.logback.logger.attEelf }}
+    attEelfAudit: {{ .Values.global.logback.logger.attEelfAudit }}
+    attEelfDebug: {{ .Values.global.logback.logger.attEelfDebug }}
+    attEelfMetrics: {{ .Values.global.logback.logger.attEelfMetrics }}
+    onapAafFproxy: {{ .Values.global.logback.logger.onapAafFproxy }}
+    onapAafRproxy: {{ .Values.global.logback.logger.onapAafRproxy }}
+    qosLogbackClassic: {{ .Values.global.logback.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.global.logback.logger.qosLogbackCore }}
+    restlet: {{ .Values.global.logback.logger.restlet }}
+    springframework: {{ .Values.global.logback.logger.springframework }}
+    springframeworkBeans: {{ .Values.global.logback.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.global.logback.logger.springframeworkWeb }}
+
 resources:
   small:
     limits:

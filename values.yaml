@@ -33,6 +33,106 @@ global: # global defaults
   installSidecarSecurity: false
   aafEnabled: true
 
+logback:
+  rootLogLevel:
+    babel: INFO
+    graphadmin: DEBUG
+    resources:
+      config: DEBUG
+      froxy: INFO
+      rproxy: INFO
+    schemaService: DEBUG
+    searchData: DEBUG
+      config: INFO
+      fproxy: DEBUG
+      rproxy: DEBUG
+    traversal: DEBUG
+  logger:
+    ajsc: WARN
+    ajscBeansInterceptors: WARN
+    ajscComputeService: WARN
+    ajscFilePersistenceService: WARN
+    ajscFilters: WARN
+    ajscLoggingConfigurationService: WARN
+    ajscRestlet: WARN
+    ajscRouteMgmtService: WARN
+    ajscServlet: WARN
+    ajscUserDefinedBeansDefService: WARN
+    ajscUserDefinedJarService: WARN
+    ajscUtils: WARN
+    ajscUtilsDME2Helper: WARN
+    ajscVandelayService: WARN
+    apache: WARN
+    apacheCamel: WARN
+    apacheCamelComponentRestlet: WARN
+    apacheCamelProcessorInterceptor: WARN
+    apacheCommons: WARN
+    apacheCommonsHttpclient: WARN
+    apacheCoyote: WARN
+    apacheCxf: WARN
+    apacheCxfJaxrsInterceptor: WARN
+    apacheCxfService: WARN
+    apacheJasper: WARN
+    apacheZookeeper: WARN
+    att: INFO
+    attAftDme2: WARN
+    attAjsc: WARN
+    attAjscCsiLogging: WARN
+    attAjscFilemonitor: WARN
+    attEelf: INFO
+    attEelfAudit: INFO
+    attEelfDebug: INFO
+    attEelfMetrics: INFO
+    attScamper: WARN
+    auditRecord: INFO
+    auditRecordDirectCall: INFO
+    blogSpringJms: WARN
+    codehausGroovy: WARN
+    eclipseJetty: WARN
+    hibernate: WARN
+    hibernateEjb: OFF
+    hibernateValidator: WARN
+    janusgraph: WARN
+    jaywayJsonpath: WARN
+    netflix: WARN
+    netflixLoadbalancer: WARN
+    onapAafFproxy: INFO
+    onapAafRproxy: INFO
+    onapAai: DEBUG
+    onapAaiAaf: DEBUG
+    onapAaiAailogFilterRestClientLoggingInterceptor: INFO
+    onapAaiAailogLogsAaiDBMetricLog: INFO
+    onapAaiAailogLogsAaiScheduledTaskAuditLog: INFO
+    onapAaiDatacleanup: DEBUG
+    onapAaiDataexport: DEBUG
+    onapAaiDatagrooming: DEBUG
+    onapAaiDatasnapshot: DEBUG
+    onapAaiDbgen: DEBUG
+    onapAaiDbgenDupeTool: DEBUG
+    onapAaiDbgenDynamicPayloadGenerator: DEBUG
+    onapAaiDmaap: DEBUG
+    onapAaiHistorytruncate: DEBUG
+    onapAaiInterceptorsPost: DEBUG
+    onapAaiInterceptorsPostResetLoggingContext: DEBUG
+    onapAaiInterceptorsPreSetLoggingContext: DEBUG
+    onapAaiLoggingErrorLogHelper: WARN
+    onapAaiMigration: DEBUG
+    onapAaiSchema: DEBUG
+    onapAaiUtilSendDeleteMigrationNotifications: DEBUG
+    onapAaiUtilSendMigrationNotifications: DEBUG
+    onapLoggingFilterBaseAbstractAuditLogFilter: INFO
+    onapLoggingFilterBaseAbstractMetricLogFilter: INFO
+    perfTrackerRecord: INFO
+    qosLogbackClassic: WARN
+    qosLogbackCore: WARN
+    restlet: WARN
+    sf: WARN
+    springframework: WARN
+    springframeworkBeans: WARN
+    springframeworkWeb: WARN
+    thinkaurelius: WARN
+    zookeeper: OFF
+
   fproxy:
     name: forward-proxy
     activeSpringProfiles: noHostVerification,cadi

@@ -61,6 +61,12 @@ service:
 ingress:
   enabled: false
 
+logback:
+  rootLogLevel:
+    config: {{ .Values.global.logback.rootLogLevel.searchData.config }}
+    fproxy: {{ .Values.global.logback.rootLogLevel.searchData.fproxy }}
+    rproxy: {{ .Values.global.logback.rootLogLevel.searchData.rproxy }}
+
 resources:
   small:
     limits:

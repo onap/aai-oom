@@ -133,6 +133,85 @@ persistence:
   mountSubPath: aai/aai-graphadmin
   mountSubPath1: aai/migration
 
+logback:
+  rootLogLevel: {{ .Values.global.logback.rootLogLevel.graphadmin }}
+  logger:
+    ajsc: {{ .Values.global.logback.logger.ajsc }}
+    ajscBeansInterceptors: {{ .Values.global.logback.logger.ajscBeansInterceptors }}
+    ajscComputeService: {{ .Values.global.logback.logger.ajscComputeService }}
+    ajscFilePersistenceService: {{ .Values.global.logback.logger.ajscFilePersistenceService }}
+    ajscFilters: {{ .Values.global.logback.logger.ajscFilters }}
+    ajscLoggingConfigurationService: {{ .Values.global.logback.logger.ajscLoggingConfigurationService }}
+    ajscRestlet: {{ .Values.global.logback.logger.ajscRestlet }}
+    ajscRouteMgmtService: {{ .Values.global.logback.logger.ajscRouteMgmtService }}
+    ajscServlet: {{ .Values.global.logback.logger.ajscServlet }}
+    ajscUserDefinedBeansDefService: {{ .Values.global.logback.logger.ajscUserDefinedBeansDefService }}
+    ajscUserDefinedJarService: {{ .Values.global.logback.logger.ajscUserDefinedJarService }}
+    ajscUtils: {{ .Values.global.logback.logger.ajscUtils }}
+    ajscUtilsDME2Helper: {{ .Values.global.logback.logger.ajscUtilsDME2Helper }}
+    ajscVandelayService: {{ .Values.global.logback.logger.ajscVandelayService }}
+    apache: {{ .Values.global.logback.logger.apache }}
+    apacheCamel: {{ .Values.global.logback.logger.apacheCamel }}
+    apacheCamelComponentRestlet: {{ .Values.global.logback.logger.apacheCamelComponentRestlet }}
+    apacheCamelProcessorInterceptor: {{ .Values.global.logback.logger.apacheCamelProcessorInterceptor }}
+    apacheCommons: {{ .Values.global.logback.logger.apacheCommons }}
+    apacheCommonsHttpclient: {{ .Values.global.logback.logger.apacheCommonsHttpclient }}
+    apacheCoyote: {{ .Values.global.logback.logger.apacheCoyote }}
+    apacheCxf: {{ .Values.global.logback.logger.apacheCxf }}
+    apacheCxfJaxrsInterceptor: {{ .Values.global.logback.logger.apacheCxfJaxrsInterceptor }}
+    apacheCxfService: {{ .Values.global.logback.logger.apacheCxfService }}
+    apacheJasper: {{ .Values.global.logback.logger.apacheJasper }}
+    apacheZookeeper: {{ .Values.global.logback.logger.apacheZookeeper }}
+    attAftDme2: {{ .Values.global.logback.logger.attAftDme2 }}
+    attAjsc: {{ .Values.global.logback.logger.attAjsc }}
+    attAjscCsiLogging: {{ .Values.global.logback.logger.attAjscCsiLogging }}
+    attAjscFilemonitor: {{ .Values.global.logback.logger.attAjscFilemonitor }}
+    attEelf: {{ .Values.global.logback.logger.attEelf }}
+    attScamper: {{ .Values.global.logback.logger.attScamper }}
+    auditRecord: {{ .Values.global.logback.logger.auditRecord }}
+    auditRecordDirectCall: {{ .Values.global.logback.logger.auditRecordDirectCall }}
+    blogSpringJms: {{ .Values.global.logback.logger.blogSpringJms }}
+    codehausGroovy: {{ .Values.global.logback.logger.codehausGroovy }}
+    eclipseJetty: {{ .Values.global.logback.logger.eclipseJetty }}
+    hibernate: {{ .Values.global.logback.logger.hibernate }}
+    hibernateEjb: {{ .Values.global.logback.logger.hibernateEjb }}
+    hibernateValidator: {{ .Values.global.logback.logger.hibernateValidator }}
+    janusgraph: {{ .Values.global.logback.logger.janusgraph }}
+    jaywayJsonpath: {{ .Values.global.logback.logger.jaywayJsonpath }}
+    netflix: {{ .Values.global.logback.logger.netflix }}
+    netflixLoadbalancer: {{ .Values.global.logback.logger.netflixLoadbalancer }}
+    onapAai: {{ .Values.global.logback.logger.onapAai }}
+    onapAaiAaf: {{ .Values.global.logback.logger.onapAaiAaf }}
+    onapAaiAailogFilterRestClientLoggingInterceptor: {{ .Values.global.logback.logger.onapAaiAailogFilterRestClientLoggingInterceptor }}
+    onapAaiAailogLogsAaiDBMetricLog: {{ .Values.global.logback.logger.onapAaiAailogLogsAaiDBMetricLog }}
+    onapAaiAailogLogsAaiScheduledTaskAuditLog: {{ .Values.global.logback.logger.onapAaiAailogLogsAaiScheduledTaskAuditLog }}
+    onapAaiDatacleanup: {{ .Values.global.logback.logger.onapAaiDatacleanup }}
+    onapAaiDataexport: {{ .Values.global.logback.logger.onapAaiDataexport }}
+    onapAaiDatagrooming: {{ .Values.global.logback.logger.onapAaiDatagrooming }}
+    onapAaiDatasnapshot: {{ .Values.global.logback.logger.onapAaiDatasnapshot }}
+    onapAaiDbgen: {{ .Values.global.logback.logger.onapAaiDbgen }}
+    onapAaiDbgenDupeTool: {{ .Values.global.logback.logger.onapAaiDbgenDupeTool }}
+    onapAaiDbgenDynamicPayloadGenerator: {{ .Values.global.logback.logger.onapAaiDbgenDynamicPayloadGenerator }}
+    onapAaiDmaap: {{ .Values.global.logback.logger.onapAaiDmaap }}
+    onapAaiHistorytruncate: {{ .Values.global.logback.logger.onapAaiHistorytruncate }}
+    onapAaiInterceptorsPost: {{ .Values.global.logback.logger.onapAaiInterceptorsPost }}
+    onapAaiLoggingErrorLogHelper: {{ .Values.global.logback.logger.onapAaiLoggingErrorLogHelper }}
+    onapAaiMigration: {{ .Values.global.logback.logger.onapAaiMigration }}
+    onapAaiSchema: {{ .Values.global.logback.logger.onapAaiSchema }}
+    onapAaiUtilSendDeleteMigrationNotifications: {{ .Values.global.logback.logger.onapAaiUtilSendDeleteMigrationNotifications }}
+    onapAaiUtilSendMigrationNotifications: {{ .Values.global.logback.logger.onapAaiUtilSendMigrationNotifications }}
+    onapLoggingFilterBaseAbstractAuditLogFilter: {{ .Values.global.logback.logger.onapLoggingFilterBaseAbstractAuditLogFilter }}
+    onapLoggingFilterBaseAbstractMetricLogFilter: {{ .Values.global.logback.logger.onapLoggingFilterBaseAbstractMetricLogFilter }}
+    perfTrackerRecord: {{ .Values.global.logback.logger.perfTrackerRecord }}
+    qosLogbackClassic: {{ .Values.global.logback.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.global.logback.logger.qosLogbackCore }}
+    restlet: {{ .Values.global.logback.logger.restlet }}
+    sf: {{ .Values.global.logback.logger.sf }}
+    springframework: {{ .Values.global.logback.logger.springframework }}
+    springframeworkBeans: {{ .Values.global.logback.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.global.logback.logger.springframeworkWeb }}
+    zookeeper: {{ .Values.global.logback.logger.zookeeper }}
+
 resources:
   small:
     limits:

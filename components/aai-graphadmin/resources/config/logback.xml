@@ -729,63 +729,63 @@
     </encoder>
   </appender>
   <!-- dynamicPayloadGenerator log ends here -->
-  <logger name="org.onap.aai" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai" level="{{.Values.logback.logger.onapAai}}" additivity="false">
     <appender-ref ref="asyncDEBUG"/>
     <appender-ref ref="asyncSANE"/>
     <appender-ref ref="STDOUT"/>
   </logger>
   <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN"/>
-  <logger name="org.springframework.beans" level="WARN"/>
-  <logger name="org.springframework.web" level="WARN"/>
-  <logger name="com.blog.spring.jms" level="WARN"/>
-  <logger name="com.jayway.jsonpath" level="WARN"/>
+  <logger name="org.springframework" level="{{.Values.logback.logger.springframework}}"/>
+  <logger name="org.springframework.beans" level="{{.Values.logback.logger.springframeworkBeans}}"/>
+  <logger name="org.springframework.web" level="{{.Values.logback.logger.springframeworkWeb}}"/>
+  <logger name="com.blog.spring.jms" level="{{.Values.logback.logger.blogSpringJms}}"/>
+  <logger name="com.jayway.jsonpath" level="{{.Values.logback.logger.jaywayJsonpath}}"/>
   <!-- AJSC Services (bootstrap services) -->
-  <logger name="ajsc" level="WARN"/>
-  <logger name="ajsc.RouteMgmtService" level="WARN"/>
-  <logger name="ajsc.ComputeService" level="WARN"/>
-  <logger name="ajsc.VandelayService" level="WARN"/>
-  <logger name="ajsc.FilePersistenceService" level="WARN"/>
-  <logger name="ajsc.UserDefinedJarService" level="WARN"/>
-  <logger name="ajsc.UserDefinedBeansDefService" level="WARN"/>
-  <logger name="ajsc.LoggingConfigurationService" level="WARN"/>
+  <logger name="ajsc" level="{{.Values.logback.logger.ajsc}}"/>
+  <logger name="ajsc.RouteMgmtService" level="{{.Values.logback.logger.ajscRouteMgmtService}}"/>
+  <logger name="ajsc.ComputeService" level="{{.Values.logback.logger.ajscComputeService}}"/>
+  <logger name="ajsc.VandelayService" level="{{.Values.logback.logger.ajscVandelayService}}"/>
+  <logger name="ajsc.FilePersistenceService" level="{{.Values.logback.logger.ajscFilePersistenceService}}"/>
+  <logger name="ajsc.UserDefinedJarService" level="{{.Values.logback.logger.ajscUserDefinedJarService}}"/>
+  <logger name="ajsc.UserDefinedBeansDefService" level="{{.Values.logback.logger.ajscUserDefinedBeansDefService}}"/>
+  <logger name="ajsc.LoggingConfigurationService" level="{{.Values.logback.logger.ajscLoggingConfigurationService}}"/>
   <!-- AJSC related loggers (DME2 Registration, csi logging, restlet, servlet 
 		logging) -->
-  <logger name="org.codehaus.groovy" level="WARN"/>
-  <logger name="com.att.scamper" level="WARN"/>
-  <logger name="ajsc.utils" level="WARN"/>
-  <logger name="ajsc.utils.DME2Helper" level="WARN"/>
-  <logger name="ajsc.filters" level="WARN"/>
-  <logger name="ajsc.beans.interceptors" level="WARN"/>
-  <logger name="ajsc.restlet" level="WARN"/>
-  <logger name="ajsc.servlet" level="WARN"/>
-  <logger name="com.att.ajsc" level="WARN"/>
-  <logger name="com.att.ajsc.csi.logging" level="WARN"/>
-  <logger name="com.att.ajsc.filemonitor" level="WARN"/>
-  <logger name="com.netflix.loadbalancer" level="WARN"/>
-  <logger name="org.apache.zookeeper" level="WARN"/>
+  <logger name="org.codehaus.groovy" level="{{.Values.logback.logger.codehausGroovy}}"/>
+  <logger name="com.att.scamper" level="{{.Values.logback.logger.attScamper}}"/>
+  <logger name="ajsc.utils" level="{{.Values.logback.logger.ajscUtils}}"/>
+  <logger name="ajsc.utils.DME2Helper" level="{{.Values.logback.logger.ajscUtilsDME2Helper}}"/>
+  <logger name="ajsc.filters" level="{{.Values.logback.logger.ajscFilters}}"/>
+  <logger name="ajsc.beans.interceptors" level="{{.Values.logback.logger.ajscBeansInterceptors}}"/>
+  <logger name="ajsc.restlet" level="{{.Values.logback.logger.ajscRestlet}}"/>
+  <logger name="ajsc.servlet" level="{{.Values.logback.logger.ajscServlet}}"/>
+  <logger name="com.att.ajsc" level="{{.Values.logback.logger.attAjsc}}"/>
+  <logger name="com.att.ajsc.csi.logging" level="{{.Values.logback.logger.attAjscCsiLogging}}"/>
+  <logger name="com.att.ajsc.filemonitor" level="{{.Values.logback.logger.attAjscFilemonitor}}"/>
+  <logger name="com.netflix.loadbalancer" level="{{.Values.logback.logger.netflixLoadbalancer}}"/>
+  <logger name="org.apache.zookeeper" level="{{.Values.logback.logger.apacheZookeeper}}"/>
   <!-- Other Loggers that may help troubleshoot -->
-  <logger name="net.sf" level="WARN"/>
-  <logger name="org.apache.commons.httpclient" level="WARN"/>
-  <logger name="org.apache.commons" level="WARN"/>
-  <logger name="org.apache.coyote" level="WARN"/>
-  <logger name="org.apache.jasper" level="WARN"/>
+  <logger name="net.sf" level="{{.Values.logback.logger.sf}}"/>
+  <logger name="org.apache.commons.httpclient" level="{{.Values.logback.logger.apacheCommonsHttpclient}}"/>
+  <logger name="org.apache.commons" level="{{.Values.logback.logger.apacheCommons}}"/>
+  <logger name="org.apache.coyote" level="{{.Values.logback.logger.apacheCoyote}}"/>
+  <logger name="org.apache.jasper" level="{{.Values.logback.logger.apacheJasper}}"/>
   <!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging. 
 		May aid in troubleshooting) -->
-  <logger name="org.apache.camel" level="WARN"/>
-  <logger name="org.apache.cxf" level="WARN"/>
-  <logger name="org.apache.camel.processor.interceptor" level="WARN"/>
-  <logger name="org.apache.cxf.jaxrs.interceptor" level="WARN"/>
-  <logger name="org.apache.cxf.service" level="WARN"/>
-  <logger name="org.restlet" level="WARN"/>
-  <logger name="org.apache.camel.component.restlet" level="WARN"/>
-  <logger name="org.hibernate.validator" level="WARN"/>
-  <logger name="org.hibernate" level="WARN"/>
-  <logger name="org.hibernate.ejb" level="OFF"/>
+  <logger name="org.apache.camel" level="{{.Values.logback.logger.apacheCamel}}"/>
+  <logger name="org.apache.cxf" level="{{.Values.logback.logger.apacheCxf}}"/>
+  <logger name="org.apache.camel.processor.interceptor" level="{{.Values.logback.logger.apacheCamelProcessorInterceptor}}"/>
+  <logger name="org.apache.cxf.jaxrs.interceptor" level="{{.Values.logback.logger.apacheCxfJaxrsInterceptor}}"/>
+  <logger name="org.apache.cxf.service" level="{{.Values.logback.logger.apacheCxfService}}"/>
+  <logger name="org.restlet" level="{{.Values.logback.logger.restlet}}"/>
+  <logger name="org.apache.camel.component.restlet" level="{{.Values.logback.logger.apacheCamelComponentRestlet}}"/>
+  <logger name="org.hibernate.validator" level="{{.Values.logback.logger.hibernateValidator}}"/>
+  <logger name="org.hibernate" level="{{.Values.logback.logger.hibernate}}"/>
+  <logger name="org.hibernate.ejb" level="{{.Values.logback.logger.hibernateEjb}}"/>
   <!-- logback internals logging -->
-  <logger name="ch.qos.logback.classic" level="WARN"/>
-  <logger name="ch.qos.logback.core" level="WARN"/>
-  <logger name="org.eclipse.jetty" level="WARN"/>
+  <logger name="ch.qos.logback.classic" level="{{.Values.logback.logger.qosLogbackClassic}}"/>
+  <logger name="ch.qos.logback.core" level="{{.Values.logback.logger.qosLogbackCore}}"/>
+  <logger name="org.eclipse.jetty" level="{{.Values.logback.logger.eclipseJetty}}"/>
   <!-- logback jms appenders & loggers definition starts here -->
   <appender name="auditLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter"/>
@@ -839,119 +839,121 @@
     <includeCallerData>true</includeCallerData>
     <appender-ref ref="auth"/>
   </appender>
-  <logger name="AuditRecord" level="INFO" additivity="false">
+
+  <logger name="AuditRecord" level="{{.Values.logback.logger.auditRecord}}" additivity="false">
     <appender-ref ref="auditLogs"/>
   </logger>
-  <logger name="AuditRecord_DirectCall" level="INFO" additivity="false">
+  <logger name="AuditRecord_DirectCall" level="{{.Values.logback.logger.auditRecordDirectCall}}" additivity="false">
     <appender-ref ref="auditLogs"/>
   </logger>
-  <logger name="PerfTrackerRecord" level="INFO" additivity="false">
+  <logger name="PerfTrackerRecord" level="{{.Values.logback.logger.perfTrackerRecord}}" additivity="false">
     <appender-ref ref="perfLogs"/>
   </logger>
   <!-- logback jms appenders & loggers definition ends here -->
-  <logger name="org.onap.aai.aaf" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.aaf" level="{{.Values.logback.logger.onapAaiAaf}}" additivity="false">
     <appender-ref ref="asyncAUTH"/>
   </logger>
-  <logger name="org.onap.aai.aailog.filter.RestClientLoggingInterceptor" level="INFO">
+  <logger name="org.onap.aai.aailog.filter.RestClientLoggingInterceptor" level="{{.Values.logback.logger.onapAaiAailogFilterRestClientLoggingInterceptor}}">
     <appender-ref ref="asyncMETRIC"/>
   </logger>
-  <logger name="org.onap.logging.filter.base.AbstractMetricLogFilter" level="INFO">
+  <logger name="org.onap.logging.filter.base.AbstractMetricLogFilter" level="{{.Values.logback.logger.onapLoggingFilterBaseAbstractMetricLogFilter}}">
     <appender-ref ref="asyncMETRIC"/>
   </logger>
-  <logger name="org.onap.aai.aailog.logs.AaiScheduledTaskAuditLog" level="INFO">
+  <logger name="org.onap.aai.aailog.logs.AaiScheduledTaskAuditLog" level="{{.Values.logback.logger.onapAaiAailogLogsAaiScheduledTaskAuditLog}}">
     <appender-ref ref="asyncAUDIT"/>
   </logger>
-  <logger name="org.onap.logging.filter.base.AbstractAuditLogFilter" level="INFO">
+  <logger name="org.onap.logging.filter.base.AbstractAuditLogFilter" level="{{.Values.logback.logger.onapLoggingFilterBaseAbstractAuditLogFilter}}">
     <appender-ref ref="asyncAUDIT"/>
   </logger>
-  <logger name="org.onap.aai.aailog.logs.AaiDBMetricLog" level="INFO">
+  <logger name="org.onap.aai.aailog.logs.AaiDBMetricLog" level="{{.Values.logback.logger.onapAaiAailogLogsAaiDBMetricLog}}">
     <appender-ref ref="asyncMETRIC"/>
   </logger>
-  <logger name="org.onap.aai.logging.ErrorLogHelper" level="WARN">
+  <logger name="org.onap.aai.logging.ErrorLogHelper" level="{{.Values.logback.logger.onapAaiLoggingErrorLogHelper}}">
     <appender-ref ref="asyncERROR"/>
   </logger>
-  <logger name="org.onap.aai.interceptors.post" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.interceptors.post" level="{{.Values.logback.logger.onapAaiInterceptorsPost}}" additivity="false">
     <appender-ref ref="asynctranslog"/>
   </logger>
-  <logger name="org.onap.aai.dmaap" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.dmaap" level="{{.Values.logback.logger.onapAaiDmaap}}" additivity="false">
     <appender-ref ref="dmaapAAIEventConsumer"/>
     <appender-ref ref="dmaapAAIEventConsumerDebug"/>
     <appender-ref ref="dmaapAAIEventConsumerMetric"/>
   </logger>
-  <logger name="org.onap.aai.datasnapshot" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.datasnapshot" level="{{.Values.logback.logger.onapAaiDatasnapshot}}" additivity="false">
     <appender-ref ref="dataSnapshot"/>
     <appender-ref ref="dataSnapshotdebug"/>
     <appender-ref ref="dataSnapshotaudit"/>
     <appender-ref ref="STDOUT"/>
   </logger>
-  <logger name="org.onap.aai.historytruncate" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.historytruncate" level="{{.Values.logback.logger.onapAaiHistorytruncate}}" additivity="false">
     <appender-ref ref="historyTruncate"/>
     <appender-ref ref="historyTruncatedebug"/>
     <appender-ref ref="historyTruncateaudit"/>
   </logger>
-  <logger name="org.onap.aai.datagrooming" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.datagrooming" level="{{.Values.logback.logger.onapAaiDatagrooming}}" additivity="false">
     <appender-ref ref="dataGrooming"/>
     <appender-ref ref="dataGroomingdebug"/>
     <appender-ref ref="dataGroomingaudit"/>
     <appender-ref ref="STDOUT"/>
   </logger>
-  <logger name="org.onap.aai.schema" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.schema" level="{{.Values.logback.logger.onapAaiSchema}}" additivity="false">
     <appender-ref ref="createDBSchema"/>
     <appender-ref ref="createDBSchemadebug"/>
     <appender-ref ref="createDBSchemametric"/>
   </logger>
-  <logger name="org.onap.aai.dbgen.DupeTool" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.dbgen.DupeTool" level="{{.Values.logback.logger.onapAaiDbgenDupeTool}}" additivity="false">
     <appender-ref ref="dupeTooldebug"/>
     <appender-ref ref="dupeToolerror"/>
   </logger>
-  <logger name="org.onap.aai.dbgen.DynamicPayloadGenerator" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.dbgen.DynamicPayloadGenerator" level="{{.Values.logback.logger.onapAaiDbgenDynamicPayloadGenerator}}" additivity="false">
     <appender-ref ref="dynamicPayloadGeneratorAudit"/>
     <appender-ref ref="dynamicPayloadGeneratorError"/>
     <appender-ref ref="dynamicPayloadGeneratorDebug"/>
   </logger>
-  <logger name="org.onap.aai.dbgen" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.dbgen" level="{{.Values.logback.logger.onapAaiDbgen}}" additivity="false">
     <appender-ref ref="createDBSchema"/>
     <appender-ref ref="createDBSchemadebug"/>
     <appender-ref ref="createDBSchemametric"/>
   </logger>
-  <logger name="org.onap.aai.datacleanup" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.datacleanup" level="{{.Values.logback.logger.onapAaiDatacleanup}}" additivity="false">
     <appender-ref ref="dataCleanuperror"/>
     <appender-ref ref="dataCleanupdebug"/>
     <appender-ref ref="dataCleanupaudit"/>
     <appender-ref ref="STDOUT"/>
   </logger>
-  <logger name="org.onap.aai.migration" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.migration" level="{{.Values.logback.logger.onapAaiMigration}}" additivity="false">
     <appender-ref ref="migrationdebug"/>
     <appender-ref ref="migrationerror"/>
   </logger>
-  <logger name="org.onap.aai.util.SendMigrationNotifications" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.util.SendMigrationNotifications" level="{{.Values.logback.logger.onapAaiUtilSendMigrationNotifications}}" additivity="false">
     <appender-ref ref="migrationdebug"/>
     <appender-ref ref="migrationerror"/>
   </logger>
-  <logger name="org.onap.aai.util.SendDeleteMigrationNotifications" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.util.SendDeleteMigrationNotifications" level="{{.Values.logback.logger.onapAaiUtilSendDeleteMigrationNotifications}}" additivity="false">
     <appender-ref ref="migrationdebug"/>
     <appender-ref ref="migrationerror"/>
   </logger>
-  <logger name="org.onap.aai.dataexport" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.dataexport" level="{{.Values.logback.logger.onapAaiDataexport}}" additivity="false">
     <appender-ref ref="dataExportError"/>
     <appender-ref ref="dataExportDebug"/>
     <appender-ref ref="dataExportAudit"/>
     <appender-ref ref="STDOUT"/>
   </logger>
-  <logger name="org.apache" level="WARN"/>
-  <logger name="org.zookeeper" level="WARN"/>
-  <logger name="com.netflix" level="WARN"/>
-  <logger name="org.janusgraph" level="WARN"/>
-  <logger name="com.att.aft.dme2" level="WARN"/>
+  <logger name="org.apache" level="{{.Values.logback.logger.apache}}"/>
+  <logger name="org.zookeeper" level="{{.Values.logback.logger.zookeeper}}"/>
+  <logger name="com.netflix" level="{{.Values.logback.logger.netflix}}"/>
+  <logger name="org.janusgraph" level="{{.Values.logback.logger.janusgraph}}"/>
+  <logger name="com.att.aft.dme2" level="{{.Values.logback.logger.attAftDme2}}"/>
   <!-- ============================================================================ -->
   <!-- General EELF logger -->
   <!-- ============================================================================ -->
-  <logger name="com.att.eelf" level="WARN" additivity="false">
+  <logger name="com.att.eelf" level="{{.Values.logback.logger.attEelf}}" additivity="false">
     <appender-ref ref="asyncDEBUG"/>
     <appender-ref ref="asyncERROR"/>
     <appender-ref ref="asyncMETRIC"/>
   </logger>
-  <root level="DEBUG">
+
+  <root level="{{.Values.logback.rootLogLevel}}">
     <appender-ref ref="external"/>
     <appender-ref ref="STDOUT"/>
   </root>

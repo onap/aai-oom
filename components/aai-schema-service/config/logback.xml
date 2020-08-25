@@ -228,7 +228,7 @@
     <appender-ref ref="asyncERROR" />
     <appender-ref ref="asyncMETRIC" />
   </logger>
-  <root level="DEBUG">
+  <root level="{{.Values.logback.rootLogLevel}}">
     <appender-ref ref="external" />
     {{ if .Values.global.config.logback.console.enabled }}
     <appender-ref ref="STDOUT" />

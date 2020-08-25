@@ -335,7 +335,7 @@
 		<appender-ref ref="dmaapAAIEventConsumerInfo" />
 	</logger>
 
-	<root level="DEBUG">
+	<root level="{{.Values.logback.rootLogLevel.config}}">
 		<appender-ref ref="external" />
 		<appender-ref ref="STDOUT" />
 	</root>
