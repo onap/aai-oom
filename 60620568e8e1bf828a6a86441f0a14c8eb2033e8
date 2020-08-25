@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0be82ca_fd30cd43",
+        "filename": "components/aai-babel/values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2020-08-25T10:59:38Z",
+      "side": 1,
+      "message": "those should be the exactl values like info etc not references to global variables",
+      "revId": "60620568e8e1bf828a6a86441f0a14c8eb2033e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "189ec14e_f97ad8ad",
+        "filename": "values.yaml",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2020-08-25T10:59:38Z",
+      "side": 1,
+      "message": "don\u0027t put AAI specifc stuff in global section",
+      "revId": "60620568e8e1bf828a6a86441f0a14c8eb2033e8",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": true
+    }
+  ]
+}
