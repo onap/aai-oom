@@ -133,6 +133,9 @@ persistence:
   mountSubPath: aai/aai-graphadmin
   mountSubPath1: aai/migration
 
+logback:
+  rootLogLevel: {{ .Values.global.logback.rootLogLevel.graphadmin }}
+
 resources:
   small:
     limits:
