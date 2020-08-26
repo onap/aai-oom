@@ -3,6 +3,7 @@
 # org.onap.aai
 # ================================================================================
 # Copyright © 2018 AT&T Intellectual Property. All rights reserved.
+# Modifications Copyright © 2020 Samsung Electronics
 # ================================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -132,6 +133,63 @@ persistence:
   mountPath: /dockerdata-nfs
   mountSubPath: aai/aai-graphadmin
   mountSubPath1: aai/migration
+
+log:
+  logDir: {{ .Values.log.logDir }}
+  root:
+    level: {{ .Values.log.root.level.graphadmin }}
+  consolePattern: {{ .Values.log.consolePattern.graphadmin }}
+  logger:
+    ajsc: {{ .Values.log.logger.ajsc }}
+    ajscBeansInterceptors: {{ .Values.log.logger.ajscBeansInterceptors }}
+    ajscComputeService: {{ .Values.log.logger.ajscComputeService }}
+    ajscFilePersistenceService: {{ .Values.log.logger.ajscFilePersistenceService }}
+    ajscFilters: {{ .Values.log.logger.ajscFilters }}
+    ajscLoggingConfigurationService: {{ .Values.log.logger.ajscLoggingConfigurationService }}
+    ajscRestlet: {{ .Values.log.logger.ajscRestlet }}
+    ajscRouteMgmtService: {{ .Values.log.logger.ajscRouteMgmtService }}
+    ajscServlet: {{ .Values.log.logger.ajscServlet }}
+    ajscUserDefinedBeansDefService: {{ .Values.log.logger.ajscUserDefinedBeansDefService }}
+    ajscUserDefinedJarService: {{ .Values.log.logger.ajscUserDefinedJarService }}
+    ajscUtils: {{ .Values.log.logger.ajscUtils }}
+    ajscUtilsDME2Helper: {{ .Values.log.logger.ajscUtilsDME2Helper }}
+    ajscVandelayService: {{ .Values.log.logger.ajscVandelayService }}
+    apache: {{ .Values.log.logger.apache }}
+    apacheCamel: {{ .Values.log.logger.apacheCamel }}
+    apacheCamelComponentRestlet: {{ .Values.log.logger.apacheCamelComponentRestlet }}
+    apacheCamelProcessorInterceptor: {{ .Values.log.logger.apacheCamelProcessorInterceptor }}
+    apacheCommons: {{ .Values.log.logger.apacheCommons }}
+    apacheCommonsHttpclient: {{ .Values.log.logger.apacheCommonsHttpclient }}
+    apacheCoyote: {{ .Values.log.logger.apacheCoyote }}
+    apacheCxf: {{ .Values.log.logger.apacheCxf }}
+    apacheCxfJaxrsInterceptor: {{ .Values.log.logger.apacheCxfJaxrsInterceptor }}
+    apacheCxfService: {{ .Values.log.logger.apacheCxfService }}
+    apacheJasper: {{ .Values.log.logger.apacheJasper }}
+    apacheZookeeper: {{ .Values.log.logger.apacheZookeeper }}
+    attAftDme2: {{ .Values.log.logger.attAftDme2 }}
+    attAjsc: {{ .Values.log.logger.attAjsc }}
+    attAjscCsiLogging: {{ .Values.log.logger.attAjscCsiLogging }}
+    attAjscFilemonitor: {{ .Values.log.logger.attAjscFilemonitor }}
+    attEelf: {{ .Values.log.logger.attEelf }}
+    attScamper: {{ .Values.log.logger.attScamper }}
+    blogSpringJms: {{ .Values.log.logger.blogSpringJms }}
+    codehausGroovy: {{ .Values.log.logger.codehausGroovy }}
+    eclipseJetty: {{ .Values.log.logger.eclipseJetty }}
+    hibernate: {{ .Values.log.logger.hibernate }}
+    hibernateEjb: {{ .Values.log.logger.hibernateEjb }}
+    hibernateValidator: {{ .Values.log.logger.hibernateValidator }}
+    janusgraph: {{ .Values.log.logger.janusgraph }}
+    jaywayJsonpath: {{ .Values.log.logger.jaywayJsonpath }}
+    netflix: {{ .Values.log.logger.netflix }}
+    netflixLoadbalancer: {{ .Values.log.logger.netflixLoadbalancer }}
+    qosLogbackClassic: {{ .Values.log.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.log.logger.qosLogbackCore }}
+    restlet: {{ .Values.log.logger.restlet }}
+    sf: {{ .Values.log.logger.sf }}
+    springframework: {{ .Values.log.logger.springframework }}
+    springframeworkBeans: {{ .Values.log.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.log.logger.springframeworkWeb }}
+    zookeeper: {{ .Values.log.logger.zookeeper }}
 
 resources:
   small:

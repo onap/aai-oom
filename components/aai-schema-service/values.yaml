@@ -53,6 +53,44 @@ service:
 ingress:
   enabled: false
 
+log:
+  logDir: {{ .Values.log.logDir }}
+  root:
+    level: {{ .Values.log.root.level.schemaService }}
+  consolePattern: {{ .Values.log.consolePattern.schemaService }}
+  logger:
+    apache: {{ .Values.log.logger.apache }}
+    apacheCamel: {{ .Values.log.logger.apacheCamel }}
+    apacheCamelComponentRestlet: {{ .Values.log.logger.apacheCamelComponentRestlet }}
+    apacheCamelProcessorInterceptor: {{ .Values.log.logger.apacheCamelProcessorInterceptor }}
+    apacheCommons: {{ .Values.log.logger.apacheCommons }}
+    apacheCommonsHttpclient: {{ .Values.log.logger.apacheCommonsHttpclient }}
+    apacheCoyote: {{ .Values.log.logger.apacheCoyote }}
+    apacheCxf: {{ .Values.log.logger.apacheCxf }}
+    apacheCxfJaxrsInterceptor: {{ .Values.log.logger.apacheCxfJaxrsInterceptor }}
+    apacheCxfService: {{ .Values.log.logger.apacheCxfService }}
+    apacheJasper: {{ .Values.log.logger.apacheJasper }}
+    apacheZookeeper: {{ .Values.log.logger.apacheZookeeper }}
+    attAftDme2: {{ .Values.log.logger.attAftDme2 }}
+    blogSpringJms: {{ .Values.log.logger.blogSpringJms }}
+    codehausGroovy: {{ .Values.log.logger.codehausGroovy }}
+    eclipseJetty: {{ .Values.log.logger.eclipseJetty }}
+    hibernate: {{ .Values.log.logger.hibernate }}
+    hibernateEjb: {{ .Values.log.logger.hibernateEjb }}
+    hibernateValidator: {{ .Values.log.logger.hibernateValidator }}
+    janusgraph: {{ .Values.log.logger.janusgraph }}
+    jaywayJsonpath: {{ .Values.log.logger.jaywayJsonpath }}
+    netflixLoadbalancer: {{ .Values.log.logger.netflixLoadbalancer }}
+    qosLogbackClassic: {{ .Values.log.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.log.logger.qosLogbackCore }}
+    restlet: {{ .Values.log.logger.restlet }}
+    sf: {{ .Values.log.logger.sf }}
+    springframework: {{ .Values.log.logger.springframework }}
+    springframeworkBeans: {{ .Values.log.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.log.logger.springframeworkWeb }}
+    zookeeper: {{ .Values.log.logger.zookeeper }}
+
+
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
