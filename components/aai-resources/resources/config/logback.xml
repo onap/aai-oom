@@ -5,6 +5,7 @@
     ================================================================================
     Copyright © 2017 AT&T Intellectual Property. All rights reserved.
     Modifications Copyright © 2018 Amdocs, Bell Canada
+	Modifications Copyright © 2020 Samsung Electronics
     ================================================================================
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -59,9 +60,7 @@
     <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>
-				%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
-			</pattern>
+			<pattern>{{ .Values.log.consolePattern.config }}</pattern>
 		</encoder>
 	</appender>
 
@@ -280,23 +279,23 @@
 	</appender>
 	<!-- logback internals logging -->
 
-	<logger name="ch.qos.logback.classic" level="WARN" />
-	<logger name="ch.qos.logback.core" level="WARN" />
+	<logger name="ch.qos.logback.classic" level="{{.Values.log.loggger.qosLogbackClassic}}" />
+	<logger name="ch.qos.logback.core" level="{{.Values.log.loggger.qosLogbackCore}}" />
 
-	<logger name="com.att.aft.dme2" level="WARN" />
-	<logger name="com.jayway.jsonpath" level="WARN" />
+	<logger name="com.att.aft.dme2" level="{{.Values.log.loggger.attAftDme2}}" />
+	<logger name="com.jayway.jsonpath" level="{{.Values.log.loggger.jaywayJsonpath}}" />
 
-	<logger name="org.apache" level="OFF" />
-	<logger name="org.apache.commons" level="WARN" />
-	<logger name="org.apache.zookeeper" level="OFF" />
-	<logger name="org.codehaus.groovy" level="WARN" />
-	<logger name="org.eclipse.jetty" level="WARN" />
+	<logger name="org.apache" level="{{.Values.log.loggger.apache}}" />
+	<logger name="org.apache.commons" level="{{.Values.log.loggger.apacheCommons}}" />
+	<logger name="org.apache.zookeeper" level="{{.Values.log.loggger.apacheZookeeper}}" />
+	<logger name="org.codehaus.groovy" level="{{.Values.log.loggger.codehausGroovy}}" />
+	<logger name="org.eclipse.jetty" level="{{.Values.log.loggger.eclipseJetty}}" />
 	<!-- Spring related loggers -->
-	<logger name="org.springframework" level="WARN" />
-	<logger name="org.springframework.beans" level="WARN" />
-	<logger name="org.springframework.web" level="WARN" />
-	<logger name="org.janusgraph" level="WARN" />
-	<logger name="org.zookeeper" level="OFF" />
+	<logger name="org.springframework" level="{{.Values.log.loggger.springframework}}" />
+	<logger name="org.springframework.beans" level="{{.Values.log.loggger.springframeworkBeans}}" />
+	<logger name="org.springframework.web" level="{{.Values.log.loggger.springframeworkWeb}}" />
+	<logger name="org.janusgraph" level="{{.Values.log.loggger.janusgraph}}" />
+	<logger name="org.zookeeper" level="{{.Values.log.loggger.zookeeper}}" />
 
 
 	<logger name="org.onap.aai" level="DEBUG" additivity="false">
@@ -335,7 +334,7 @@
 		<appender-ref ref="dmaapAAIEventConsumerInfo" />
 	</logger>
 
-	<root level="DEBUG">
+	<root level="{{.Values.log.root.level.config}}">
 		<appender-ref ref="external" />
 		<appender-ref ref="STDOUT" />
 	</root>

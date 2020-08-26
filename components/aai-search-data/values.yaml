@@ -59,6 +59,37 @@ service:
 ingress:
   enabled: false
 
+log:
+  root:
+    level:
+      config: INFO
+      fproxy: DEBUG
+      rproxy: DEBUG
+  consolePattern:
+    config: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}|%mdc{RequestId}|%thread|SearchDataService|%mdc{PartnerName}|%logger||%.-5level|%msg%n"
+    fproxy: "%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable"
+    rproxy: "%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable"
+  logger:
+    apacheCamel: WARN
+    apacheCamelComponentRestlet: WARN
+    apacheCamelProcessorInterceptor: WARN
+    apacheCommons: WARN
+    apacheCommonsHttpclient: WARN
+    apacheCoyote: WARN
+    apacheCxf: WARN
+    apacheCxfJaxrsInterceptor: WARN
+    apacheCxfService: WARN
+    apacheJasper: WARN
+    blogSpringJms: WARN
+    openecompSa: INFO
+    qosLogbackClassic: WARN
+    qosLogbackCore: WARN
+    restlet: WARN
+    sf: WARN
+    springframework: WARN
+    springframeworkBeans: WARN
+    springframeworkWeb: WARN
+
 resources:
   small:
     limits:

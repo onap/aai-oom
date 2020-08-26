@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 # Copyright © 2018 Amdocs, Bell Canada, AT&T
+# Modifications Copyright © 2020 Samsung Electronics
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -27,6 +28,13 @@
   <property name="auditLogName" value="audit" />
   <property name="debugLogName" value="debug" />
 
+  <property name="p_tim" value="%d{&quot;yyyy-MM-dd'T'HH:mm:ss.SSSXXX&quot;, UTC}"/>
+  <property name="p_lvl" value="%level"/>
+  <property name="p_log" value="%logger"/>
+  <property name="p_mdc" value="%replace(%replace(%mdc){'\t','\\\\t'}){'\n', '\\\\n'}"/>
+  <property name="p_mak" value="%replace(%replace(%marker){'\t', '\\\\t'}){'\n','\\\\n'}"/>
+  <property name="p_thr" value="%thread"/>
+
   <property name="errorLogPattern"
 	    value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}|%mdc{RequestId}|%thread|%mdc{ServiceName}|%mdc{PartnerName}|%mdc{TargetEntity}|%mdc{TargetServiceName}|%.-5level|%logger|%mdc{ClassName}|%msg%n" />
 
@@ -35,6 +43,9 @@
 
   <property name="metricsLogPattern"
 	    value="%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}|%mdc{BeginTimestamp}|%mdc{EndTimestamp}|%mdc{RequestId}|%mdc{ServiceInstanceId}|%thread|%mdc{ServerFQDN}|%mdc{ServiceName}|%mdc{PartnerName}|%mdc{TargetEntity}|%mdc{TargetServiceName}|%mdc{StatusCode}|%mdc{ResponseCode}|%mdc{ResponseDescription}|%logger|%.-5level|||%mdc{ElapsedTime}|%mdc{RemoteHost}|%mdc{ClientAddress}|%mdc{ClassName}|||%msg%n" />
+
+  <!-- Console (human-readable) logging -->
+  <property name="consolePattern" value="{{ .Values.log.consolePattern.babel.config }}"/>
 
   <!-- ============================================================================ -->
   <!-- EELF Appenders -->
@@ -131,64 +142,72 @@
     <includeCallerData>false</includeCallerData>
   </appender>
 
-  <!-- ============================================================================ -->
-  <!-- Default / root appenders -->
-  <!-- This determines the logging level for 3rd party code -->
-  <!-- ============================================================================ -->
-
-  <root level="INFO">
-    <appender-ref ref="asyncEELF" />
-  <appender-ref ref="asyncEELFDebug" />
-</root>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>${consolePattern}</pattern>
+    </encoder>
+  </appender>
 
   <!-- ============================================================================ -->
   <!--  EELF loggers -->
   <!-- ============================================================================ -->
 
   <logger name="com.att.eelf" level="INFO" additivity="false">
-  <appender-ref ref="asyncEELF" />
-</logger>
+    <appender-ref ref="asyncEELF" />
+  </logger>
 
   <!-- The level of this logger determines the contents of the debug log -->
   <logger name="com.att.eelf.debug" level="INFO" additivity="false">
-  <appender-ref ref="asyncEELFDebug" />
-</logger>
+    <appender-ref ref="asyncEELFDebug" />
+  </logger>
 
   <logger name="com.att.eelf.audit" level="INFO" additivity="false">
-  <appender-ref ref="asyncEELFAudit" />
-</logger>
+    <appender-ref ref="asyncEELFAudit" />
+  </logger>
 
   <logger name="com.att.eelf.metrics" level="INFO" additivity="false">
-  <appender-ref ref="asyncEELFMetrics" />
-</logger>
+    <appender-ref ref="asyncEELFMetrics" />
+  </logger>
 
   <!-- ============================================================================ -->
   <!-- Non-EELF loggers -->
   <!-- ============================================================================ -->
 
   <!-- ATT packages including DMAAP message routing -->
-  <logger name="com.att" level="INFO" />
+  <logger name="com.att" level="{{.Values.log.logger.att}}" />
 
   <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN" />
-  <logger name="org.springframework.beans" level="WARN" />
-  <logger name="org.springframework.web" level="WARN" />
+  <logger name="org.springframework" level="{{.Values.log.logger.springframework}}" />
+  <logger name="org.springframework.beans" level="{{.Values.log.logger.springframeworkBeans}}" />
+  <logger name="org.springframework.web" level="{{.Values.log.logger.springframeworkWeb}}" />
 
   <!-- Other Loggers that may help troubleshoot -->
-  <logger name="org.apache" level="WARN" />
-  <logger name="org.apache.commons" level="WARN" />
+  <logger name="org.apache" level="{{.Values.log.logger.apache}}" />
+  <logger name="org.apache.commons" level="{{.Values.log.logger.apacheCommons}}" />
 
   <!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging. May aid in troubleshooting) -->
-  <logger name="org.apache.camel" level="WARN" />
-  <logger name="org.apache.cxf" level="WARN" />
-  <logger name="org.apache.camel.processor.interceptor" level="WARN" />
-  <logger name="org.apache.cxf.jaxrs.interceptor" level="WARN" />
-  <logger name="org.apache.cxf.service" level="WARN" />
-  <logger name="org.restlet" level="WARN" />
-  <logger name="org.apache.camel.component.restlet" level="WARN" />
+  <logger name="org.apache.camel" level="{{.Values.log.logger.apacheCamel}}" />
+  <logger name="org.apache.cxf" level="{{.Values.log.logger.apacheCxf}}" />
+  <logger name="org.apache.camel.processor.interceptor" level="{{.Values.log.logger.apacheCamelProcessorInterceptor}}" />
+  <logger name="org.apache.cxf.jaxrs.interceptor" level="{{.Values.log.logger.apacheCxfJaxrsInterceptor}}" />
+  <logger name="org.apache.cxf.service" level="{{.Values.log.logger.apacheCxfService}}" />
+  <logger name="org.apache.camel.component.restlet" level="{{.Values.log.logger.apacheCamelComponentRestlet}}" />
+
+  <logger name="org.restlet" level="{{.Values.log.logger.restlet}}" />
 
   <!-- logback internals logging -->
-  <logger name="ch.qos.logback.classic" level="WARN" />
-  <logger name="ch.qos.logback.core" level="WARN" />
+  <logger name="ch.qos.logback.classic" level="{{.Values.log.logger.qosLogbackClassic}}" />
+  <logger name="ch.qos.logback.core" level="{{.Values.log.logger.qosLogbackCore}}" />
+
+  <!-- ============================================================================ -->
+  <!-- Default / root appenders -->
+  <!-- This determines the logging level for 3rd party code -->
+  <!-- ============================================================================ -->
+
+  <root level="{{ .Values.log.root.level }}">
+    <appender-ref ref="asyncEELF" />
+    <appender-ref ref="asyncEELFDebug" />
+    <appender-ref ref="STDOUT" />
+  </root>
 
 </configuration>

@@ -33,13 +33,13 @@
   <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
   <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
   <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>
-        %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
-      </pattern>
+      <pattern>{{ .Values.log.consolePattern }}</pattern>
     </encoder>
   </appender>
+
   <appender name="SANE" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <file>${logDirectory}/rest/sane.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
@@ -213,6 +213,7 @@
       <pattern>${eelfLogPattern}</pattern>
     </encoder>
   </appender>
+
   <logger name="org.onap.aai" level="DEBUG" additivity="false">
     <appender-ref ref="asyncDEBUG" />
     <appender-ref ref="asyncERROR" />
@@ -222,15 +223,15 @@
   </logger>
 
   <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN" />
-  <logger name="org.springframework.beans" level="WARN" />
-  <logger name="org.springframework.web" level="WARN" />
-  <logger name="com.blog.spring.jms" level="WARN" />
-  <logger name="com.jayway.jsonpath" level="WARN" />
+  <logger name="org.springframework" level="{{.Values.log.logger.springframework}}" />
+  <logger name="org.springframework.beans" level="{{.Values.log.logger.springframeworkBeans}}" />
+  <logger name="org.springframework.web" level="{{.Values.log.logger.springframeworkWeb}}" />
+  <logger name="com.blog.spring.jms" level="{{.Values.log.logger.blogSpringJms}}" />
+  <logger name="com.jayway.jsonpath" level="{{.Values.log.logger.jaywayJsonpath}}" />
 
-  <logger name="ch.qos.logback.classic" level="WARN" />
-  <logger name="ch.qos.logback.core" level="WARN" />
-  <logger name="org.eclipse.jetty" level="WARN" />
+  <logger name="ch.qos.logback.classic" level="{{.Values.log.logger.qosLogbackClassic}}" />
+  <logger name="ch.qos.logback.core" level="{{.Values.log.logger.qosLogbackCore}}" />
+  <logger name="org.eclipse.jetty" level="{{.Values.log.logger.eclipseJetty}}" />
 
   <logger name="org.onap.aai.interceptors.post" level="DEBUG"
       additivity="false">
@@ -247,10 +248,10 @@
     <appender-ref ref="dmaapAAIEventConsumerDebug" />
     <appender-ref ref="dmaapAAIEventConsumerMetric" />
   </logger>
-  <logger name="org.apache" level="OFF" />
-  <logger name="org.zookeeper" level="OFF" />
-  <logger name="com.thinkaurelius" level="WARN" />
-  <logger name="com.att.aft.dme2" level="WARN" />
+  <logger name="org.apache" level="{{.Values.log.logger.apache}}" />
+  <logger name="org.zookeeper" level="{{.Values.log.logger.zookeeper}}" />
+  <logger name="com.thinkaurelius" level="{{.Values.log.logger.thinkaurelius}}" />
+  <logger name="com.att.aft.dme2" level="{{.Values.log.logger.attAftDme2}}" />
   <!-- ============================================================================ -->
   <!-- General EELF logger -->
   <!-- ============================================================================ -->
@@ -259,7 +260,7 @@
     <appender-ref ref="asyncERROR" />
     <appender-ref ref="asyncMETRIC" />
   </logger>
-  <root level="DEBUG">
+  <root level="{{.Values.log.root.level}}">
     <appender-ref ref="external" />
     {{if .Values.global.config.logback.console.enabled}}
     <appender-ref ref="STDOUT" />
