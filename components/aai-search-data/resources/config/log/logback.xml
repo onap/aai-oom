@@ -185,7 +185,7 @@
         <logger name="ch.qos.logback.classic" level="WARN" />
         <logger name="ch.qos.logback.core" level="WARN" />
 
-        <root>
+        <root level="{{.Values.logback.rootLogLeve.configl}}">
                 <appender-ref ref="asyncEELF" />
                 <!-- <appender-ref ref="asyncEELFDebug" /> -->
         </root>

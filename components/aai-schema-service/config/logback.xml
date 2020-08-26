@@ -287,8 +287,8 @@
   <logger name="org.janusgraph" level="WARN"/>
   <logger name="com.att.aft.dme2" level="WARN"/>
 
-
-  <root level="DEBUG">
+  <root level="{{.Values.logback.rootLogLevel}}">
+    <appender-ref ref="external" />
     <appender-ref ref="STDOUT" />
     <appender-ref ref="external"/>
   </root>
