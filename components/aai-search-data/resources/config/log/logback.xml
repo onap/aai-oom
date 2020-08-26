@@ -39,7 +39,7 @@
         <!-- Example evaluator filter applied against console appender -->
         <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
                 <encoder>
-                        <pattern>${errorLogPattern}</pattern>
+                        <pattern>{{ .Values.log.consolePattern.config }}</pattern>
                 </encoder>
         </appender>
 
@@ -156,37 +156,38 @@
         </logger>
 
         <!-- Spring related loggers -->
-        <logger name="org.springframework" level="WARN" />
-        <logger name="org.springframework.beans" level="WARN" />
-        <logger name="org.springframework.web" level="WARN" />
-        <logger name="com.blog.spring.jms" level="WARN" />
+        <logger name="org.springframework" level="{{.Values.log.logger.springframework}}" />
+        <logger name="org.springframework.beans" level="{{.Values.log.logger.springframeworkBeans}}" />
+        <logger name="org.springframework.web" level="{{.Values.log.logger.springframeworkWeb}}" />
+        <logger name="com.blog.spring.jms" level="{{.Values.log.logger.blogSpringJms}}" />
 
         <!-- SearchDB loggers -->
-        <logger name="org.openecomp.sa" level="INFO" />
+        <logger name="org.openecomp.sa" level="{{.Values.log.logger.openecompSa}}" />
 
         <!-- Other Loggers that may help troubleshoot -->
-        <logger name="net.sf" level="WARN" />
-        <logger name="org.apache.commons.httpclient" level="WARN" />
-        <logger name="org.apache.commons" level="WARN" />
-        <logger name="org.apache.coyote" level="WARN" />
-        <logger name="org.apache.jasper" level="WARN" />
+        <logger name="net.sf" level="{{.Values.log.logger.sf}}" />
+        <logger name="org.apache.commons.httpclient" level="{{.Values.log.logger.apacheCommonsHttpclient}}" />
+        <logger name="org.apache.commons" level="{{.Values.log.logger.apacheCommons}}" />
+        <logger name="org.apache.coyote" level="{{.Values.log.logger.apacheCoyote}}" />
+        <logger name="org.apache.jasper" level="{{.Values.log.logger.apacheJasper}}" />
 
         <!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging.
                       May aid in troubleshooting) -->
-        <logger name="org.apache.camel" level="WARN" />
-        <logger name="org.apache.cxf" level="WARN" />
-        <logger name="org.apache.camel.processor.interceptor" level="WARN" />
-        <logger name="org.apache.cxf.jaxrs.interceptor" level="WARN" />
-        <logger name="org.apache.cxf.service" level="WARN" />
-        <logger name="org.restlet" level="WARN" />
-        <logger name="org.apache.camel.component.restlet" level="WARN" />
+        <logger name="org.apache.camel" level="{{.Values.log.logger.apacheCamel}}" />
+        <logger name="org.apache.cxf" level="{{.Values.log.logger.apacheCxf}}" />
+        <logger name="org.apache.camel.processor.interceptor" level="{{.Values.log.logger.apacheCamelProcessorInterceptor}}" />
+        <logger name="org.apache.cxf.jaxrs.interceptor" level="{{.Values.log.logger.apacheCxfJaxrsInterceptor}}" />
+        <logger name="org.apache.cxf.service" level="{{.Values.log.logger.apacheCxfService}}" />
+        <logger name="org.restlet" level="{{.Values.log.logger.restlet}}" />
+        <logger name="org.apache.camel.component.restlet" level="{{.Values.log.loggerapacheCamelComponentRestlet}}" />
 
         <!-- logback internals logging -->
-        <logger name="ch.qos.logback.classic" level="WARN" />
-        <logger name="ch.qos.logback.core" level="WARN" />
+        <logger name="ch.qos.logback.classic" level="{{.Values.log.logger.qosLogbackClassic}}" />
+        <logger name="ch.qos.logback.core" level="{{.Values.log.logger.qosLogbackCore}}" />
 
-        <root>
+        <root level="{{.Values.logback.rootLogLeve.configl}}">
                 <appender-ref ref="asyncEELF" />
+                <appender-ref ref="STDOUT" />
                 <!-- <appender-ref ref="asyncEELFDebug" /> -->
         </root>
 
