@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Code-Review+1: Krzysztof Opasiak <k.opasiak@samsung.com>
+Code-Review+2: William Reehil <william.reehil@att.com>
+Submitted-by: William Reehil <william.reehil@att.com>
+Submitted-at: Wed, 26 Aug 2020 12:38:07 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/111685
+Project: aai/oom
+Branch: refs/heads/master
