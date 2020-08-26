@@ -1,6 +1,4 @@
-# Copyright © 2018 Amdocs, AT&T
-# Modifications Copyright © 2018 Bell Canada
-# Modifications Copyright © 2020 Samsung Electronics
+# Copyright © 2018 Copyright © 2020 Samsung Electronics
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,12 +13,6 @@
 # limitations under the License.
 
 dependencies:
-  - name: common
-    version: ~6.x-0
-    # local reference to common chart, as it is
-    # a part of this chart's package and will not
-    # be published independently to a repo (at this point)
-    repository: '@local'
   - name: logConfiguration
     version: ~6.x-0
     repository: '@local'
