@@ -213,7 +213,8 @@
       <pattern>${eelfLogPattern}</pattern>
     </encoder>
   </appender>
-  <logger name="org.onap.aai" level="DEBUG" additivity="false">
+
+  <logger name="org.onap.aai" level="{{.Values.logback.logger.onapAai}}" additivity="false">
     <appender-ref ref="asyncDEBUG" />
     <appender-ref ref="asyncERROR" />
     <appender-ref ref="asyncMETRIC" />
@@ -222,44 +223,44 @@
   </logger>
 
   <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN" />
-  <logger name="org.springframework.beans" level="WARN" />
-  <logger name="org.springframework.web" level="WARN" />
-  <logger name="com.blog.spring.jms" level="WARN" />
-  <logger name="com.jayway.jsonpath" level="WARN" />
+  <logger name="org.springframework" level="{{.Values.logback.logger.springframework}}" />
+  <logger name="org.springframework.beans" level="{{.Values.logback.logger.springframeworkBeans}}" />
+  <logger name="org.springframework.web" level="{{.Values.logback.logger.springframeworkWeb}}" />
+  <logger name="com.blog.spring.jms" level="{{.Values.logback.logger.blogSpringJms}}" />
+  <logger name="com.jayway.jsonpath" level="{{.Values.logback.logger.jaywayJsonpath}}" />
 
-  <logger name="ch.qos.logback.classic" level="WARN" />
-  <logger name="ch.qos.logback.core" level="WARN" />
-  <logger name="org.eclipse.jetty" level="WARN" />
+  <logger name="ch.qos.logback.classic" level="{{.Values.logback.logger.qosLogbackClassic}}" />
+  <logger name="ch.qos.logback.core" level="{{.Values.logback.logger.qosLogbackCore}}" />
+  <logger name="org.eclipse.jetty" level="{{.Values.logback.logger.eclipseJetty}}" />
 
-  <logger name="org.onap.aai.interceptors.post" level="DEBUG"
+  <logger name="org.onap.aai.interceptors.post" level="{{.Values.logback.logger.onapAaiInterceptorsPost}}"
       additivity="false">
     <appender-ref ref="asynctranslog" />
   </logger>
-  <logger name="org.onap.aai.interceptors.pre.SetLoggingContext" level="DEBUG">
+  <logger name="org.onap.aai.interceptors.pre.SetLoggingContext" level="{{.Values.logback.logger.onapAaiInterceptorsPreSetLoggingContext}}">
     <appender-ref ref="asyncAUDIT"/>
   </logger>
-  <logger name="org.onap.aai.interceptors.post.ResetLoggingContext" level="DEBUG">
+  <logger name="org.onap.aai.interceptors.post.ResetLoggingContext" level="{{.Values.logback.logger.onapAaiInterceptorsPostResetLoggingContext}}">
     <appender-ref ref="asyncAUDIT"/>
   </logger>
-  <logger name="org.onap.aai.dmaap" level="DEBUG" additivity="false">
+  <logger name="org.onap.aai.dmaap" level="{{.Values.logback.logger.onapAaiDmaap}}" additivity="false">
     <appender-ref ref="dmaapAAIEventConsumer" />
     <appender-ref ref="dmaapAAIEventConsumerDebug" />
     <appender-ref ref="dmaapAAIEventConsumerMetric" />
   </logger>
-  <logger name="org.apache" level="OFF" />
-  <logger name="org.zookeeper" level="OFF" />
-  <logger name="com.thinkaurelius" level="WARN" />
-  <logger name="com.att.aft.dme2" level="WARN" />
+  <logger name="org.apache" level="{{.Values.logback.logger.apache}}" />
+  <logger name="org.zookeeper" level="{{.Values.logback.logger.zookeeper}}" />
+  <logger name="com.thinkaurelius" level="{{.Values.logback.logger.thinkaurelius}}" />
+  <logger name="com.att.aft.dme2" level="{{.Values.logback.logger.attAftDme2}}" />
   <!-- ============================================================================ -->
   <!-- General EELF logger -->
   <!-- ============================================================================ -->
-  <logger name="com.att.eelf" level="WARN" additivity="false">
+  <logger name="com.att.eelf" level="{{.Values.logback.logger.attEelf}}" additivity="false">
     <appender-ref ref="asyncDEBUG" />
     <appender-ref ref="asyncERROR" />
     <appender-ref ref="asyncMETRIC" />
   </logger>
-  <root level="DEBUG">
+  <root level="{{.Values.logback.rootLogLevel}}">
     <appender-ref ref="external" />
     {{if .Values.global.config.logback.console.enabled}}
     <appender-ref ref="STDOUT" />

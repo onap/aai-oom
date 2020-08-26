@@ -97,6 +97,28 @@ service:
 ingress:
   enabled: false
 
+logback:
+  rootLogLevel: {{ .Values.logback.rootLogLevel.traversal }}
+  logger:
+    apache: {{ .Values.logback.logger.apache }}
+    attAftDme2: {{ .Values.logback.logger.attAftDme2 }}
+    attEelf: {{ .Values.logback.logger.attEelf }}
+    blogSpringJms: {{ .Values.logback.logger.blogSpringJms }}
+    eclipseJetty: {{ .Values.logback.logger.eclipseJetty }}
+    jaywayJsonpath: {{ .Values.logback.logger.jaywayJsonpath }}
+    onapAai: {{ .Values.logback.logger.onapAai }}
+    onapAaiDmaap: {{ .Values.logback.logger.onapAaiDmaap }}
+    onapAaiInterceptorsPost: {{ .Values.logback.logger.onapAaiInterceptorsPost }}
+    onapAaiInterceptorsPostResetLoggingContext: {{ .Values.logback.logger.onapAaiInterceptorsPostResetLoggingContext }}
+    onapAaiInterceptorsPreSetLoggingContext: {{ .Values.logback.logger.onapAaiInterceptorsPreSetLoggingContext }}
+    qosLogbackClassic: {{ .Values.logback.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.logback.logger.qosLogbackCore }}
+    springframework: {{ .Values.logback.logger.springframework }}
+    springframeworkBeans: {{ .Values.logback.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.logback.logger.springframeworkWeb }}
+    thinkaurelius: {{ .Values.logback.logger.thinkaurelius }}
+    zookeeper: {{ .Values.logback.logger.zookeeper }}
+
 # Configure resource requests and limits
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
