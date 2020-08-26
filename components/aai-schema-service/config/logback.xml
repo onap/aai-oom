@@ -58,11 +58,10 @@
   <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter"/>
   <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter"/>
   <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
+
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>
-        %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
-      </pattern>
+      <pattern>{{ .Values.log.consolePattern.schemaService }}</pattern>
     </encoder>
   </appender>
 
@@ -224,45 +223,45 @@
   </logger>
 
   <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN"/>
-  <logger name="org.springframework.beans" level="WARN"/>
-  <logger name="org.springframework.web" level="WARN"/>
-  <logger name="com.blog.spring.jms" level="WARN"/>
-  <logger name="com.jayway.jsonpath" level="WARN"/>
+  <logger name="org.springframework" level="{{ .Values.log.logger.springframework }}"/>
+  <logger name="org.springframework.beans" level="{{ .Values.log.logger.springframeworkBeans }}"/>
+  <logger name="org.springframework.web" level="{{ .Values.log.logger.springframeworkWeb }}"/>
+  <logger name="com.blog.spring.jms" level="{{ .Values.log.logger.blogSpringJms }}"/>
+  <logger name="com.jayway.jsonpath" level="{{ .Values.log.logger.jaywayJsonpath }}"/>
 
   <!-- AJSC related loggers (DME2 Registration, csi logging, restlet, servlet
     logging) -->
-  <logger name="org.codehaus.groovy" level="WARN"/>
-  <logger name="com.netflix.loadbalancer" level="WARN"/>
+  <logger name="org.codehaus.groovy" level="{{ .Values.log.logger.codehausGroovy }}"/>
+  <logger name="com.netflix.loadbalancer" level="{{ .Values.log.logger.netflixLoadbalancer }}"/>
 
-  <logger name="org.apache.zookeeper" level="OFF"/>
+  <logger name="org.apache.zookeeper" level="{{ .Values.log.logger.apacheZookeeper }}"/>
 
   <!-- Other Loggers that may help troubleshoot -->
-  <logger name="net.sf" level="WARN"/>
-  <logger name="org.apache.commons.httpclient" level="WARN"/>
-  <logger name="org.apache.commons" level="WARN"/>
-  <logger name="org.apache.coyote" level="WARN"/>
-  <logger name="org.apache.jasper" level="WARN"/>
+  <logger name="net.sf" level="{{ .Values.log.logger.sf }}"/>
+  <logger name="org.apache.commons.httpclient" level="{{ .Values.log.logger.apacheCommonsHttpclient }}"/>
+  <logger name="org.apache.commons" level="{{ .Values.log.logger.apacheCommons }}"/>
+  <logger name="org.apache.coyote" level="{{ .Values.log.logger.apacheCoyote }}"/>
+  <logger name="org.apache.jasper" level="{{ .Values.log.logger.apacheJasper }}"/>
 
   <!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging.
     May aid in troubleshooting) -->
-  <logger name="org.apache.camel" level="WARN"/>
-  <logger name="org.apache.cxf" level="WARN"/>
-  <logger name="org.apache.camel.processor.interceptor" level="WARN"/>
-  <logger name="org.apache.cxf.jaxrs.interceptor" level="WARN"/>
-  <logger name="org.apache.cxf.service" level="WARN"/>
-  <logger name="org.restlet" level="WARN"/>
-  <logger name="org.apache.camel.component.restlet" level="WARN"/>
+  <logger name="org.apache.camel" level="{{ .Values.log.logger.apacheCamel }}"/>
+  <logger name="org.apache.cxf" level="{{ .Values.log.logger.apacheCxf }}"/>
+  <logger name="org.apache.camel.processor.interceptor" level="{{ .Values.log.logger.apacheCamelProcessorInterceptor }}"/>
+  <logger name="org.apache.cxf.jaxrs.interceptor" level="{{ .Values.log.logger.apacheCxfJaxrsInterceptor }}"/>
+  <logger name="org.apache.cxf.service" level="{{ .Values.log.logger.apacheCxfService }}"/>
+  <logger name="org.restlet" level="{{ .Values.log.logger.restlet }}"/>
+  <logger name="org.apache.camel.component.restlet" level="{{ .Values.log.logger.apacheCamelComponentRestlet }}"/>
 
-  <logger name="org.hibernate.validator" level="WARN"/>
-  <logger name="org.hibernate" level="WARN"/>
-  <logger name="org.hibernate.ejb" level="OFF"/>
+  <logger name="org.hibernate.validator" level="{{ .Values.log.logger.hibernateValidator }}"/>
+  <logger name="org.hibernate" level="{{ .Values.log.logger.hibernate }}"/>
+  <logger name="org.hibernate.ejb" level="{{ .Values.log.logger.hibernateEjb }}"/>
 
   <!-- logback internals logging -->
-  <logger name="ch.qos.logback.classic" level="WARN"/>
-  <logger name="ch.qos.logback.core" level="WARN"/>
+  <logger name="ch.qos.logback.classic" level="{{ .Values.log.logger.qosLogbackClassic }}"/>
+  <logger name="ch.qos.logback.core" level="{{ .Values.log.logger.qosLogbackCore }}"/>
 
-  <logger name="org.eclipse.jetty" level="WARN"/>
+  <logger name="org.eclipse.jetty" level="{{ .Values.log.logger.eclipseJetty }}"/>
 
   <logger name="org.onap.aai.aaf.auth" level="DEBUG" additivity="false">
     <appender-ref ref="asyncAUTH" />
@@ -282,14 +281,13 @@
     <appender-ref ref="asynctranslog" />
   </logger>
 
-  <logger name="org.apache" level="OFF"/>
-  <logger name="org.zookeeper" level="OFF"/>
-  <logger name="org.janusgraph" level="WARN"/>
-  <logger name="com.att.aft.dme2" level="WARN"/>
+  <logger name="org.apache" level="{{ .Values.log.logger.apache }}"/>
+  <logger name="org.zookeeper" level="{{ .Values.log.logger.zookeeper }}"/>
+  <logger name="org.janusgraph" level="{{ .Values.log.logger.janusgraph }}"/>
+  <logger name="com.att.aft.dme2" level="{{ .Values.log.logger.attAftDme2 }}"/>
 
-
-  <root level="DEBUG">
+  <root level="{{ .Values.log.root.level }}">
     <appender-ref ref="STDOUT" />
-    <appender-ref ref="external"/>
+    <appender-ref ref="external" />
   </root>
 </configuration>
