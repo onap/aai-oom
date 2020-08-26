@@ -133,6 +133,60 @@ persistence:
   mountSubPath: aai/aai-graphadmin
   mountSubPath1: aai/migration
 
+logback:
+  rootLogLevel: {{ .Values.logback.rootLogLevel.graphadmin }}
+  logger:
+    ajsc: {{ .Values.logback.logger.ajsc }}
+    ajscBeansInterceptors: {{ .Values.logback.logger.ajscBeansInterceptors }}
+    ajscComputeService: {{ .Values.logback.logger.ajscComputeService }}
+    ajscFilePersistenceService: {{ .Values.logback.logger.ajscFilePersistenceService }}
+    ajscFilters: {{ .Values.logback.logger.ajscFilters }}
+    ajscLoggingConfigurationService: {{ .Values.logback.logger.ajscLoggingConfigurationService }}
+    ajscRestlet: {{ .Values.logback.logger.ajscRestlet }}
+    ajscRouteMgmtService: {{ .Values.logback.logger.ajscRouteMgmtService }}
+    ajscServlet: {{ .Values.logback.logger.ajscServlet }}
+    ajscUserDefinedBeansDefService: {{ .Values.logback.logger.ajscUserDefinedBeansDefService }}
+    ajscUserDefinedJarService: {{ .Values.logback.logger.ajscUserDefinedJarService }}
+    ajscUtils: {{ .Values.logback.logger.ajscUtils }}
+    ajscUtilsDME2Helper: {{ .Values.logback.logger.ajscUtilsDME2Helper }}
+    ajscVandelayService: {{ .Values.logback.logger.ajscVandelayService }}
+    apache: {{ .Values.logback.logger.apache }}
+    apacheCamel: {{ .Values.logback.logger.apacheCamel }}
+    apacheCamelComponentRestlet: {{ .Values.logback.logger.apacheCamelComponentRestlet }}
+    apacheCamelProcessorInterceptor: {{ .Values.logback.logger.apacheCamelProcessorInterceptor }}
+    apacheCommons: {{ .Values.logback.logger.apacheCommons }}
+    apacheCommonsHttpclient: {{ .Values.logback.logger.apacheCommonsHttpclient }}
+    apacheCoyote: {{ .Values.logback.logger.apacheCoyote }}
+    apacheCxf: {{ .Values.logback.logger.apacheCxf }}
+    apacheCxfJaxrsInterceptor: {{ .Values.logback.logger.apacheCxfJaxrsInterceptor }}
+    apacheCxfService: {{ .Values.logback.logger.apacheCxfService }}
+    apacheJasper: {{ .Values.logback.logger.apacheJasper }}
+    apacheZookeeper: {{ .Values.logback.logger.apacheZookeeper }}
+    attAftDme2: {{ .Values.logback.logger.attAftDme2 }}
+    attAjsc: {{ .Values.logback.logger.attAjsc }}
+    attAjscCsiLogging: {{ .Values.logback.logger.attAjscCsiLogging }}
+    attAjscFilemonitor: {{ .Values.logback.logger.attAjscFilemonitor }}
+    attEelf: {{ .Values.logback.logger.attEelf }}
+    attScamper: {{ .Values.logback.logger.attScamper }}
+    blogSpringJms: {{ .Values.logback.logger.blogSpringJms }}
+    codehausGroovy: {{ .Values.logback.logger.codehausGroovy }}
+    eclipseJetty: {{ .Values.logback.logger.eclipseJetty }}
+    hibernate: {{ .Values.logback.logger.hibernate }}
+    hibernateEjb: {{ .Values.logback.logger.hibernateEjb }}
+    hibernateValidator: {{ .Values.logback.logger.hibernateValidator }}
+    janusgraph: {{ .Values.logback.logger.janusgraph }}
+    jaywayJsonpath: {{ .Values.logback.logger.jaywayJsonpath }}
+    netflix: {{ .Values.logback.logger.netflix }}
+    netflixLoadbalancer: {{ .Values.logback.logger.netflixLoadbalancer }}
+    qosLogbackClassic: {{ .Values.logback.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.logback.logger.qosLogbackCore }}
+    restlet: {{ .Values.logback.logger.restlet }}
+    sf: {{ .Values.logback.logger.sf }}
+    springframework: {{ .Values.logback.logger.springframework }}
+    springframeworkBeans: {{ .Values.logback.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.logback.logger.springframeworkWeb }}
+    zookeeper: {{ .Values.logback.logger.zookeeper }}
+
 resources:
   small:
     limits:
