@@ -52,7 +52,7 @@
   {
     "uri": "\/$",
     "permissions": [
-    	"\\|services\\|GET",
+      "\\|services\\|GET",
       "test\\.auth\\.access\\|services\\|GET,PUT"
      ]
   },
