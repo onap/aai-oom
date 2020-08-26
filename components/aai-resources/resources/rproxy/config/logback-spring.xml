@@ -4,12 +4,10 @@
     <property name="LOGS" value="./logs/reverse-proxy" />
     <property name="FILEPREFIX" value="application" />
  
-    <appender name="Console"
+    <appender name="STDOUT"
         class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable
-            </Pattern>
+            <Pattern>{{ .Values.log.consolePattern.rproxy }}</Pattern>
         </layout>
     </appender>
  
@@ -32,14 +30,14 @@
             </timeBasedFileNamingAndTriggeringPolicy>
         </rollingPolicy>
     </appender>
-     
+
     <!-- LOG everything at INFO level -->
-    <root level="info">
+    <root level="{{.Values.log.root.levelrproxy}}">
         <appender-ref ref="RollingFile" />
-        <appender-ref ref="Console" />
+        <appender-ref ref="STDOUT" />
     </root>
- 
+
     <!-- LOG "com.baeldung*" at TRACE level  -->
     <logger name="org.onap.aaf.rproxy" level="info" />
- 
+
 </configuration>
