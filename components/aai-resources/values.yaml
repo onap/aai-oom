@@ -84,6 +84,33 @@ service:
 ingress:
   enabled: false
 
+log:
+  logDir: {{ .Values.log.logDir }}
+  root:
+    level:
+      config: {{ .Values.log.root.level.resources.config }}
+      fproxy: {{ .Values.log.root.level.resources.fproxy }}
+      rproxy: {{ .Values.log.root.level.resources.rproxy }}
+  consolePattern:
+    config: {{ .Values.log.consolePattern.resources.config }}
+    fproxy: {{ .Values.log.consolePattern.resources.fproxy }}
+    rproxy: {{ .Values.log.consolePattern.resources.rproxy }}
+  loggger:
+    apache: {{ .Values.log.logger.apache }}
+    apacheCommons: {{ .Values.log.logger.apacheCommons }}
+    apacheZookeeper: {{ .Values.log.logger.apacheZookeeper }}
+    attAftDme2: {{ .Values.log.logger.attAftDme2 }}
+    codehausGroovy: {{ .Values.log.logger.codehausGroovy }}
+    eclipseJetty: {{ .Values.log.logger.eclipseJetty }}
+    janusgraph: {{ .Values.log.logger.janusgraph }}
+    jaywayJsonpath: {{ .Values.log.logger.jaywayJsonpath }}
+    qosLogbackClassic: {{ .Values.log.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.log.logger.qosLogbackCore }}
+    springframework: {{ .Values.log.logger.springframework }}
+    springframeworkBeans: {{ .Values.log.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.log.logger.springframeworkWeb }}
+    zookeeper: {{ .Values.log.logger.zookeeper }}
+
   # We usually recommend not to specify default resources and to leave this as a conscious
   # choice for the user. This also increases chances charts run on environments with little
   # resources, such as Minikube. If you do want to specify resources, uncomment the following

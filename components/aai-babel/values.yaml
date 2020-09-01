@@ -68,6 +68,32 @@ ingress:
   config:
     ssl: "redirect"
 
+log:
+  logDir: {{ .Values.log.logDir }}
+  root:
+    level: {{ .Values.log.root.level.babel }}
+  consolePattern:
+    babel:
+      config: {{ .Values.log.consolePattern.babel.config }}
+      froxy: {{ .Values.log.consolePattern.babel.froxy }}
+      rproxy: {{ .Values.log.consolePattern.babel.rproxy }}
+  logger:
+    apache: {{ .Values.log.logger.apache }}
+    apacheCamel: {{ .Values.log.logger.apacheCamel }}
+    apacheCamelComponentRestlet: {{ .Values.log.logger.apacheCamelComponentRestlet }}
+    apacheCamelProcessorInterceptor: {{ .Values.log.logger.apacheCamelProcessorInterceptor }}
+    apacheCommons: {{ .Values.log.logger.apacheCommons }}
+    apacheCxf: {{ .Values.log.logger.apacheCxf }}
+    apacheCxfJaxrsInterceptor: {{ .Values.log.logger.apacheCxfJaxrsInterceptor }}
+    apacheCxfService: {{ .Values.log.logger.apacheCxfService }}
+    att: {{ .Values.log.logger.att }}
+    qosLogbackClassic: {{ .Values.log.logger.qosLogbackClassic }}
+    qosLogbackCore: {{ .Values.log.logger.qosLogbackCore }}
+    restlet: {{ .Values.log.logger.restlet }}
+    springframework: {{ .Values.log.logger.springframework }}
+    springframeworkBeans: {{ .Values.log.logger.springframeworkBeans }}
+    springframeworkWeb: {{ .Values.log.logger.springframeworkWeb }}
+
 resources:
   small:
     limits:
