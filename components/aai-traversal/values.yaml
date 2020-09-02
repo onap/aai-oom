@@ -97,26 +97,6 @@ service:
 ingress:
   enabled: false
 
-log:
-  logDir: {{ .Values.log.logDir }}
-  root:
-    level: {{ .Values.log.root.level.traversal }}
-  consolePattern: {{ .Values.log.consolePattern.traversal }}
-  logger:
-    apache: {{ .Values.log.logger.apache }}
-    attAftDme2: {{ .Values.log.logger.attAftDme2 }}
-    attEelf: {{ .Values.log.logger.attEelf }}
-    blogSpringJms: {{ .Values.log.logger.blogSpringJms }}
-    eclipseJetty: {{ .Values.log.logger.eclipseJetty }}
-    jaywayJsonpath: {{ .Values.log.logger.jaywayJsonpath }}
-    qosLogbackClassic: {{ .Values.log.logger.qosLogbackClassic }}
-    qosLogbackCore: {{ .Values.log.logger.qosLogbackCore }}
-    springframework: {{ .Values.log.logger.springframework }}
-    springframeworkBeans: {{ .Values.log.logger.springframeworkBeans }}
-    springframeworkWeb: {{ .Values.log.logger.springframeworkWeb }}
-    thinkaurelius: {{ .Values.log.logger.thinkaurelius }}
-    zookeeper: {{ .Values.log.logger.zookeeper }}
-
 # Configure resource requests and limits
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
