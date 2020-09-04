@@ -27,13 +27,13 @@
   <property name="AJSC_HOME" value="${AJSC_HOME:-.}"/>
   <property name="logDirectory" value="${AJSC_HOME}/logs"/>
   <!-- Old patterns
-	<property name="eelfLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
-	<property name="eelfAuditLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n|\r\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
-	<property name="eelfMetricLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{targetVirtualEntity}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
-	<property name="eelfErrorLogPattern" value="%ecompStartTime|%X{requestId}|%-10t|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompErrorCategory|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n|\r\n', '^'}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
-	<property name="eelfErrorLogPattern" value="%ecompStartTime|%X{requestId}|%-10t|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompErrorCategory|%ecompResponseCode|%ecompResponseDescription|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
+  <property name="eelfLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
+  <property name="eelfAuditLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n|\r\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
+  <property name="eelfMetricLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{targetVirtualEntity}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
+  <property name="eelfErrorLogPattern" value="%ecompStartTime|%X{requestId}|%-10t|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompErrorCategory|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n|\r\n', '^'}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
+  <property name="eelfErrorLogPattern" value="%ecompStartTime|%X{requestId}|%-10t|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompErrorCategory|%ecompResponseCode|%ecompResponseDescription|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
     <property name="eelfTransLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%ecompStatusCode|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{partnerName}:%m%n"/>
-	-->
+  -->
   <property name="p_tim" value="%d{&quot;yyyy-MM-dd'T'HH:mm:ss.SSSXXX&quot;, UTC}"/>
   <property name="p_lvl" value="%level"/>
   <property name="p_log" value="%logger"/>
@@ -54,9 +54,7 @@
   <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter"/>
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>
-				%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
-			</pattern>
+      <pattern>{{ .Values.log.consolePattern }}</pattern>
     </encoder>
   </appender>
   <appender name="SANE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -66,7 +64,7 @@
     </rollingPolicy>
     <encoder>
       <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{1024} - %msg%n
-			</pattern>
+      </pattern>
     </encoder>
   </appender>
   <appender name="asyncSANE" class="ch.qos.logback.classic.AsyncAppender">
@@ -78,7 +76,7 @@
     <file>${logDirectory}/rest/metrics.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/rest/metrics.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${metricPattern}</pattern>
@@ -128,7 +126,7 @@
     <file>${logDirectory}/rest/audit.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/rest/audit.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${auditPattern}</pattern>
@@ -148,7 +146,7 @@
     <file>${logDirectory}/rest/translog.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/rest/translog.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${transLogPattern}</pattern>
@@ -166,7 +164,7 @@
     <File>${logDirectory}/dmaapAAIEventConsumer/error.log</File>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/dmaapAAIEventConsumer/error.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${"errorPattern"}</pattern>
@@ -196,7 +194,7 @@
     <File>${logDirectory}/dmaapAAIEventConsumer/debug.log</File>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/dmaapAAIEventConsumer/debug.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${debugPattern}</pattern>
@@ -211,7 +209,7 @@
     <File>${logDirectory}/dmaapAAIEventConsumer/metrics.log</File>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/dmaapAAIEventConsumer/metrics.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${metricPattern}</pattern>
@@ -224,7 +222,7 @@
     <file>${logDirectory}/external/external.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/external/external.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>${debugPattern}</pattern>
@@ -735,65 +733,65 @@
     <appender-ref ref="STDOUT"/>
   </logger>
   <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN"/>
-  <logger name="org.springframework.beans" level="WARN"/>
-  <logger name="org.springframework.web" level="WARN"/>
-  <logger name="com.blog.spring.jms" level="WARN"/>
-  <logger name="com.jayway.jsonpath" level="WARN"/>
+  <logger name="org.springframework" level="{{.Values.log.logger.springframework}}"/>
+  <logger name="org.springframework.beans" level="{{.Values.log.logger.springframeworkBeans}}"/>
+  <logger name="org.springframework.web" level="{{.Values.log.logger.springframeworkWeb}}"/>
+  <logger name="com.blog.spring.jms" level="{{.Values.log.logger.blogSpringJms}}"/>
+  <logger name="com.jayway.jsonpath" level="{{.Values.log.logger.jaywayJsonpath}}"/>
   <!-- AJSC Services (bootstrap services) -->
-  <logger name="ajsc" level="WARN"/>
-  <logger name="ajsc.RouteMgmtService" level="WARN"/>
-  <logger name="ajsc.ComputeService" level="WARN"/>
-  <logger name="ajsc.VandelayService" level="WARN"/>
-  <logger name="ajsc.FilePersistenceService" level="WARN"/>
-  <logger name="ajsc.UserDefinedJarService" level="WARN"/>
-  <logger name="ajsc.UserDefinedBeansDefService" level="WARN"/>
-  <logger name="ajsc.LoggingConfigurationService" level="WARN"/>
-  <!-- AJSC related loggers (DME2 Registration, csi logging, restlet, servlet 
-		logging) -->
-  <logger name="org.codehaus.groovy" level="WARN"/>
-  <logger name="com.att.scamper" level="WARN"/>
-  <logger name="ajsc.utils" level="WARN"/>
-  <logger name="ajsc.utils.DME2Helper" level="WARN"/>
-  <logger name="ajsc.filters" level="WARN"/>
-  <logger name="ajsc.beans.interceptors" level="WARN"/>
-  <logger name="ajsc.restlet" level="WARN"/>
-  <logger name="ajsc.servlet" level="WARN"/>
-  <logger name="com.att.ajsc" level="WARN"/>
-  <logger name="com.att.ajsc.csi.logging" level="WARN"/>
-  <logger name="com.att.ajsc.filemonitor" level="WARN"/>
-  <logger name="com.netflix.loadbalancer" level="WARN"/>
-  <logger name="org.apache.zookeeper" level="WARN"/>
+  <logger name="ajsc" level="{{.Values.log.logger.ajsc}}"/>
+  <logger name="ajsc.RouteMgmtService" level="{{.Values.log.logger.ajscRouteMgmtService}}"/>
+  <logger name="ajsc.ComputeService" level="{{.Values.log.logger.ajscComputeService}}"/>
+  <logger name="ajsc.VandelayService" level="{{.Values.log.logger.ajscVandelayService}}"/>
+  <logger name="ajsc.FilePersistenceService" level="{{.Values.log.logger.ajscFilePersistenceService}}"/>
+  <logger name="ajsc.UserDefinedJarService" level="{{.Values.log.logger.ajscUserDefinedJarService}}"/>
+  <logger name="ajsc.UserDefinedBeansDefService" level="{{.Values.log.logger.ajscUserDefinedBeansDefService}}"/>
+  <logger name="ajsc.LoggingConfigurationService" level="{{.Values.log.logger.ajscLoggingConfigurationService}}"/>
+  <!-- AJSC related loggers (DME2 Registration, csi logging, restlet, servlet
+    logging) -->
+  <logger name="org.codehaus.groovy" level="{{.Values.log.logger.codehausGroovy}}"/>
+  <logger name="com.att.scamper" level="{{.Values.log.logger.attScamper}}"/>
+  <logger name="ajsc.utils" level="{{.Values.log.logger.ajscUtils}}"/>
+  <logger name="ajsc.utils.DME2Helper" level="{{.Values.log.logger.ajscUtilsDME2Helper}}"/>
+  <logger name="ajsc.filters" level="{{.Values.log.logger.ajscFilters}}"/>
+  <logger name="ajsc.beans.interceptors" level="{{.Values.log.logger.ajscBeansInterceptors}}"/>
+  <logger name="ajsc.restlet" level="{{.Values.log.logger.ajscRestlet}}"/>
+  <logger name="ajsc.servlet" level="{{.Values.log.logger.ajscServlet}}"/>
+  <logger name="com.att.ajsc" level="{{.Values.log.logger.attAjsc}}"/>
+  <logger name="com.att.ajsc.csi.logging" level="{{.Values.log.logger.attAjscCsiLogging}}"/>
+  <logger name="com.att.ajsc.filemonitor" level="{{.Values.log.logger.attAjscFilemonitor}}"/>
+  <logger name="com.netflix.loadbalancer" level="{{.Values.log.logger.netflixLoadbalancer}}"/>
+  <logger name="org.apache.zookeeper" level="{{.Values.log.logger.apacheZookeeper}}"/>
   <!-- Other Loggers that may help troubleshoot -->
-  <logger name="net.sf" level="WARN"/>
-  <logger name="org.apache.commons.httpclient" level="WARN"/>
-  <logger name="org.apache.commons" level="WARN"/>
-  <logger name="org.apache.coyote" level="WARN"/>
-  <logger name="org.apache.jasper" level="WARN"/>
+  <logger name="net.sf" level="{{.Values.log.logger.sf}}"/>
+  <logger name="org.apache.commons.httpclient" level="{{.Values.log.logger.apacheCommonsHttpclient}}"/>
+  <logger name="org.apache.commons" level="{{.Values.log.logger.apacheCommons}}"/>
+  <logger name="org.apache.coyote" level="{{.Values.log.logger.apacheCoyote}}"/>
+  <logger name="org.apache.jasper" level="{{.Values.log.logger.apacheJasper}}"/>
   <!-- Camel Related Loggers (including restlet/servlet/jaxrs/cxf logging. 
-		May aid in troubleshooting) -->
-  <logger name="org.apache.camel" level="WARN"/>
-  <logger name="org.apache.cxf" level="WARN"/>
-  <logger name="org.apache.camel.processor.interceptor" level="WARN"/>
-  <logger name="org.apache.cxf.jaxrs.interceptor" level="WARN"/>
-  <logger name="org.apache.cxf.service" level="WARN"/>
-  <logger name="org.restlet" level="WARN"/>
-  <logger name="org.apache.camel.component.restlet" level="WARN"/>
-  <logger name="org.hibernate.validator" level="WARN"/>
-  <logger name="org.hibernate" level="WARN"/>
-  <logger name="org.hibernate.ejb" level="OFF"/>
+    May aid in troubleshooting) -->
+  <logger name="org.apache.camel" level="{{.Values.log.logger.apacheCamel}}"/>
+  <logger name="org.apache.cxf" level="{{.Values.log.logger.apacheCxf}}"/>
+  <logger name="org.apache.camel.processor.interceptor" level="{{.Values.log.logger.apacheCamelProcessorInterceptor}}"/>
+  <logger name="org.apache.cxf.jaxrs.interceptor" level="{{.Values.log.logger.apacheCxfJaxrsInterceptor}}"/>
+  <logger name="org.apache.cxf.service" level="{{.Values.log.logger.apacheCxfService}}"/>
+  <logger name="org.restlet" level="{{.Values.log.logger.restlet}}"/>
+  <logger name="org.apache.camel.component.restlet" level="{{.Values.log.logger.apacheCamelComponentRestlet}}"/>
+  <logger name="org.hibernate.validator" level="{{.Values.log.logger.hibernateValidator}}"/>
+  <logger name="org.hibernate" level="{{.Values.log.logger.hibernate}}"/>
+  <logger name="org.hibernate.ejb" level="{{.Values.log.logger.hibernateEjb}}"/>
   <!-- logback internals logging -->
-  <logger name="ch.qos.logback.classic" level="WARN"/>
-  <logger name="ch.qos.logback.core" level="WARN"/>
-  <logger name="org.eclipse.jetty" level="WARN"/>
+  <logger name="ch.qos.logback.classic" level="{{.Values.log.logger.qosLogbackClassic}}"/>
+  <logger name="ch.qos.logback.core" level="{{.Values.log.logger.qosLogbackCore}}"/>
+  <logger name="org.eclipse.jetty" level="{{.Values.log.logger.eclipseJetty}}"/>
   <!-- logback jms appenders & loggers definition starts here -->
   <appender name="auditLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter"/>
     <file>${logDirectory}/perf-audit/Audit-${lrmRVer}-${lrmRO}-${Pid}.log
-		</file>
+    </file>
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
       <fileNamePattern>${logDirectory}/perf-audit/Audit-${lrmRVer}-${lrmRO}-${Pid}.%i.log.zip
-			</fileNamePattern>
+      </fileNamePattern>
       <minIndex>1</minIndex>
       <maxIndex>9</maxIndex>
     </rollingPolicy>
@@ -807,10 +805,10 @@
   <appender name="perfLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
     <filter class="ch.qos.logback.classic.filter.ThresholdFilter"/>
     <file>${logDirectory}/perf-audit/Perform-${lrmRVer}-${lrmRO}-${Pid}.log
-		</file>
+    </file>
     <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
       <fileNamePattern>${logDirectory}/perf-audit/Perform-${lrmRVer}-${lrmRO}-${Pid}.%i.log.zip
-			</fileNamePattern>
+      </fileNamePattern>
       <minIndex>1</minIndex>
       <maxIndex>9</maxIndex>
     </rollingPolicy>
@@ -828,7 +826,7 @@
     <file>${logDirectory}/auth/auth.log</file>
     <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
       <fileNamePattern>${logDirectory}/auth/auth.log.%d{yyyy-MM-dd}
-			</fileNamePattern>
+      </fileNamePattern>
     </rollingPolicy>
     <encoder>
       <pattern>%d{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}[%thread] %-5level %logger{1024} - %msg%n</pattern>
@@ -938,11 +936,11 @@
     <appender-ref ref="dataExportAudit"/>
     <appender-ref ref="STDOUT"/>
   </logger>
-  <logger name="org.apache" level="WARN"/>
-  <logger name="org.zookeeper" level="WARN"/>
-  <logger name="com.netflix" level="WARN"/>
-  <logger name="org.janusgraph" level="WARN"/>
-  <logger name="com.att.aft.dme2" level="WARN"/>
+  <logger name="org.apache" level="{{.Values.log.logger.apache}}"/>
+  <logger name="org.zookeeper" level="{{.Values.log.logger.zookeeper}}"/>
+  <logger name="com.netflix" level="{{.Values.log.logger.netflix}}"/>
+  <logger name="org.janusgraph" level="{{.Values.log.logger.janusgraph}}"/>
+  <logger name="com.att.aft.dme2" level="{{.Values.log.logger.attAftDme2}}"/>
   <!-- ============================================================================ -->
   <!-- General EELF logger -->
   <!-- ============================================================================ -->
@@ -951,7 +949,7 @@
     <appender-ref ref="asyncERROR"/>
     <appender-ref ref="asyncMETRIC"/>
   </logger>
-  <root level="DEBUG">
+  <root level="{{ .Values.log.root.level }}">
     <appender-ref ref="external"/>
     <appender-ref ref="STDOUT"/>
   </root>
