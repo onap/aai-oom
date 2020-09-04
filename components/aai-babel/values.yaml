@@ -68,6 +68,31 @@ ingress:
   config:
     ssl: "redirect"
 
+log:
+  root:
+    level: INFO
+  consolePattern:
+    babel:
+      config: "%nopexception${p_log}\t${p_tim}\t${p_lvl}\t%message\t${p_mdc}\t%rootException\t${p_mak}\t${p_thr}%n"
+      fproxy: "%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable"
+      rproxy: "%d{ISO8601} %-5level [%t] %C{1.}: %msg%n%throwable"
+  logger:
+    apache: WARN
+    apacheCamel: WARN
+    apacheCamelComponentRestlet: WARN
+    apacheCamelProcessorInterceptor: WARN
+    apacheCommons: WARN
+    apacheCxf: WARN
+    apacheCxfJaxrsInterceptor: WARN
+    apacheCxfService: WARN
+    att: INFO
+    qosLogbackClassic: WARN
+    qosLogbackCore: WARN
+    restlet: WARN
+    springframework: WARN
+    springframeworkBeans: WARN
+    springframeworkWeb: WARN
+
 resources:
   small:
     limits:
