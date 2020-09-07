@@ -1,4 +1,5 @@
-# Copyright © 2018 Amdocs, Bell Canada, AT&T
+# Copyright (c) 2018 Amdocs, Bell Canada, AT&T
+# Modifications Copyright (c) 2020 Nokia
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +18,7 @@
 # Declare variables to be passed into your templates.
 global: # global defaults
   nodePortPrefix: 302
-  legacyReadinessRepository: oomk8s
-  legacyReadinessImage: readiness-check:2.2.2
+  readinessImage: onap/oom/readiness:3.0.1
 
 
 # application image

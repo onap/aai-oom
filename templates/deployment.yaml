@@ -1,4 +1,5 @@
-# Copyright © 2018 Amdocs, Bell Canada, AT&T
+# Copyright (c) 2018 Amdocs, Bell Canada, AT&T
+# Modifications Copyright (c) 2020 Nokia
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -39,7 +40,7 @@ spec:
     spec:
       initContainers:
       - command:
-        - /root/ready.py
+        - /app/ready.py
         args:
         - --container-name
         - aai-resources
@@ -53,7 +54,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: "{{ .Values.global.legacyReadinessRepository }}/{{ .Values.global.legacyReadinessImage }}"
+        image: "{{ include "common.repository" . }}/{{ .Values.global.readinessImage }}"
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
         name: {{ include "common.name" . }}-readiness
       containers:

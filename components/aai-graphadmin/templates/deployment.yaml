@@ -2,7 +2,8 @@
 # ============LICENSE_START=======================================================
 # org.onap.aai
 # ================================================================================
-# Copyright © 2018 AT&T Intellectual Property. All rights reserved.
+# Copyright (c) 2018 AT&T Intellectual Property. All rights reserved.
+# Copyright (c) 2020 Nokia Intellectual Property. All rights reserved.
 # ================================================================================
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -45,17 +46,17 @@ spec:
       initContainers:
       - command:
       {{ if .Values.global.jobs.migration.enabled }}
-        - /root/job_complete.py
+        - /app/ready.py
         args:
         - --job-name
         - {{ include "common.release" . }}-aai-graphadmin-migration
       {{  else if .Values.global.jobs.createSchema.enabled  }}
-        - /root/job_complete.py
+        - /app/ready.py
         args:
         - --job-name
         - {{ include "common.release" . }}-aai-graphadmin-create-db-schema
       {{  else }}
-        - /root/ready.py
+        - /app/ready.py
         args:
         - --container-name
         {{- if .Values.global.cassandra.localCluster }}
@@ -72,7 +73,7 @@ spec:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: "{{ .Values.global.legacyReadinessRepository }}/{{ .Values.global.legacyReadinessImage }}"
+        image: "{{ include "common.repository" . }}/{{ .Values.global.readinessImage }}"
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
         name: {{ include "common.name" . }}-readiness
       {{  end  }}
