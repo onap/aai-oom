@@ -59,14 +59,14 @@ spec:
       - command:
         - /bin/bash
         - -c
-        - /root/ready.py --container-name aai-cassandra --timeout 1 || /root/ready.py --container-name cassandra
+        - /app/ready.py --container-name aai-cassandra --timeout 1 || /app/ready.py --container-name cassandra
         env:
         - name: NAMESPACE
           valueFrom:
             fieldRef:
               apiVersion: v1
               fieldPath: metadata.namespace
-        image: "{{ .Values.global.legacyReadinessRepository }}/{{ .Values.global.legacyReadinessImage }}"
+        image: "{{ include "common.repository" . }}/{{ .Values.global.readinessImage }}"
         imagePullPolicy: {{ .Values.global.pullPolicy | default .Values.pullPolicy }}
         name: {{ include "common.name" . }}-db-backup-readiness
       {{- end }}
