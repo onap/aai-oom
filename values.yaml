@@ -226,10 +226,6 @@ global: # global defaults
     profiles:
       active: production,dmaap,aaf-auth
 
-    Keyclock:
-      host: localhost
-      port: 8180
-
     # Notification event specific properties
     notification:
       eventType: AAI-EVENT
