@@ -1,0 +1,10 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Daniel Milaszkiewicz <daniel.milaszkiewicz@nokia.com>
+Code-Review+1: Krzysztof Kuzmicki <krzysztof.kuzmicki@nokia.com>
+Code-Review+1: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Code-Review+2: William Reehil <william.reehil@att.com>
+Submitted-by: William Reehil <william.reehil@att.com>
+Submitted-at: Tue, 08 Sep 2020 11:51:16 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/112227
+Project: aai/oom
+Branch: refs/heads/master
