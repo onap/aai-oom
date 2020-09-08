@@ -1288,6 +1288,9 @@ spec:
         - mountPath: /opt/app/aai-resources/resources/application.properties
           name: {{ include "common.fullname" . }}-config
           subPath: application.properties
+        - mountPath: /opt/app/aai-resources/resources/application-keyclock.properties
+          name: {{ include "common.fullname" . }}-config
+          subPath: application-keyclock.properties
           {{ $global := . }}
           {{ range $job := .Values.global.config.auth.files }}
         - mountPath: /opt/app/aai-resources/resources/etc/auth/{{ . }}
