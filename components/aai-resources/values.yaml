@@ -31,7 +31,7 @@ replicaCount: 1
 
 # Configuration for the resources deployment
 config:
-  Keyclock:
+  keyclock:
     host: localhost
     port: 8180
 
