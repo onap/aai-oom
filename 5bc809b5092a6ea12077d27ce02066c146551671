@@ -34,6 +34,24 @@
       "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f1b455bb_7479ff97",
+        "filename": "components/aai-resources/values.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 4965
+      },
+      "writtenOn": "2020-09-10T16:44:03Z",
+      "side": 1,
+      "message": "So is this enabled by default or not?\nHow this pod would behave if we deploy it with the default configuration?",
+      "parentUuid": "63e9a5ae_1c65cfee",
+      "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
