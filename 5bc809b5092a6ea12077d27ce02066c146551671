@@ -52,6 +52,24 @@
       "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a3e80ed_81e93f2e",
+        "filename": "components/aai-resources/values.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 6617
+      },
+      "writtenOn": "2020-09-10T16:48:50Z",
+      "side": 1,
+      "message": "Hi Krysztof.  These are just stubbed default values for the application-keycloak.properties template file.  For now, the multi-tenancy feature this supports is opt-in using Spring profiles.  So the values won\u0027t matter to anybody who isn\u0027t opting-in.  Is what we\u0027ve done sensible?  Did we miss anything here?",
+      "parentUuid": "63e9a5ae_1c65cfee",
+      "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
