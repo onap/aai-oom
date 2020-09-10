@@ -306,6 +306,7 @@
 	</logger>
 	<logger name="org.onap.aai.aaf.auth" level="DEBUG" additivity="false">
 		<appender-ref ref="asyncAUTH" />
+		<appender-ref ref="STDOUT" />
 	</logger>
 	<logger name="org.onap.aai.aailog.logs.AaiScheduledTaskAuditLog" level="INFO">
 		<appender-ref ref="asyncAUDIT"/>
@@ -324,6 +325,7 @@
 	</logger>
 	<logger name="org.onap.aai.interceptors.post" level="DEBUG" additivity="false">
 		<appender-ref ref="asynctranslog" />
+		<appender-ref ref="STDOUT" />
 	</logger>
 
 	<logger name="org.onap.aai.dmaap" level="DEBUG" additivity="false">
