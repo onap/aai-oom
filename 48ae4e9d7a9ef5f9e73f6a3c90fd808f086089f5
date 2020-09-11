@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Dan Timoney <dtimoney@att.com>
+Code-Review+1: Sylvain Desbureaux <sylvain.desbureaux@orange.com>
+Code-Review+2: William Reehil <william.reehil@att.com>
+Submitted-by: William Reehil <william.reehil@att.com>
+Submitted-at: Fri, 11 Sep 2020 18:04:02 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/112389
+Project: aai/oom
+Branch: refs/heads/master
