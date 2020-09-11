@@ -70,6 +70,24 @@
       "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8758a92f_991b7f36",
+        "filename": "components/aai-resources/values.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 6627
+      },
+      "writtenOn": "2020-09-11T15:11:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3e80ed_81e93f2e",
+      "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
