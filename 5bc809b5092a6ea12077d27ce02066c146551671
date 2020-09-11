@@ -88,6 +88,24 @@
       "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
       "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cc40f731_b1461ef4",
+        "filename": "components/aai-resources/values.yaml",
+        "patchSetId": 8
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 6627
+      },
+      "writtenOn": "2020-09-11T15:24:57Z",
+      "side": 1,
+      "message": "Hi Krysztof,\n\nIt is disabled by default. If someone needs to enable this feature, he/she should modify the line below as `spring.profiles.active\u003dproduction,keycloak`\n\nhttps://gerrit.onap.org/r/gitweb?p\u003daai/resources.git;a\u003dblob;f\u003daai-resources/src/main/resources/application.properties;h\u003d68526078ef19fd3839dae85dbbd639ab8922cafd;hb\u003drefs/heads/master#l20",
+      "parentUuid": "8758a92f_991b7f36",
+      "revId": "5bc809b5092a6ea12077d27ce02066c146551671",
+      "serverId": "14b4e41f-c4e3-4fb9-9955-6a9b5656895a",
+      "unresolved": false
     }
   ]
 }
