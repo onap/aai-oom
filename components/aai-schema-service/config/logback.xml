@@ -1,8 +1,10 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
+
   <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
   <property resource="application.properties" />
   <property name="AJSC_HOME" value="${AJSC_HOME:-.}" />
   <jmxConfigurator />
+
   <property name="logDirectory" value="${AJSC_HOME}/logs" />
   <property name="eelfLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%X{statusCode}|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
   <property name="eelfAuditLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%X{statusCode}|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n|\r\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
@@ -10,14 +12,14 @@
   <!--  <property name="eelfErrorLogPattern" value="%ecompStartTime|%X{requestId}|%-10t|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompErrorCategory|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n|\r\n', '^'}|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/> -->
   <property name="eelfErrorLogPattern" value="%ecompStartTime|%X{requestId}|%-10t|%X{serviceName}|%X{partnerName}|%X{targetEntity}|%X{targetServiceName}|%ecompErrorCategory|%ecompResponseCode|%ecompResponseDescription|co=%X{component}:%replace(%replace(%m){'\\|', '!'}){'\r|\n', '^'}%n"/>
   <property name="eelfTransLogPattern" value="%ecompStartTime|%date{yyyy-MM-dd'T'HH:mm:ss.SSSZ, UTC}|%X{requestId}|%X{serviceInstanceId}|%-10t|%X{serverName}|%X{serviceName}|%X{partnerName}|%X{statusCode}|%X{responseCode}|%replace(%replace(%X{responseDescription}){'\\|', '!'}){'\r|\n', '^'}|%X{instanceUUID}|%level|%X{severity}|%X{serverIpAddress}|%ecompElapsedTime|%X{server}|%X{clientIpAddress}|%eelfClassOfCaller|%X{unused}|%X{processKey}|%X{customField1}|%X{customField2}|%X{customField3}|%X{customField4}|co=%X{partnerName}:%m%n"/>
+
   <conversionRule conversionWord="clr" converterClass="org.springframework.boot.logging.logback.ColorConverter" />
   <conversionRule conversionWord="wex" converterClass="org.springframework.boot.logging.logback.WhitespaceThrowableProxyConverter" />
   <conversionRule conversionWord="wEx" converterClass="org.springframework.boot.logging.logback.ExtendedWhitespaceThrowableProxyConverter" />
+
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
     <encoder>
-      <pattern>
-        %clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}
-      </pattern>
+      <pattern>{{ .Values.log.consolePattern }}</pattern>
     </encoder>
   </appender>
   <appender name="SANE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -200,15 +202,6 @@
     <appender-ref ref="asyncSANE" />
     <appender-ref ref="STDOUT" />
   </logger>
-  <!-- Spring related loggers -->
-  <logger name="org.springframework" level="WARN" />
-  <logger name="org.springframework.beans" level="WARN" />
-  <logger name="org.springframework.web" level="WARN" />
-  <logger name="com.blog.spring.jms" level="WARN" />
-  <!-- logback internals logging -->
-  <logger name="ch.qos.logback.classic" level="WARN" />
-  <logger name="ch.qos.logback.core" level="WARN" />
-  <logger name="org.eclipse.jetty" level="WARN" />
 
   <logger name="org.onap.aai.schemaservice.interceptors.post" level="DEBUG"
       additivity="false">
@@ -228,7 +221,18 @@
     <appender-ref ref="asyncERROR" />
     <appender-ref ref="asyncMETRIC" />
   </logger>
-  <root level="DEBUG">
+
+  <!-- Spring related loggers -->
+  <logger name="org.springframework" level="{{ .Values.log.logger.springframework }}" />
+  <logger name="org.springframework.beans" level="{{ .Values.log.logger.springframeworkBeans }}" />
+  <logger name="org.springframework.web" level="{{ .Values.log.logger.springframeworkWeb }}" />
+  <logger name="com.blog.spring.jms" level="{{ .Values.log.logger.blogSpringJms }}}" />
+  <!-- logback internals logging -->
+  <logger name="ch.qos.logback.classic" level="{{ .Values.log.logger.qosLogbackClassic }}" />
+  <logger name="ch.qos.logback.core" level="{{ .Values.log.logger.qosLogbackCore }}" />
+  <logger name="org.eclipse.jetty" level="{{ .Values.log.logger.eclipseJetty }}" />
+
+  <root level="{{ .Values.log.root.level }}">
     <appender-ref ref="external" />
     {{ if .Values.global.config.logback.console.enabled }}
     <appender-ref ref="STDOUT" />

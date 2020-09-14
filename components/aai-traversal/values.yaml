@@ -97,6 +97,24 @@ service:
 ingress:
   enabled: false
 
+log:
+  root:
+    level: DEBUG
+  consolePattern: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"
+  logger:
+    apache: WARN
+    attAftDme2: WARN
+    blogSpringJms: WARN
+    eclipseJetty: WARN
+    jaywayJsonpath: WARN
+    qosLogbackClassic: WARN
+    qosLogbackCore: WARN
+    springframework: WARN
+    springframeworkBeans: WARN
+    springframeworkWeb: WARN
+    thinkaurelius: WARN
+    zookeeper: OFF
+
 # Configure resource requests and limits
 # ref: http://kubernetes.io/docs/user-guide/compute-resources/
 resources:
