@@ -34,6 +34,7 @@ image: onap/sparky-be:1.6.2
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
+flavorOverride: small
 dockerhubRepository: registry.hub.docker.com
 ubuntuInitImage: oomk8s/ubuntu-init:2.0.0
 # application configuration

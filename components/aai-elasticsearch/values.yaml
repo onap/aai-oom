@@ -26,6 +26,7 @@ pullPolicy: Always
 restartPolicy: Always
 
 flavor: small
+flavorOverride: small
 
 # application configuration
 config:

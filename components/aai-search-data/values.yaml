@@ -25,6 +25,7 @@ image: onap/search-data-service:1.6.2
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
+flavorOverride: small
 # application configuration
 config:
   elasticsearchHttpPort: 9200

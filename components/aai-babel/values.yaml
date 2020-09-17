@@ -27,6 +27,7 @@ global:
 image: onap/babel:1.7.1
 
 flavor: small
+flavorOverride: small
 
 # application configuration
 config:
