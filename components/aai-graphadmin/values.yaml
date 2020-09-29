@@ -84,6 +84,11 @@ config:
         # Deletes the dataSnapshot graphson files older than 30 days
         ageDelete: 30
 
+  aai:
+    lock:
+      uri:
+        enabled: false
+
 nodeSelector: {}
 
 affinity: {}
