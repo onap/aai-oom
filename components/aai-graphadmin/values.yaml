@@ -28,7 +28,7 @@ global: # global defaults
 
 # application image
 repository: nexus3.onap.org:10001
-image: onap/aai-graphadmin:1.7.0
+image: onap/aai-graphadmin:1.7.1
 pullPolicy: Always
 restartPolicy: Always
 flavor: small
@@ -84,6 +84,12 @@ config:
         ageZip: 5
         # Deletes the dataSnapshot graphson files older than 30 days
         ageDelete: 30
+  # Concurrency lock control flag
+  aai:
+    lock:
+      uri:
+        enabled: false
+
 
 nodeSelector: {}
 
