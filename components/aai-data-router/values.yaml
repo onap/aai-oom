@@ -106,7 +106,9 @@ resources:
 # Entity Event route configuration
 event:
   port:
-    dmaap: 3905
-  protocol: https
+#    dmaap: 3905
+    dmaap: 3904
+#  protocol: https
+  protocol: http
   consumer:
     topic: AAI-EVENT
