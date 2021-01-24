@@ -48,7 +48,7 @@ config:
   portalAppRoles: ui_view
   aafUsername: aai@aai.onap.org
   aafNamespace: org.onap.aai
-  aafPassword: enc:xxYw1FqXU5UpianbPeH5Rezg0YfjzuwQrSiLcCmJGfz
+  aafPassword: enc:QZ1m5hWsVkhtOlw3JgMW5EHzlOpawI64djJryybxO1SiYeZ1nMm-Tj6njLHlmGZD
   cadiKeyFile: /opt/app/sparky/config/portal/keyFile
   cadiTrustStore: /opt/app/sparky/config/auth/truststoreONAPall.jks
   cadiFileLocation: /opt/app/sparky/config/portal/cadi.properties
