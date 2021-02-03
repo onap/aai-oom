@@ -17,6 +17,7 @@
 # Default values for aai.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
+# Add an new comment
 global: # global defaults
   nodePortPrefix: 302
   repository: nexus3.onap.org:10001
