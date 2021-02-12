@@ -1,0 +1,9 @@
+Verified+1: ONAP Jobbuilder <onap-jobbuilder@jenkins.onap.org>
+Code-Review+1: Morgan Richomme <morgan.richomme@orange.com>
+Code-Review+1: Krzysztof Opasiak <k.opasiak@samsung.com>
+Code-Review+2: William Reehil <william.reehil@att.com>
+Submitted-by: William Reehil <william.reehil@att.com>
+Submitted-at: Fri, 12 Feb 2021 15:00:30 +0000
+Reviewed-on: https://gerrit.onap.org/r/c/aai/oom/+/117656
+Project: aai/oom
+Branch: refs/heads/guilin
